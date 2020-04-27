@@ -8,9 +8,9 @@
   <ul>
     <li>
       <details>
-      <summary><a href="languages/Swift.md" target="_blank">Swift</a></summary>
+      <summary><a href="Languages/Swift.md" target="_blank">Swift</a></summary>
         <ul>
-          <li><a href="languages/Swift.md" target="_blank">test</a></li>
+          <li><a href="Languages/Swift.md" target="_blank">test</a></li>
         </ul>
       </details>
     </li>
@@ -21,9 +21,9 @@
   <ul>
     <li>
       <details>
-      <summary><a href="languages/IOS.md" target="_blank">IOS</a></summary>
+      <summary><a href="IOS/IOS.md" target="_blank">IOS</a></summary>
         <ul>
-          <li><a href="languages/IOS.md" target="_blank">test</a></li>
+          <li><a href="IOS/IOS.md" target="_blank">test</a></li>
         </ul>
       </details>
     </li>
@@ -34,9 +34,9 @@
   <ul>
     <li>
       <details>
-      <summary><a href="languages/개발용어.md" target="_blank">개발용어</a></summary>
+      <summary><a href="ETC/개발용어.md" target="_blank">개발용어</a></summary>
         <ul>
-          <li><a href="languages/개발용어.md#severless" target="_blank">Sever Less</a></li>
+          <li><a href="ETC/개발용어.md#severless" target="_blank">Sever Less</a></li>
         </ul>
       </details>
     </li>
