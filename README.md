@@ -4,55 +4,43 @@
 오늘 제가 배운 내용을 정리하는 공간입니다.
 
 <details>
-  <summary>test</summary>
+  <summary>Language</summary>
   <ul>
     <li>
       <details>
-      <summary><a href="https://github.com/Mino777/TIL" target="_blank">test</a></summary>
+      <summary><a href="languages/Swift.md" target="_blank">Swift</a></summary>
         <ul>
-          <li><a href="https://github.com/Mino777/TIL" target="_blank">test</a></li>
+          <li><a href="languages/Swift.md" target="_blank">test</a></li>
         </ul>
       </details>
     </li>
   </ul>
 </details>
 <details>
-  <summary>test</summary>
+  <summary>IOS</summary>
   <ul>
     <li>
       <details>
-      <summary><a href="https://github.com/Mino777/TIL" target="_blank">test</a></summary>
+      <summary><a href="languages/IOS.md" target="_blank">IOS</a></summary>
         <ul>
-          <li><a href="https://github.com/Mino777/TIL" target="_blank">test</a></li>
+          <li><a href="languages/IOS.md" target="_blank">test</a></li>
         </ul>
       </details>
     </li>
   </ul>
 </details>
 <details>
-  <summary>test</summary>
+  <summary>ETC</summary>
   <ul>
     <li>
       <details>
-      <summary><a href="https://github.com/Mino777/TIL" target="_blank">test</a></summary>
+      <summary><a href="languages/개발용어.md" target="_blank">개발용어</a></summary>
         <ul>
-          <li><a href="https://github.com/Mino777/TIL" target="_blank">test</a></li>
+          <li><a href="languages/개발용어.md#severless" target="_blank">Sever Less</a></li>
         </ul>
       </details>
     </li>
   </ul>
 </details>
-<details>
-  <summary>test</summary>
-  <ul>
-    <li>
-      <details>
-      <summary><a href="https://github.com/Mino777/TIL" target="_blank">test</a></summary>
-        <ul>
-          <li><a href="https://github.com/Mino777/TIL" target="_blank">test</a></li>
-        </ul>
-      </details>
-    </li>
-  </ul>
-</details>
+
 
