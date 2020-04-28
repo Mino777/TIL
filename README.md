@@ -39,6 +39,12 @@
           <li><a href="ETC/개발용어.md#severless" target="_blank">Sever Less</a></li>
         </ul>
       </details>
+      <details>
+      <summary><a href="ETC/error.md" target="_blank">error</a></summary>
+        <ul>
+          <li><a href="ETC/error.md#WKWebView" target="_blank">WKWebView</a></li>
+        </ul>
+      </details>
     </li>
   </ul>
 </details>
