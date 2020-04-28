@@ -8,9 +8,9 @@
   <ul>
     <li>
       <details>
-      <summary><a href="Languages/Swift.md" target="_blank">Swift</a></summary>
+      <summary><a href="Language/Swift.md" target="_blank">Swift</a></summary>
         <ul>
-          <li><a href="Languages/Swift.md" target="_blank">test</a></li>
+          <li><a href="Language/Swift.md" target="_blank">test</a></li>
         </ul>
       </details>
     </li>
