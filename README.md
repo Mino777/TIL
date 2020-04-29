@@ -45,6 +45,12 @@
           <li><a href="ETC/error.md#WKWebView" target="_blank">WKWebView</a></li>
         </ul>
       </details>
+      <details>
+      <summary><a href="ETC/Tip.md" target="_blank">Tip</a></summary>
+        <ul>
+          <li><a href="ETC/Tip.md#경력관리" target="_blank">경력관리</a></li>
+        </ul>
+      </details>
     </li>
   </ul>
 </details>
