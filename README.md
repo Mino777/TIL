@@ -40,9 +40,9 @@
         </ul>
       </details>
       <details>
-      <summary><a href="ETC/error.md" target="_blank">error</a></summary>
+      <summary><a href="ETC/Error.md" target="_blank">Error</a></summary>
         <ul>
-          <li><a href="ETC/error.md#WKWebView" target="_blank">WKWebView</a></li>
+          <li><a href="ETC/Error.md#WKWebView" target="_blank">WKWebView</a></li>
         </ul>
       </details>
       <details>
