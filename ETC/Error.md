@@ -6,7 +6,7 @@
 
 ----
 
-## <a name="WKWebView"></a>WKWebView
+## <a name="WKWebView"></a>WKWebView *<small><update 20.04.29><small>*
 
 Could not instantiate class named WKWebView because no class named WKWebView was found; the class needs to be defined in source code or linked in from a library (ensure the class is part of the correct target)’
 1. 프로젝트 파일 선택
