@@ -6,7 +6,7 @@
 
 ----
 
-## <a name="WebView"></a>WebView
+## <a name="WebView"></a>WebView *<small><update 20.04.28><small>*
 
 ### IOS app 에서 웹사이트를 보여주는 방법
 1. 사파리앱을 열어줌
