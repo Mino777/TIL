@@ -51,6 +51,7 @@
       <summary><a href="ETC/Tip.md" target="_blank">Tip</a></summary>
         <ul>
           <li><a href="ETC/Tip.md#경력관리" target="_blank">경력관리</a></li>
+          <li><a href="ETC/Tip.md#같이일" target="_blank">같이 일 하고 싶은 사람</a></li>
         </ul>
       </details>
     </li>
