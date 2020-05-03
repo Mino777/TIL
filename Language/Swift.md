@@ -37,3 +37,7 @@ Swift는 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 
 - 메소드, 확장 프로그램 및 프로토콜을 지원하는 구조
 - 함수형 프로그래밍 패턴 (예: map 및 filter)
 - try/catch/throw를 사용한 기본 오류 처리
+
+출처: https://swift.org/about/ , https://blog.yagom.net/526/
+
+----
