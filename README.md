@@ -12,7 +12,7 @@
       <details>
       <summary><a href="Language/Swift.md" target="_blank">Swift</a></summary>
         <ul>
-          <li><a href="Language/Swift.md" target="_blank">test</a></li>
+          <li><a href="Language/Swift.md#aboutswift" target="_blank">About Swift</a></li>
         </ul>
       </details>
     </li>
