@@ -5,6 +5,7 @@
 - [T자 경력관리](#경력관리)
 - [같이 일하고 싶은 사람](#같이일)
 - [맥북 한영키 딜레이 줄이기](#맥북한영키)
+- [SourceTree 비밀번호 변경하는 방법](#소스트리비밀번호)
 
 ----
 
@@ -49,10 +50,28 @@ ios 와 cs 에 집중하자!!
 
 ## <a name="맥북한영키"></a>맥북 한영키 딜레이 줄이기  *<small><update 20.05.08><small>*
 평소에 맥북으로 코딩이나 문서작업시에 한영키를 빠르게 바꿔야할 때 딜레이가 길어서 불편함이 너무나 커지던 와중에 찾은 맥북 한영키 딜레이 줄이기 꿀팁!
+
+### 방법
+
+- karabiner-Elements 를 이용해서 거의 안쓰는 capsLock 기능을 제거해주면 끝!
    
 https://wooooooak.github.io/tip/2019/03/01/%EB%A7%A5_%ED%95%9C%EC%98%81%ED%82%A4_%EC%A0%84%ED%99%98_%EC%86%8D%EB%8F%84_%EA%B0%9C%EC%84%A0/
 
 위 블로그를 참고하여 삶의 질을 높여보세요!
 GOD Karabiner-Elements!
                                                                    
+----
+
+## <a name="소스트리비밀번호"></a>SourceTree 비밀번호 변경하는 방법  *<small><update 20.05.16><small>*
+소스트리를 잘 이용하다가 Github 비밀번호를 변경하고 나서 비밀번호가 맞지않아 pull, push가 reject 되는 상황
+그런데 소스트리에 비밀번호 변경하는 기능이 없다..? 당황.. 이런 기능조차 없다니..
+
+### 방법
+
+- 파인더에서 command + shift + G 로 경로 탐색 후 keychain 에 들어가서 login.keychain-db 파일을 열고 암호 카테고리에 있는 sourcetree github 암호를 변경해주면 끝!
+
+https://leo81.tistory.com/52
+
+위 블로그를 참고하세요!
+
 ----
