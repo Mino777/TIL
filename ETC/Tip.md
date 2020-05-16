@@ -55,10 +55,7 @@ ios 와 cs 에 집중하자!!
 
 - karabiner-Elements 를 이용해서 거의 안쓰는 capsLock 기능을 제거해주면 끝!
    
->https://wooooooak.github.io/tip/2019/03/01/%EB%A7%A5_%ED%95%9C%EC%98%81%ED%82%A4_%EC%A0%84%ED%99%98_%EC%86%8D%EB%8F%84_%EA%B0%9C%EC%84%A0/
-
-위 블로그를 참고하여 삶의 질을 높여보세요!
-GOD Karabiner-Elements!
+>출처 : https://wooooooak.github.io/tip/2019/03/01/%EB%A7%A5_%ED%95%9C%EC%98%81%ED%82%A4_%EC%A0%84%ED%99%98_%EC%86%8D%EB%8F%84_%EA%B0%9C%EC%84%A0/
                                                                    
 ----
 
@@ -70,8 +67,6 @@ GOD Karabiner-Elements!
 
 - 파인더에서 command + shift + G 로 경로 탐색 후 keychain 에 들어가서 login.keychain-db 파일을 열고 암호 카테고리에 있는 sourcetree github 암호를 변경해주면 끝!
 
->https://leo81.tistory.com/52
-
-위 블로그를 참고하세요!
+>출처 : https://leo81.tistory.com/52
 
 ----
