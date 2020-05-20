@@ -3,7 +3,7 @@
 ### 바로가기
 
 - [About Swift](#aboutswift)
-
+- [Struct 와 Class의 차이](#structvsclass)
 ----
 
 ## <a name="aboutswift"></a>About Swift *<small><update 20.05.03><small>*
@@ -41,3 +41,89 @@ Swift는 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 
 출처: https://swift.org/about/ , https://blog.yagom.net/526/
 
 ----
+
+## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
+
+1. Class는 상속을 지원하지만, Struct는 그렇지 못함.
+2. Class는 참조 타입이지만, Struct는 값 타입.
+3. Class는 heap 메모리에 저장, Struct는 stack 메모리에 저장.
+
+>예시
+```swift
+struct PersonStruct {
+    var firstName: String
+    var lastName: String
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+    var fullName: String { // computed property
+        return "\(firstName) \(lastName)"
+    }
+    
+    mutating func uppercaseName() { // property 를 변경하려면 mutating
+        firstName = firstName.uppercased()
+        lastName = lastName.uppercased()
+    }
+}
+
+class PersonClass {
+    var firstName: String
+    var lastName: String
+    
+    init(firstName: String, lastName: String) { // class 객체를 생성할때 사용하는 생성함수 init
+        self.firstName = firstName // parm과 똑같을경우 self.
+        self.lastName = lastName
+    }
+    
+    var fullName: String {
+        return "\(firstName) \(lastName)"
+    }
+    
+    func uppercaseName() {  // class에선 mutating 사용하지 않음
+        firstName = firstName.uppercased()
+        lastName = lastName.uppercased()
+    }
+}
+
+var personStruct1 = PersonStruct(firstName: "Mino", lastName: "Jo")
+var personStruct2 = personStruct1
+
+var personClass1 = PersonClass(firstName: "Mino", lastName: "Jo")
+var personClass2 = personClass1
+
+personStruct2.firstName = "Minjin"
+personStruct1.firstName // = Mino // Struct는 값 타입이기 때문에
+personStruct2.firstName // = Minjin // 기존의 데이터 값을 복사해서 새로운 데이터를 만듦.
+
+
+personClass2.firstName = "Minjin"
+personClass1.firstName // = Minjin // Class는 참조 타입이기 때문에
+personClass2.firstName // = Minjin // 첫 데이터를 참조해서 그 데이터에 덮어 씌움.
+
+
+personClass2 = PersonClass(firstName: "Babo", lastName: "Jo")
+personClass1.firstName // = Minjin
+personClass2.firstName // = Babo
+
+
+personClass1 = personClass2
+personClass1.firstName // = Babo
+personClass2.firstName // = Babo
+```
+
+### struct 를 사용해야할 경우
+1. 두 object를 "같다, 다르다" 로 비교해야 하는 경우
+2. copy 된 각 객체들이 독립적인 상태를 가져야 하는 경우
+3. 코드에서 오브젝트의 데이터를 여러 스레드 걸쳐 사용할 경우 ( 안전하게 사용 가능 )
+
+### class 를 사용해야할 경우
+1. 두 object의 인스턴스 자체가 같음을 확인해야 할때
+2. 하나의 객체가 필요하고, 여러 대상에 의해 접근되고 변경이 필요한 경우
+
+>일단 struct로 쓰자. 그리고 나서 class를 사용해야할 경우 class로 포팅하자.
+swift는 struct를 좋아한다.
+
+-----
