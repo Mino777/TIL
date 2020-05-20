@@ -13,6 +13,7 @@
       <summary><a href="Language/Swift.md" target="_blank">Swift</a></summary>
         <ul>
           <li><a href="Language/Swift.md#aboutswift" target="_blank">About Swift</a></li>
+          <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
     </li>
