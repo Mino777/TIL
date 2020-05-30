@@ -50,6 +50,8 @@
       <details>
       <summary><a href="ETC/Error.md" target="_blank">Error</a></summary>
         <ul>
+          <li><a href="ETC/Error.md#xcodesimulatornon" target="_blank">xcode 시뮬레이터 안보일 때</a></li>
+          <li><a href="ETC/Error.md#sourcetreedir" target="_blank">sourceTree 하위 폴더 인식 못할 때</a></li>
           <li><a href="ETC/Error.md#WKWebView" target="_blank">WKWebView</a></li>
         </ul>
       </details>
