@@ -63,6 +63,7 @@
           <li><a href="ETC/Tip.md#같이일" target="_blank">같이 일 하고 싶은 사람</a></li>
           <li><a href="ETC/Tip.md#맥북한영키" target="_blank">맥북 한영키 딜레이 줄이기</a></li>
           <li><a href="ETC/Tip.md#소스트리비밀번호" target="_blank">SourceTree 비밀번호 변경하는 방법</a></li>
+          <li><a href="ETC/Tip.md#stackedit" target="_blank">마크다운 에디터 stackEdit</a></li>
         </ul>
       </details>
     </li>
