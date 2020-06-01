@@ -101,7 +101,8 @@
 위 "NS"가 붙은 Key들은 모두 Privacy와 관련된 Key들임. 
 
 #### 결론
-info.plist가 어떤 역할을 하는지와 IOS, Cocoa Key에 대해서 어느정도 알게 되었고 아무래도 privacy key들은 잘 알아두어야 할 것 같다.
+info.plist가 어떤 역할을 하는지와 IOS, Cocoa Key에 대해서 어느정도 알게 되었다. <br>
+iOS 10 부터는 개인 데이터에 대한 액세스 권한이 있는 경우에 미리 선언을 해주지 않으면, 앱이 중단된다고 하니 privacy key는 꼭 잘 알아두어야겠다.
 
 > 출처 : [Apple Documentation Archive 중 info.plist](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1)
 
