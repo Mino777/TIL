@@ -2,10 +2,108 @@
 
 ### 바로가기
 
+- [AppProjectFile](#appprojectfile)
+- [Info.plist](#infoplist)
 - [Networking in IOS](#networking)
 - [WebView](#WebView)
 
 ----
+## <a name="appprojectfile"></a>AppProjectFile *<small><update 20.06.02><small>*
+
+#### AppProject File ?
+
+
+
+
+## <a name="infoplist"></a>Info.plist *<small><update 20.06.02><small>*
+
+#### info.plist ?
+사용자에게 더 나은 환경을 제공하기 위해 iOS 및 macOS는 각 앱 또는 번들에 특수 메타 데이터가 있어야합니다. 이 메타 데이터는 다양한 방식으로 사용됩니다. 일부는 사용자에게 표시되고, 일부는 시스템에서 앱과 앱이 지원하는 문서 유형을 식별하기 위해 내부적으로 사용되며, 일부는 시스템 프레임 워크에서 앱 실행을 용이하게하기 위해 사용됩니다. 응용 프로그램이 시스템에 메타 데이터를 제공하는 방법은 **information property list file**을 사용하는 것입니다.<br>
+속성 목록은 시스템이 런타임에 액세스 할 수있는 임의의 데이터를 구성하는 방법입니다. information property list는 번들에 대한 구성 데이터를 포함하는 속성 목록의 전문 유형입니다. 파일의 키와 값은 번들에 적용하려는 다양한 동작 및 구성 옵션을 설명합니다. Xcode 프로젝트 템플릿은 일반적으로 초기 키 세트와 적절한 기본값으로 정보 등록 정보 목록 파일을 지정합니다. 파일을 편집하여 프로젝트에 따라 키와 값을 변경하거나 추가 할 수 있습니다.
+
+------
+
+#### Key 종류
+- Core Foundation Key
+- Launch Services Key
+- Cocoa Key
+- macOS Key
+- IOS Key
+- watchOS Key
+- App Extension Key
+
+------
+
+#### 애플에서 추천해주는 Key
+-   [CFBundleDevelopmentRegion](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-130430)
+번들의 기본 언어 및 지역을 언어 ID로 지정합니다. 예를 들어 호주의 영어에는 언어 ID가 `en-AU`있습니다. 시스템은 사용자가 선호하는 언어의 자원을 찾을 수없는 경우 이 값을 사용합니다.
+    
+-   [CFBundleDisplayName](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-110725)
+    사용자가 볼 수 있고 Siri에서 사용하는 번들의 표시 이름을 지정합니다.
+-   [CFBundleExecutable](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-101909)
+    번들의 기본 실행 파일 이름을 식별합니다. 앱의 경우 앱 실행 파일입니다. 로드 가능한 번들의 경우 번들에 의해 동적으로 로드되는 바이너리입니다. 프레임 워크의 경우 프레임 워크의 공유 라이브러리입니다.
+-   [CFBundleIconFiles](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/TP40009249-SW10)
+    번들의 아이콘 파일을 식별하는 문자열 배열이 포함되어 있습니다. (PNG 형식을 사용하여 항상 아이콘 파일을 작성하는 것이 좋습니다.) 아이콘 파일 이름을 지정할 때는 파일 이름 확장자를 생략하는 것이 가장 좋습니다. 파일 이름 확장자를 생략하면 시스템 `@2x`에서 표준 해상도 이미지 파일 이름을 사용하여 이미지 파일의 고해상도 버전을 자동으로 감지 할 수 있습니다
+-   [CFBundleIdentifier](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102070)
+    번들을 고유하게 식별합니다. 시스템의 각 개별 앱 또는 번들에는 고유한 번들 ID가 있어야합니다. 시스템은 이 문자열을 사용하여 여러 가지 방법으로 앱을 식별합니다. 예를 들어, 환경 설정 시스템은이 문자열을 사용하여 지정된 환경 설정이 적용되는 앱을 식별합니다.
+-   [CFBundleInfoDictionaryVersion](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102088)
+    현재 버전의 속성 목록 구조를 식별합니다. 이 키는 info.plist 파일 형식의 이후 버전을 지원하기 위해 존재합니다. Xcode는 번들을 빌드 할 때 이 키를 자동으로 생성하므로 수동으로 변경해서는 안됩니다.
+-   [CFBundlePackageType](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-111321)
+    번들 유형을 식별합니다.
+-   [CFBundleVersion](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102364)
+    번들의 빌드 버전 번호를 지정하며 번들의 iteration (릴리스 또는 릴리스되지 않은)을 식별합니다.
+-   [LSRequiresIPhoneOS](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW2)
+    앱이 iOS에서만 실행할 수 있는지 여부를 지정합니다.
+-   [UIMainStoryboardFile](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW9)
+    앱의 기본 스토리 보드 파일 이름이 포함 된 문자열을 포함합니다 . 스토리보드 파일은 앱의 뷰 컨트롤러, 해당 뷰 컨트롤러와 해당 뷰 컨트롤러 사이의 연결 및 뷰 컨트롤러 사이의 연결을 포함하는 Interface Builder 아카이브입니다. 이 키가 있으면 시작시 기본 스토리 보드 파일이 자동으로 로드되고 앱의 창에 초기 뷰 컨트롤러가 설치됩니다.
+-   [UIRequiredDeviceCapabilities](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW3)  (required)
+    iTunes와 App Store가 앱을 실행하는 데 필요한 장비 관련 기능을 알려줍니다. iTunes 및 모바일 App Store는이 목록을 사용하여 고객이 나열된 기능을 지원하지 않는 장비에 앱을 설치하지 못하게합니다.
+-   [UIStatusBarStyle](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW14)
+    앱이 시작될 때 상태 표시 줄의 스타일을 지정합니다.
+-   [UIInterfaceOrientation](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW13)
+    앱 사용자 인터페이스의 초기 방향을 지정합니다.
+-   [UIRequiresPersistentWiFi](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW12)
+앱에 Wi-Fi 연결이 필요한지 여부를 지정합니다. iOS는 앱이 실행되는 동안 활성 Wi-Fi 연결을 열어 둡니다.
+-   [NSHumanReadableCopyright](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-112854-TPXREF117)
+이 키는 번들에 대한 저작권 표시가있는 문자열을 포함합니다.
+-   [NSMainNibFile](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/20001431-107221)
+    이 키에는 앱의 메인 nib 파일 이름이 포함 된 문자열이 포함 됩니다. nib 파일은 사용자 인터페이스에 대한 설명과 해당 인터페이스 객체 간의 연결을 포함하는 Interface Builder 아카이브입니다. 앱이 시작되면 기본 nip 파일이 자동으로 로드됩니다.
+-   [NSPrincipalClass](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW11)
+이 키에는 번들의 기본 클래스 이름이 포함 된 문자열이 포함됩니다. 이 키는 플러그인 및 기타 동적으로로드 된 번들과 같이 동적으로로드 된 코드의 진입 점을 식별하는 데 사용됩니다. 번들의 기본 클래스는 일반적으로 번들의 다른 모든 클래스를 제어하고 해당 클래스와 번들 외부의 클래스 사이를 조정합니다.
+------
+
+#### 내가 생각했을 때 중요한 Key
+- UIApplicationExitsOnSuspend 
+백그라운드에서 앱을 실행하지 않고 종료할지 여부를 지정
+- UIBackgroundModes
+앱이 백그라운드에서 계속 실행되도록 지정
+- UILaunchStoryboards
+앱의 시작 이미지를 생성 할 여러 스토리 보드에 대한 정보를 지정
+- NFCReaderUsageDescription
+- NSAppleMusicUsageDescription
+- NSBluetoothPeripheralUsageDescription
+- NSCalendarsUsageDescription
+- NSCameraUsageDescription
+- NSContactsUsageDescription
+- NSFaceIDUsageDescription
+- NSHealthShareUsageDescription
+- NSHealthUpdateUsageDescription
+- NSHomeKitUsageDescription
+- NSLocationAlwaysUsageDescription
+- NSLocationUsageDescription
+- NSLocationWhenInUseUsageDescription
+- NSMicrophoneUsageDescription
+- NSMotionUsageDescription
+- NSPhotoLibraryAddUsageDescription
+- NSPhotoLibraryUsageDescription
+- NSRemindersUsageDescription
+- NSVideoSubscriberAccountUsageDescription
+위 "NS"가 붙은 Key들은 모두 Privacy와 관련된 Key들임. 
+
+#### 결론
+info.plist가 어떤 역할을 하는지와 IOS, Cocoa Key에 대해서 어느정도 알게 되었고 아무래도 privacy key들은 잘 알아두어야 할 것 같다.
+
+> 출처 : [Apple Documentation Archive 중 info.plist](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1)
 
 ## <a name="networking"></a>Networking in IOS *<small><update 20.05.30><small>*
 
