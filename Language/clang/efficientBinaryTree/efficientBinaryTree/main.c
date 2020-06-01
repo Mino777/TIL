@@ -298,59 +298,422 @@
 //    return 0;
 //}
 // Programming Exercise 2.
+//#include <stdio.h>
+//#include <stdlib.h>
+//struct node
+//{
+//    int info;
+//    struct node *left, *right;
+//};
+//struct node *createnode(int key)
+//{
+//    struct node *newnode = (struct node*)malloc(sizeof(struct node));
+//    newnode->info = key;
+//    newnode->left = NULL;
+//    newnode->right = NULL;
+//    return(newnode);
+//}
+//static int count = 0;
+//int countnodes(struct node *root)
+//{
+//    if(root != NULL)
+//    {
+//        countnodes(root->left);
+//        count++;
+//        countnodes(root->right);
+//    }
+//    return count;
+//}
+//
+//int main()
+//{
+//    struct node *newnode = createnode(25);
+//    newnode->left = createnode(27);
+//    newnode->right = createnode(19);
+//    newnode->left->left = createnode(17);
+//    newnode->left->right = createnode(91);
+//    newnode->right->left = createnode(13);
+//    newnode->right->right = createnode(55);
+//
+//    printf("Number of nodes in tree 1 = %d ",countnodes(newnode));
+//    printf("\n");
+//    count = 0;
+//
+//    struct node *node = createnode(1);
+//    node->right = createnode(2);
+//    node->right->right = createnode(3);
+//    node->right->right->right = createnode(4);
+//    node->right->right->right->right = createnode(5);
+//
+//    printf("Number of nodes in tree 2 = %d ",countnodes(node));
+//    printf("\n");
+//    count = 0;
+//
+//    struct node *root = createnode(15);
+//
+//    printf("Number of nodes in tree 3 = %d",countnodes(root));
+//    return 0;
+//}
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//typedef struct NodeStruct
+//{
+//    int value;
+//    struct NodeStruct* leftChild;
+//    struct NodeStruct* rightChild;
+//}Node;
+//
+//Node* root = NULL;
+//
+//Node* BST_insert(Node* root, int value)
+//{
+//    if(root == NULL)
+//    {
+//        root = (Node*)malloc(sizeof(Node));
+//        root->leftChild = root->rightChild = NULL;
+//        root->value = value;
+//        return root;
+//    }
+//    else
+//    {
+//        if(root->value > value)
+//            root->leftChild = BST_insert(root->leftChild, value);
+//        else
+//            root->rightChild = BST_insert(root->rightChild, value);
+//    }
+//    return root;
+//}
+//Node* findMinNode(Node* root)
+//{
+//    Node* tmp = root;
+//    while(tmp->leftChild != NULL)
+//        tmp = tmp->leftChild;
+//    return tmp;
+//}
+//Node* BST_delete(Node* root, int value)
+//{
+//    Node* tNode = NULL;
+//    if(root == NULL)
+//        return NULL;
+//
+//    if(root->value > value)
+//        root->leftChild = BST_delete(root->leftChild, value);
+//    else if(root->value < value)
+//        root->rightChild = BST_delete(root->rightChild, value);
+//    else
+//    {
+//        // 자식 노드가 둘 다 있을 경우
+//        if(root->rightChild != NULL && root->leftChild != NULL)
+//        {
+//            tNode = findMinNode(root->rightChild);
+//            root->value = tNode->value;
+//            root->rightChild = BST_delete(root->rightChild, tNode->value);
+//        }
+//        else
+//        {
+//            tNode = (root->leftChild == NULL) ? root->rightChild : root->leftChild;
+//            free(root);
+//            return tNode;
+//        }
+//    }
+//
+//    return root;
+//}
+//Node* BST_search(Node* root, int value)
+//{
+//    if(root == NULL)
+//        return NULL;
+//
+//    if(root->value == value)
+//        return root;
+//    else if(root->value > value)
+//        return BST_search(root->leftChild, value);
+//    else
+//        return BST_search(root->rightChild, value);
+//}
+//void BST_print(Node* root)
+//{
+//    if(root == NULL)
+//        return;
+//
+//    printf("%d ", root->value);
+//    BST_print(root->leftChild);
+//    BST_print(root->rightChild);
+//}
+//
+//int main()
+//{
+//    root = BST_insert(root, 98);
+//    root = BST_insert(root, 2);
+//    root = BST_insert(root, 48);
+//    root = BST_insert(root, 12);
+//    root = BST_insert(root, 56);
+//    root = BST_insert(root, 32);
+//    root = BST_insert(root, 4);
+//    root = BST_insert(root, 67);
+//    root = BST_insert(root, 23);
+//    root = BST_insert(root, 87);
+//    root = BST_insert(root, 23);
+//    root = BST_insert(root, 55);
+//    root = BST_insert(root, 46);
+//    root = BST_insert(root, 21);
+//    root = BST_insert(root, 39);
+//    root = BST_insert(root, 45);
+//    root = BST_insert(root, 54);
+//    root = BST_insert(root, 63);
+//
+//    root = BST_delete(root, 23);
+//    root = BST_delete(root, 56);
+//    root = BST_delete(root, 2);
+//    root = BST_delete(root, 45);
+//
+//
+//    BST_print(root);
+//}
+// 98, 2, 48, 12, 56, 32, 4, 67, 23, 87, 23, 55, 46
+//(a) Insert 21, 39, 45, 54, and 63 into the tree
+//(b) Delete values 23, 56, 2, and 45 from the tree
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+///* A binary tree node has data, pointer to left child
+//   and a pointer to right child */
+//struct node
+//{
+//     int data;
+//     struct node* left;
+//     struct node* right;
+//};
+//
+///* Helper function that allocates a new node with the
+//   given data and NULL left and right pointers. */
+//struct node* newNode(int data)
+//{
+//     struct node* node = (struct node*)
+//                                  malloc(sizeof(struct node));
+//     node->data = data;
+//     node->left = NULL;
+//     node->right = NULL;
+//
+//     return(node);
+//}
+//
+///* Given a binary tree, print its nodes according to the
+//  "bottom-up" postorder traversal. */
+//void printPostorder(struct node* node)
+//{
+//     if (node == NULL)
+//        return;
+//
+//     // first recur on left subtree
+//     printPostorder(node->left);
+//
+//     // then recur on right subtree
+//     printPostorder(node->right);
+//
+//     // now deal with the node
+//     printf("%d ", node->data);
+//}
+//
+///* Given a binary tree, print its nodes in inorder*/
+//void printInorder(struct node* node)
+//{
+//     if (node == NULL)
+//          return;
+//
+//     /* first recur on left child */
+//     printInorder(node->left);
+//
+//     /* then print the data of node */
+//     printf("%d ", node->data);
+//
+//     /* now recur on right child */
+//     printInorder(node->right);
+//}
+//
+///* Given a binary tree, print its nodes in preorder*/
+//void printPreorder(struct node* node)
+//{
+//     if (node == NULL)
+//          return;
+//
+//     /* first print data of node */
+//     printf("%d ", node->data);
+//
+//     /* then recur on left sutree */
+//     printPreorder(node->left);
+//
+//     /* now recur on right subtree */
+//     printPreorder(node->right);
+//}
+//
+///* Driver program to test above functions*/
+//int main()
+//{
+//     struct node *root  = newNode(1);
+//     root->left             = newNode(2);
+//     root->right           = newNode(3);
+//     root->left->left     = newNode(4);
+//     root->left->right   = newNode(5);
+//
+//     printf("\nPreorder traversal of binary tree is \n");
+//     printPreorder(root);
+//
+//     printf("\nInorder traversal of binary tree is \n");
+//     printInorder(root);
+//
+//     printf("\nPostorder traversal of binary tree is \n");
+//     printPostorder(root);
+//
+//     getchar();
+//     return 0;
+//}
 #include <stdio.h>
 #include <stdlib.h>
-struct node
-{
-    int info;
-    struct node *left, *right;
+
+struct node {
+   int data;
+    
+   struct node *leftChild;
+   struct node *rightChild;
 };
-struct node *createnode(int key)
-{
-    struct node *newnode = (struct node*)malloc(sizeof(struct node));
-    newnode->info = key;
-    newnode->left = NULL;
-    newnode->right = NULL;
-    return(newnode);
+
+struct node *root = NULL;
+
+void insert(int data) {
+   struct node *tempNode = (struct node*) malloc(sizeof(struct node));
+   struct node *current;
+   struct node *parent;
+
+   tempNode->data = data;
+   tempNode->leftChild = NULL;
+   tempNode->rightChild = NULL;
+
+   //if tree is empty
+   if(root == NULL) {
+      root = tempNode;
+   } else {
+      current = root;
+      parent = NULL;
+
+      while(1) {
+         parent = current;
+         
+         //go to left of the tree
+         if(data < parent->data) {
+            current = current->leftChild;
+            
+            //insert to the left
+            if(current == NULL) {
+               parent->leftChild = tempNode;
+               return;
+            }
+         }  //go to right of the tree
+         else {
+            current = current->rightChild;
+
+            //insert to the right
+            if(current == NULL) {
+               parent->rightChild = tempNode;
+               return;
+            }
+         }
+      }
+   }
 }
-static int count = 0;
-int countnodes(struct node *root)
-{
-    if(root != NULL)
-    {
-        countnodes(root->left);
-        count++;
-        countnodes(root->right);
-    }
-    return count;
+
+struct node* search(int data) {
+   struct node *current = root;
+   printf("Visiting elements: ");
+
+   while(current->data != data) {
+      if(current != NULL)
+         printf("%d ",current->data);
+
+      //go to left tree
+      if(current->data > data) {
+         current = current->leftChild;
+      }
+      //else go to right tree
+      else {
+         current = current->rightChild;
+      }
+
+      //not found
+      if(current == NULL) {
+         return NULL;
+      }
+   }
+   
+   return current;
 }
 
-int main()
-{
-    struct node *newnode = createnode(25);
-    newnode->left = createnode(27);
-    newnode->right = createnode(19);
-    newnode->left->left = createnode(17);
-    newnode->left->right = createnode(91);
-    newnode->right->left = createnode(13);
-    newnode->right->right = createnode(55);
+void pre_order_traversal(struct node* root) {
+   if(root != NULL) {
+      printf("%d ",root->data);
+      pre_order_traversal(root->leftChild);
+      pre_order_traversal(root->rightChild);
+   }
+}
 
-    printf("Number of nodes in tree 1 = %d ",countnodes(newnode));
-    printf("\n");
-    count = 0;
- 
-    struct node *node = createnode(1);
-    node->right = createnode(2);
-    node->right->right = createnode(3);
-    node->right->right->right = createnode(4);
-    node->right->right->right->right = createnode(5);
+void inorder_traversal(struct node* root) {
+   if(root != NULL) {
+      inorder_traversal(root->leftChild);
+      printf("%d ",root->data);
+      inorder_traversal(root->rightChild);
+   }
+}
 
-    printf("Number of nodes in tree 2 = %d ",countnodes(node));
-    printf("\n");
-    count = 0;
- 
-    struct node *root = createnode(15);
+void post_order_traversal(struct node* root) {
+   if(root != NULL) {
+      post_order_traversal(root->leftChild);
+      post_order_traversal(root->rightChild);
+      printf("%d ", root->data);
+   }
+}
+//45
+//39 56
+//12 54 78
+//10 34 67 89
+//32 81
+int main() {
+   int i;
+   int array[19] = { 45, 39, 56, 12, 54, 78, 10, 34, 67, 89, 32, 81, 11, 22, 33, 44, 55, 66, 77 };
 
-    printf("Number of nodes in tree 3 = %d",countnodes(root));
-    return 0;
+   for(i = 0; i < 19; i++)
+      insert(array[i]);
+
+   i = 31;
+   struct node * temp = search(i);
+
+   if(temp != NULL) {
+      printf("[%d] Element found.", temp->data);
+      printf("\n");
+   }else {
+      printf("[ x ] Element not found (%d).\n", i);
+   }
+
+   i = 15;
+   temp = search(i);
+
+   if(temp != NULL) {
+      printf("[%d] Element found.", temp->data);
+      printf("\n");
+   }else {
+      printf("[ x ] Element not found (%d).\n", i);
+   }
+
+   printf("\nPreorder traversal: ");
+   pre_order_traversal(root);
+
+   printf("\nInorder traversal: ");
+   inorder_traversal(root);
+
+   printf("\nPost order traversal: ");
+   post_order_traversal(root);
+
+   return 0;
 }
