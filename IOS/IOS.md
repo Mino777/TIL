@@ -13,7 +13,7 @@
 #### AppProject File ?
 
 
-
+------
 
 ## <a name="infoplist"></a>Info.plist *<small><update 20.06.02><small>*
 
@@ -97,13 +97,15 @@
 - NSPhotoLibraryAddUsageDescription
 - NSPhotoLibraryUsageDescription
 - NSRemindersUsageDescription
-- NSVideoSubscriberAccountUsageDescription
+- NSVideoSubscriberAccountUsageDescription <br>
 위 "NS"가 붙은 Key들은 모두 Privacy와 관련된 Key들임. 
 
 #### 결론
 info.plist가 어떤 역할을 하는지와 IOS, Cocoa Key에 대해서 어느정도 알게 되었고 아무래도 privacy key들은 잘 알아두어야 할 것 같다.
 
 > 출처 : [Apple Documentation Archive 중 info.plist](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1)
+
+--------
 
 ## <a name="networking"></a>Networking in IOS *<small><update 20.05.30><small>*
 
