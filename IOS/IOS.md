@@ -346,7 +346,7 @@ import SafariServices
 이슈 및 특성 정보(https://zeddios.tistory.com/332)
 3번 SFSafariViewController는 사파리의 기능들을 모두 사용할 수 있음 (쿠키, 보안 등등)
 
-2번과 3번중 자신의 상황에 따라 골라서 사용하면 될 듯.
+2번과 3번중 자신의 상황에 따라 골라서 사용하면 될 듯. <br>
 출처 https://zeddios.tistory.com/375
 
 ----
