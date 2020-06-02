@@ -10,8 +10,55 @@
 ----
 ## <a name="appprojectfile"></a>AppProjectFile *<small><update 20.06.02><small>*
 
-#### AppProject File ?
 
+#### AppProject File ?
+해당 디렉토리 최상단에 있는 파일. Project Editor의 역할을 함.
+
+**project** <br>
+`Project`는 Application을 빌드하기 위한 파일, 리소스, 정보를 담은 repository입니다. 처음 Xcode를 켜고 Single View Application을 생성하면 `Project`를 생성하게 됩니다. 이 때, 프로젝트의 디렉토리를 살펴보게 되면 `프로젝트명.xcodeproj`라는 파일이 생긴 것을 확인할 수 있습니다. 정확히 얘기하면 이는 파일이 아니라 이는 디렉토리입니다.
+
+**Target** <br>
+`Target`은 프로젝트를 통해 생성되는 Application을 지칭합니다. 이는 일반적으로 하나의 모듈을 의미합니다.
+
+**Scheme** <br>
+`Scheme`은 `Target`이 프로젝트를 Build, Profile, Test등을 할 때 일어날 일들을 정의할 수 있도록 해주는 항목입니다. 일반적으로 `Target`은 1개 이상의 `Scheme`을 가지고 있습니다. 이 `Scheme`에서는 프로젝트 빌드시 사용되는 환경변수나 인자를 넘겨줄 수 있습니다.
+
+-----
+
+#### General Pane for IOS
+-   번들 식별자, 운영 체제 및 App Store에서 앱을 식별하는 문자열
+-   앱을 게시 할 버전 번호
+-   앱의 특정 빌드를 식별하는 빌드 번호
+-   Apple 개발자 프로그램 개발 팀의 이름
+-   앱이 실행되는 최초의 iOS 버전 인 배포 대상
+-   앱을 빌드 할 기기
+-   앱을 시작할 때로드 할 기본 사용자 인터페이스 파일
+-   앱이 지원하는 사용자 인터페이스 방향 (세로, 거꾸로, 가로 왼쪽, 가로 오른쪽)
+
+#### Signing & Capabilities Pane
+- Signing의 경우 General Tap 에 있는 앱 번들 식별 관련 속성들과 유사.
+- Team, Bundle Identifier, Provisioning Profile, Signing Certificate 등이 있음.
+- Capabilities의 경우 iCloud, Game Center, In-App Purchase 및 Maps와 같은 다양한 Apple 기술을 앱에 추가할 때 사용하는 속성. ( 스토리보드에 UIObject 들을 인풋 하듯이 추가 해주면 됌. )
+- Capabilities를 추가하면, 그 해당 기술에 대한 세세한 옵션을 설정할 수 있음.
+
+#### Resource Tags Pane
+- `On-demend resource` 는 필요할 때만 다운로드하는 앱 콘텐츠입니다. 사용자가 다운로드 한 앱 번들과 별도로 App Store에서 호스팅됩니다. `On-Demend Resource`를 사용하여 더 작은 앱, 더 빠른 다운로드 및 더 풍부한 앱 콘텐츠를 지원할 수 있습니다. 태그를 사용하여 대상에서 `On-Demend Resource`를 식별하고 관리합니다.
+
+#### Info Pane
+- Info pane에는 앱과 관련된 속성, 앱에서 만들거나 열 수있는 파일 형식 및 앱에서 제공하는 OS X의 서비스가 표시됩니다. 대부분의 사용자 정의 대상 속성은 Xcode 인터페이스의 다른 부분 (예 : 일반 창에서 설정 한 번들 식별자, 버전 및 빌드 번호)에서 수정됩니다.
+- 문서 유형 설정은 앱에서 만들고 편집 할 수있는 문서 유형을 지정하고 iOS 또는 Mac OS에서 해당 문서 유형에 대해 표시되는 사용자 정의 아이콘을 제공합니다.
+- 앱에서 내보내거나 가져올 수있는 모든 파일 형식에 대해 내보내고 가져온 UTI를 추가합니다. 일반적으로 앱에 고유 한 문서 유형과 달리 UTI는 일반 텍스트 또는와 같은 일반 형식을 지정합니다 `.png`. 예를 들어 UTI는 응용 프로그램간에 클립 보드로 복사 및 붙여 넣기를 지원합니다.
+- URL 유형 설정을 사용하면 사용자 지정 프로토콜을 사용하여 다른 앱과 데이터를 교환하기위한 사용자 지정 스키마를 지정할 수 있습니다.
+
+#### Build Settings, Phases, Rules pane
+- 제품을 빌드하기위한 지침 (빌드 설정 및 빌드 단계의 형태)이 포함됩니다. `Target`은 프로젝트의 빌드 설정을 상속합니다. 대부분의 개발자는 이러한 설정을 거의 변경하지 않아도되지만 대상 수준에서 다른 설정을 지정하여 프로젝트의 빌드 설정을 무시할 수 있습니다. 프로젝트 편집기에서 대상을 선택하여 정보, 빌드 설정 또는 빌드 단계 분할 창에서 대상 설정을 수정하십시오.
+
+------
+
+#### 결론
+xcode에 대해서 어느정도 훑어볼 수 있는 시간이 되었다. 중요하다고 생각하는 pane 은 general, capabilities 정도가 될 것 같다. 왜냐하면 다른 곳에 비해서 이쪽 속성들을 개발자가 많이 다루게 될 것 같다. build setting 에서 swift compiler 쪽을 잘 건드려주면 빌드 속도가 빨라진다고 한다. 나중에 한번 해봐야겠다.
+
+> 출처 : [Apple xcode overview](https://developer.apple.com/library/archive/documentation/ToolsLanguages/Conceptual/Xcode_Overview/WorkingwithTargets.html#//apple_ref/doc/uid/TP40010215-CH32-SW1)
 
 ------
 
@@ -99,6 +146,8 @@
 - NSRemindersUsageDescription
 - NSVideoSubscriberAccountUsageDescription <br>
 위 "NS"가 붙은 Key들은 모두 Privacy와 관련된 Key들임. 
+
+-------
 
 #### 결론
 info.plist가 어떤 역할을 하는지와 IOS, Cocoa Key에 대해서 어느정도 알게 되었다. <br>
