@@ -120,11 +120,11 @@ xcode에 대해서 어느정도 훑어볼 수 있는 시간이 되었다. 중요
 ------
 
 #### 내가 생각했을 때 중요한 Key
-- UIApplicationExitsOnSuspend 
+- UIApplicationExitsOnSuspend <br>
 백그라운드에서 앱을 실행하지 않고 종료할지 여부를 지정
-- UIBackgroundModes
+- UIBackgroundModes <br>
 앱이 백그라운드에서 계속 실행되도록 지정
-- UILaunchStoryboards
+- UILaunchStoryboards <br>
 앱의 시작 이미지를 생성 할 여러 스토리 보드에 대한 정보를 지정
 - NFCReaderUsageDescription
 - NSAppleMusicUsageDescription
