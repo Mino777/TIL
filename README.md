@@ -31,6 +31,8 @@
       <details>
       <summary><a href="IOS/IOS.md" target="_blank">IOS</a></summary>
         <ul>
+          <li><a href="IOS/IOS.md#appprojectfile" target="_blank">AppProject File</a></li>
+          <li><a href="IOS/IOS.md#infoplist" target="_blank">Info.plist</a></li>
           <li><a href="IOS/IOS.md#networking" target="_blank">Networking in IOS</a></li>
           <li><a href="IOS/IOS.md#webView" target="_blank">webView</a></li>
         </ul>
