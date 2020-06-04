@@ -159,7 +159,7 @@ iOS 10 부터는 개인 데이터에 대한 액세스 권한이 있는 경우에
 > 출처 : [Apple Documentation Archive 중 info.plist](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1)
 
 --------
-## <a name="sboverview"></a>StoryBoard OverView*<small><update 20.06.04><small>*
+## <a name="sboverview"></a>StoryBoard OverView *<small><update 20.06.04><small>*
 
 #### viewController ?
 
