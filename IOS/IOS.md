@@ -340,7 +340,7 @@ Long Press Gesture Recognizer
 Custom Gesture Recognizer
 
 
-> 출처 : [애플 공식문서 for viewController](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457-CH2-SW1)
+> 출처 : [애플 공식문서 for viewController](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457-CH2-SW1) <br>
 [Safe Area](https://developer.apple.com/documentation/uikit/uiview/positioning_content_relative_to_the_safe_area)
 -------
 ## <a name="autolayout"></a>AutoLayout *<small><update 20.06.03><small>*
