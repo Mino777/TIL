@@ -199,6 +199,14 @@ SafeArea는 전체 인터페이스의 보이는 부분 내에 뷰를 배치하�
 
 -----
 
+#### Segue ?
+
+segues를 사용하여 앱 인터페이스의 흐름을 정의하십시오. SEGUE는 앱의 스토리 보드 파일에 두 개의 뷰 컨트롤러 사이의 전환을 정의합니다. segue의 시작점은 segue를 시작하는 버튼, 테이블 행 또는 제스처 인식기입니다. segue의 끝점은 표시하려는 뷰 컨트롤러입니다. segue는 항상 새로운 뷰 컨트롤러를 제공하지만 unwind segue 를 사용하여 뷰 컨트롤러를 닫을 수도 있습니다. <br>
+
+![이미지 : ../Art/segue_defined_2x.png](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/segue_defined_2x.png)
+
+-----
+
 #### UI Objects
 
 Label
