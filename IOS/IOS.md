@@ -166,23 +166,23 @@ iOS 10 부터는 개인 데이터에 대한 액세스 권한이 있는 경우에
 viewController는 앱 내부 구조의 기초입니다. 모든 앱에는 하나 이상의 viewController가 있으며 대부분의 앱에는 여러 개의 viewController가 있습니다. 각 viewController는 앱 사용자 인터페이스의 일부와 해당 인터페이스와 기본 데이터 간의 상호 작용을 관리합니다. 또한 viewController는 사용자 인터페이스의 다른 부분간에 전환을 쉽게 할 수 있습니다.
 
 #### viewController의 역할
-1. view 관리 
+1. view 관리 <br>
 viewController의 가장 중요한 역할은 view 계층을 관리하는 것입니다. <br>
 
 ![이미지 : ../Art/VCPG_ControllerHierarchy_fig_1-1_2x.png](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_ControllerHierarchy_fig_1-1_2x.png)
 
-2. 데이터 중재자
+2. 데이터 중재자 <br>
 viewController는 관리하는 view와 앱 데이터 사이의 중재자 역할을합니다. <br> 
 
 ![이미지 : ../Art/VCPG_CustomSubclasses_fig_1-3_2x.png](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_CustomSubclasses_fig_1-3_2x.png)
 
-3. 사용자 상호작용 
+3. 사용자 상호작용 <br>
 뷰는 일반적으로 자체 터치 이벤트를 처리하고 관련 델리게이트 또는 대상 객체 (보통 뷰 컨트롤러) 의 메서드에 결과를보고합니다 . 따라서 뷰 컨트롤러의 대부분의 이벤트는 대리자 메서드 또는 작업 메서드를 사용하여 처리됩니다 .
 
-4. 자원 관리
+4. 자원 관리 <br>
 뷰 컨트롤러는 뷰와 만들어진 오브젝트들에 대한 모든 책임을집니다. 이 UIViewController클래스는 뷰 관리의 대부분을 자동으로 처리합니다. 예를 들어, UIKit은 더 이상 필요없는 뷰 관련 리소스를 자동으로 해제합니다. UIViewController 서브 클래스 에서는 명시적으로 작성하는 오브젝트를 관리해야합니다.
 
-5. 적응성
+5. 적응성 <br>
 뷰 컨트롤러는 뷰의 프리젠 테이션과 해당 프리젠 테이션을 기본 환경에 맞게 조정할 책임이 있습니다. 모든 iOS 앱은 iPad 및 여러 크기의 iPhone에서 실행될 수 있어야합니다. 각 장치에 서로 다른 뷰 컨트롤러와 뷰 계층을 제공하는 대신 변화하는 공간 요구 사항에 맞게 뷰를 조정하는 단일 뷰 컨트롤러를 사용하는 것이 더 간단합니다. <br>
 
 ![이미지 : ../Art/VCPG_SizeClassChanges_fig_1-4_2x.png](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_SizeClassChanges_fig_1-4_2x.png)
