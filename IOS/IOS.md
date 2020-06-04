@@ -1,9 +1,12 @@
+
 # *IOS.*
 
 ### 바로가기
 
 - [AppProjectFile](#appprojectfile)
 - [Info.plist](#infoplist)
+- [StoryBoard OverView](#sboverview)
+- [AutoLayout](#autolayout)
 - [WebView](#WebView)
 - [Networking in IOS](#networking)
 
@@ -156,6 +159,196 @@ iOS 10 부터는 개인 데이터에 대한 액세스 권한이 있는 경우에
 > 출처 : [Apple Documentation Archive 중 info.plist](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1)
 
 --------
+## <a name="sboverview"></a>StoryBoard OverView*<small><update 20.06.04><small>*
+
+#### viewController ?
+
+viewController는 앱 내부 구조의 기초입니다. 모든 앱에는 하나 이상의 viewController가 있으며 대부분의 앱에는 여러 개의 viewController가 있습니다. 각 viewController는 앱 사용자 인터페이스의 일부와 해당 인터페이스와 기본 데이터 간의 상호 작용을 관리합니다. 또한 viewController는 사용자 인터페이스의 다른 부분간에 전환을 쉽게 할 수 있습니다.
+
+#### viewController의 역할
+1. view 관리 
+viewController의 가장 중요한 역할은 view 계층을 관리하는 것입니다. <br>
+
+![이미지 : ../Art/VCPG_ControllerHierarchy_fig_1-1_2x.png](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_ControllerHierarchy_fig_1-1_2x.png)
+
+2. 데이터 중재자
+viewController는 관리하는 view와 앱 데이터 사이의 중재자 역할을합니다. <br> 
+
+![이미지 : ../Art/VCPG_CustomSubclasses_fig_1-3_2x.png](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_CustomSubclasses_fig_1-3_2x.png)
+
+3. 사용자 상호작용 
+뷰는 일반적으로 자체 터치 이벤트를 처리하고 관련 델리게이트 또는 대상 객체 (보통 뷰 컨트롤러) 의 메서드에 결과를보고합니다 . 따라서 뷰 컨트롤러의 대부분의 이벤트는 대리자 메서드 또는 작업 메서드를 사용하여 처리됩니다 .
+
+4. 자원 관리
+뷰 컨트롤러는 뷰와 만들어진 오브젝트들에 대한 모든 책임을집니다. 이 UIViewController클래스는 뷰 관리의 대부분을 자동으로 처리합니다. 예를 들어, UIKit은 더 이상 필요없는 뷰 관련 리소스를 자동으로 해제합니다. UIViewController 서브 클래스 에서는 명시적으로 작성하는 오브젝트를 관리해야합니다.
+
+5. 적응성
+뷰 컨트롤러는 뷰의 프리젠 테이션과 해당 프리젠 테이션을 기본 환경에 맞게 조정할 책임이 있습니다. 모든 iOS 앱은 iPad 및 여러 크기의 iPhone에서 실행될 수 있어야합니다. 각 장치에 서로 다른 뷰 컨트롤러와 뷰 계층을 제공하는 대신 변화하는 공간 요구 사항에 맞게 뷰를 조정하는 단일 뷰 컨트롤러를 사용하는 것이 더 간단합니다. <br>
+
+![이미지 : ../Art/VCPG_SizeClassChanges_fig_1-4_2x.png](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_SizeClassChanges_fig_1-4_2x.png)
+
+------
+
+#### Safe Area ?
+
+iPhoneX 에 포함된 5.8인치 Super Retina 레이아웃이 반드시 전면 Super Retina 디스플레이를 채우는 동시에 콘텐츠와 컨트롤 부분이 올바르게 표시되어야 하며 간단히 탭할 수 있어야 합니다. SafeArea은 앱이 iPhone X의 새로운 규격에 맞게 제대로 동작하는지 확인하는 데 사용합니다.
+SafeArea는 전체 인터페이스의 보이는 부분 내에 뷰를 배치하는 데 도움을 줍니다.
+<br>
+  
+![캘린더 앱의 안전 영역](https://docs-assets.developer.apple.com/published/dbcc36bfb3/e5aca39a-f9a2-4ab8-9f45-08fd95fb845c.png)
+
+-----
+
+#### UI Objects
+
+Label
+
+Button
+
+Segmented Control
+
+Text Field
+
+Slider
+
+Switch
+
+Activity Indicator View
+
+Progress View
+
+Page Control
+
+Stepper
+
+Horizontal Stack View
+
+Vertical Stack View
+
+Table View
+
+Table View Cell
+
+Image View
+
+Collection View
+
+Collection View Cell
+
+Collection Reusable View
+
+Text View
+
+Scroll View
+
+Date Picker
+
+Picker View
+
+Visual Effect View With Blur
+
+Visual Effect Views With Blur and Vibrancy
+
+Map Kit View
+
+MetalKit View
+
+GLKit View
+
+SceneKit View
+
+SpriteKit View
+
+ARKit SceneKit View
+
+ARKit SpriteKit View
+
+Web View (deprecated)
+
+WebKit View
+
+RealityKit AR View
+
+Navigation Var
+
+Navigation Item
+
+Toolbar
+
+Bar Button Item
+
+Fixed Space Bar Button Item
+
+Flexible Space Bar Button Item
+
+Tap Bar
+
+Tap Bar Item
+
+Search Bar
+
+Menu Command
+
+Main Menu
+
+Sub Menu
+
+Inline Section Menu
+
+View
+
+Container View
+
+View Controller
+
+StortyBoard Reference
+
+Navigation Controller
+
+Table View Controller
+
+Collection View Controller
+
+Tab Bar Controller
+
+Split View Controller
+
+Page View Controller
+
+Hosting View Controller
+
+GLKit View Controller
+
+AVKit Player View Controller
+
+Object
+
+Tap Gesture Recognizer
+
+Pinch Gesture Recognizer
+
+Rotation Gesture Recognizer
+
+Swipe Gesture Recognizer
+
+Pan Gesture Recognizer
+
+Screen Edge Pan Gesture Recognizer
+
+Long Press Gesture Recognizer
+
+Custom Gesture Recognizer
+
+
+> 출처 : [애플 공식문서 for viewController](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457-CH2-SW1)
+[Safe Area](https://developer.apple.com/documentation/uikit/uiview/positioning_content_relative_to_the_safe_area)
+-------
+## <a name="autolayout"></a>AutoLayout *<small><update 20.06.03><small>*
+
+autolayout
+
+
+------
 
 ## <a name="WebView"></a>WebView *<small><update 20.04.28><small>*
 
@@ -350,6 +543,10 @@ URLSessionDownloadTask 파일을 다운받아 디스크에 사용할 때 사용
 IOS에서 네트워킹을 할 땐 URLSession을 이용한다.
 
 ----
+
+
+
+
 
 
 
