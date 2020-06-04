@@ -503,6 +503,12 @@ long press gesture recognizer는 한 번 또는 여러 번 터치하고, 한 번
 사용자가 custom gesture를 수행할 때 action message 전송  
 custom class inspector를 사용하여 이 개체를 특정 제스처 인식기의 인스턴스로 전환하십시오.
 
+---------
+
+#### 결론
+Storyboard 의 전반적인 내용을 알게 되었다. 공식 홈페이지 울렁증이 사라졌다. 이제 애플 공식문서가 무섭지않아!
+
+---------
 > 출처 : [애플 공식문서 for viewController](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457-CH2-SW1) <br>
 [Safe Area](https://developer.apple.com/documentation/uikit/uiview/positioning_content_relative_to_the_safe_area) <br>
 [HIG](https://developer.apple.com/design/human-interface-guidelines/ios/overview/themes/)
