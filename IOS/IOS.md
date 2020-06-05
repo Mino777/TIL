@@ -396,7 +396,6 @@ Flexible Space Bar Button Item은 빈 공간을 모두 채울 때 사용합니�
 
 ![사진 앱에서 선택한 앨범 탭의 스크린 샷.](https://developer.apple.com/design/human-interface-guidelines/ios/images/TabBar_2x.png)
 ![](https://cphinf.pstatic.net/mooc/20180124_172/1516768679755pJA0M_PNG/140_1.png?type=w760)  
-](https://www.edwith.org/boostcourse-ios/lecture/16862/#)
 ### Tap Bar Item
 UITabBar의 항목을 나타낸다. 각 탭 모음 항목에는 제목과 이미지가 있으며 UITabBar에서 보기를 선택하는 데 사용된다. <br>
 탭바 뷰에서 각 탭은 이름과 이미지를 표시할 수 있고 뷰 컨트롤러는 이러한 용도로 `tabBar`프로퍼티를 관리합니다. 탭바 컨트롤러가 콘텐츠 뷰 컨트롤러를 포함하면 해당 뷰 컨트롤러의 탭바 아이템이 탭바 컨트롤러의 탭바에 추가됩니다. 탭바 컨트롤러의 탭바 아이템이 6개 이상인 경우, 5번째 탭에 'More'이라는 아이템이 표시되고 사용자가 More 버튼을 누르면 나머지 탭 항목을 선택할 수 있는 인터페이스가 표시됩니다.
