@@ -35,6 +35,7 @@
           <li><a href="IOS/IOS.md#infoplist" target="_blank">Info.plist</a></li>
           <li><a href="IOS/IOS.md#sboverview" target="_blank">StoryBoard OverView</a></li>
           <li><a href="IOS/IOS.md#autolayout" target="_blank">AutoLayout</a></li>
+          <li><a href="IOS/IOS.md#vclifecycle" target="_blank">ViewController LifeCycle</a></li>
           <li><a href="IOS/IOS.md#webView" target="_blank">webView</a></li>
           <li><a href="IOS/IOS.md#networking" target="_blank">Networking in IOS</a></li>
         </ul>
