@@ -1,5 +1,6 @@
 
 
+
 # *IOS.*
 
 ### 바로가기
@@ -8,6 +9,7 @@
 - [Info.plist](#infoplist)
 - [StoryBoard OverView](#sboverview)
 - [AutoLayout](#autolayout)
+- [ViewController LifeCycle](#vclifecycle)
 - [WebView](#WebView)
 - [Networking in IOS](#networking)
 
@@ -703,6 +705,52 @@ var widthAnchor: NSLayoutDimension { get }
 > 출처 :[edwith ios 부스트코스](https://www.edwith.org/boostcourse-ios/lecture/16848/)
 [AutoLayout in Apple Documents](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html)
 [AutoLayout in HIG](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/)
+
+-------
+## <a name="vclifecycle"></a>ViewController LifeCycle *<small><update 20.06.15><small>*
+
+앱들은 " viewController " 로 이루어져 있음.
+이 각각의 viewController 들은 생명주기를 가지고 있음.
+말 그대로 보여주기 -> 사라지기
+
+![](https://t1.daumcdn.net/cfile/tistory/2613D13C58C64DE32C)
+
+----
+1. loadView
+컨트롤러가 관리하는 뷰를 '만드는' 역할
+loadView가 view를 만들고, 메모리에 올린 후에 viewDidLoad를 호출.
+
+2. viewDidLoad
+뷰의 컨트롤러가 메모리에 로드가 된 후에 호출이 된다.
+**시스템에 의해 자동으로 호출**되기 때문에
+일반적으로 리소스를 초기화하거나
+초기 화면을 구성하는 용도로 주로 사용.
+화면이 처음 만들어질 때 한 번만 실행되므로,
+처음 한 번만 실행해야 하는 초기화 코드가 있을 경우
+이 메소드 내부에 작성.
+
+3. viewWillAppear
+viewDidLoad랑 비슷한거 아닌가? 하지만 다름.
+앱의 초기화 작업은 viewDidLoad에서 해도 되겠지만, 다른뷰로 갔다가 다시 돌아오는 상황에는 viewWillAppear만 호출. 그러므로 이런 상황에 처리해야 할 task가 있다면, viewWillAppear 에서 처리 해주면 됌.
+
+4. viewDidAppear
+viewDidAppear는 뷰가 나타났다는 것을 컨트롤러에게 알려주는 역할. 또한 화면에 적용될 애니메이션을 그려줌.
+viewDidAppear는 뷰가 화면에 나타난 직후에 실행.
+이 것을 제외하고 viewDidAppear와 viewWillAppear는 거의 같다.
+
+5. viewWillDisappear
+viewWillDisappear는 네이밍 그대로 뷰가 사라지기 직전에 호출 되는 함수임. 뷰가 삭제되려고 하는 것을 viewController에 통지함.
+
+6. viewDidDisappear
+viewDidDisappear 도 마찬가지로 네이밍 그대로 viewController가 view가 제거 되었음을 알려준다.
+
+기타 알아둬야하는 것
+네비게이션 컨트롤러의 경우, 첫번째 뷰를 제외하고 계속해서 나머지 뷰에서 viewDidLoad가 불리움. ( 대부분은 처음에만 불리고 그 이후에는 viewWillAppear 가 불리움. )
+그 이유는 네비게이션 컨트롤러의 경우 구조가 **stack** 구조와 같음.
+rootViewController가 있고 그 위로 view들이 스택처럼 쌓이는 구조
+그래서 push 후 **pop 되는 경우 스택 처럼 메모리에서 사라지기 때문에** 첫번째 뷰는 pop이 되지않아 viewDidLoad가 호출이 안되고 두번째 뷰 부터 호출이 되는 것.
+
+>출처 : [https://zeddios.tistory.com/43](https://zeddios.tistory.com/43)
 
 ------
 
