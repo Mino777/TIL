@@ -712,6 +712,8 @@ var widthAnchor: NSLayoutDimension { get }
 
 App은 생명 주기 동안 총 다섯 단계의 상태를 거치게 됩니다.
 
+![장면이없는 앱의 상태 전환을 보여주는 그림입니다.  앱이 활성 또는 백그라운드 상태로 시작됩니다.  앱이 비활성 상태로 전환됩니다.](https://docs-assets.developer.apple.com/published/c63cd35863/4d403429-fa30-4706-863f-5e3617ee21d0.png)
+
 ![](https://images.velog.io/images/cskim/post/53950351-2edd-4134-87fa-88c27935ba1a/image.png)
 
 -   **Not Running(Terminated)**  : App이 아직 실행되지 않았거나 시스템에 의해 완전히 종료된 상태입니다.
