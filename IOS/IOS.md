@@ -1,6 +1,3 @@
-
-
-
 # *IOS.*
 
 ### 바로가기
@@ -9,7 +6,8 @@
 - [Info.plist](#infoplist)
 - [StoryBoard OverView](#sboverview)
 - [AutoLayout](#autolayout)
-- [ViewController LifeCycle](#vclifecycle)
+- [Application Life Cycle](#applifecycle)
+- [ViewController Life Cycle](#vclifecycle)
 - [WebView](#WebView)
 - [Networking in IOS](#networking)
 
@@ -705,9 +703,110 @@ var widthAnchor: NSLayoutDimension { get }
 > 출처 :[edwith ios 부스트코스](https://www.edwith.org/boostcourse-ios/lecture/16848/)
 [AutoLayout in Apple Documents](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html)
 [AutoLayout in HIG](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/)
+----
 
+## <a name="applifecycle"></a>Application Life Cycle *<small><update 20.06.16><small>*
+앱 생명 주기(Application Life Cycle)란 앱이 실행되고 동작하다가 종료되기까지 일련의 과정을 말합니다. 아이폰에서 앱을 터치하면 앱이 실행되어 메모리에 올라가고 foreground 및 background에서 동작합니다. 그러다가 메모리가 부족해지거나 사용자가 임의로 종료시키는 등 앱이 종료되면 메모리에서 관련 데이터가 삭제됩니다. 이 과정은 다섯 가지 상태로 구분되고 앱은 각각의 상태로 전환될 수 있습니다. 그리고 상태가 바뀌는 과정 사이에 개발자가 임의로 특정 동작을 추가할 수 있도록 인터페이스가 제공됩니다.
+
+## App State
+
+App은 생명 주기 동안 총 다섯 단계의 상태를 거치게 됩니다.
+
+![](https://images.velog.io/images/cskim/post/53950351-2edd-4134-87fa-88c27935ba1a/image.png)
+
+-   **Not Running(Terminated)**  : App이 아직 실행되지 않았거나 시스템에 의해 완전히 종료된 상태입니다.
+-   **Inactive(Foreground)**  : App이 실행 중이지만 이벤트를 받지 않는 상태입니다. Active 상태로 넘어가기 전에 앱은 반드시 이 상태를 거칩니다. 미리알림 같은 특정 알림창이 화면을 덮어서 앱이 실질적으로 event를 받지 못하는 상태 등이 여기에 해당됩니다.
+-   **Active(Foreground)**  : App이 실행 중이고 이벤트를 받고 있는 상태입니다. Foreground 상태에 있는 app들은 평소에 이 상태에 머물러 있습니다.
+-   **Background**  : App이 다른 앱으로 전환되거나 홈 화면으로 나갔을 때 실질적인 동작을 하고 있는 상태입니다. 백그라운드에서 동작하는 코드를 추가하면 suspended 상태로 넘어가지 않고 백그라운드 상태를 유지하게 됩니다. 처음부터 background 상태로 실행되는 app은 inactive 대신 background 상태로 진입합니다. 음악을 실행하고 홈 화면으로 나가도 음악이 나오는 상태가 이 경우에 해당됩니다.
+-   **Suspended**  : App이 background 상태에서 추가적인 작업을 하지 않으면 곧바로 suspended 상태로 진입합니다. 앱을 다시 실행할 경우 빠른 실행을 위해 메모리에만 올라가 있습니다. 메모리가 부족한 상황이 되면 iOS는 suspended 상태에 있는 앱들을 메모리에서 해제시켜서 메모리를 확보합니다.
+
+## Life Cycle in States
+
+`AppDelegate`에 구현된  `UIApplicationDelegate`  protocol의 method들을 사용하여 생명 주기 사이에 커스텀 코드를 실행시킬 수 있습니다.
+
+> ### UIApplication
+> 
+> App을 실행하면  `main`에서  `UIApplicationMain()`  함수가 호출되면서  `UIApplication`  객체를 생성합니다.  `UIApplication`은 app의 main run loop을 관리하는 객체로, 앱이 실행되면  `info.plist`의 값들을 바탕으로 app에 필요한 데이터와 객체들을 로드합니다.  `UIApplication`  객체는 프로젝트를 생성할 때 기본으로 생성되는  `AppDelegate`  클래스에  **app의 상태변화**,  **푸시 알림**  등 이벤트를 전달하여 app의 상태에 따라 custom code를 실행시킵니다.  `AppDelegate`  클래스는  `UIApplicationDelegate`  protocol을 채택하여 custom code를 실행시킬 수 있는 delegate method를 구현합니다.
+
+### Process Life Cycle
+
+-   `application(_:willFinishLaunchingWithOptions:)`
+    -   App에 필요한 주요 객체들을 생성하고 run loop를 생성하는 등 app의 실행 준비가 끝나기 직전에 호출됩니다.
+    -   App State : Launch Time(Not Running)
+-   `application(_:didFinishLaunchingWithOptions:)`
+    -   App 실행을 위한 모든 준비가 끝난 후 화면이 사용자에게 보여지기 직전에 호출됩니다. 주로 최종 초기화 코드를 작성합니다.
+    -   App State : Launch Time(Not Running)
+-   `applicationWillTerminate(_:)`  
+    - App이 종료되기 직전에 호출출되며 App이 곧 종료될 것임을 알려줍니다.
+    -   사용자가 직접 앱을 종료할 때만 호출됩니다. 다음 경우에는 호출되지 않습니다.
+        1.  메모리 확보를 위해 Suspended 상태에 있는 app이 종료될 때
+        2.  Background 상태에서 사용자에 의해 종료될 때
+        3.  오류로 인해 app이 종료될 때
+        4.  Deivce를 재부팅할 때
+    -   App State : Active -> Terminate
+
+### UI Life Cycle
+
+-   `applicationWillEnterForeground(_:)`
+    -   App이 Background 또는 Not-Running 상태에서 Foreground로 들어가기 직전에 호출됩니다.
+    -   App State : Background or Not Running -> In-Active -> Active
+-   `applicationDidBecomeActive(_:)`
+    -   App이 active 상태로 진입하고 난 직후 호출됩니다. App이 실제로 사용되기 전에 마지막으로 준비할 수 있는 코드를 작성할 수 있습니다.
+    -   App State : Active
+-   `applicationWillResignActive(_:)`
+    -   App이 Active에서 In-Active 상태로 진입하기 직전에 호출됩니다. 주로 App이 quiescent(조용한) 상태로 변환될 때의 작업을 진행합니다.
+    -   App State : Active -> In-Active -> Background
+-   `applicationDidEnterBackground(_:)`
+    -   App이 background 상태에 진입한 직후 호출됩니다. App이 Suspended 상태로 진입하기 전에 중요한 데이터를 저장하거나 점유하고 있는 공유 자원을 해제하는 등 종료되기 전에 필요한 준비 작업을 진행합니다.
+    -   특별한 처리가 없으면 background 상태에서 곧바로 suspended 상태로 전환됩니다.
+    -   App이 종료된 이후 다시 실행될 때 직전 상태를 복구할 수 있는 정보를 저장할 수 있습니다.
+    -   App State : Background
+
+# 요약
+
+![](https://media.vlpt.us/images/cskim/post/73f20c94-bf55-4d28-8965-0d779a3b0565/image.png)
+
+# Summary
+
+## App State
+
+-   Not Running
+-   In-Active
+-   Active
+-   Background
+-   Suspended
+
+## Execution Methods
+
+### 앱 실행했을 때
+
+-   `application(_:willFinishLauncingWithOptions:)`
+-   `application(_:didFinishLauncingWithOptions:)`
+-   `applicationDidBecomeActive(_:)`
+
+### Background에 진입할 때
+
+-   `applicationWillResignActive(_:)`
+-   `applicationDidEnterBackground(_:)`
+
+### 다시 Foreground에 진입할 때
+
+-   `applicationWillEnterForeground(_:)`
+-   `applicationDidBecomeActive(_:)`
+
+### 멀티태스킹 환경 등으로 진입할 때
+
+-   `applicationWillResignActive(_:)`
+
+### 사용자에 의해 종료될 때
+
+-   `applicationDidEnterBackground(_:)`
+-   `applicationWillTerminate(_:)`
 -------
-## <a name="vclifecycle"></a>ViewController LifeCycle *<small><update 20.06.15><small>*
+>출처 : [https://velog.io/@cskim/iOS-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0Life-Cycle](https://velog.io/@cskim/iOS-App-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0Life-Cycle)
+-------
+
+## <a name="vclifecycle"></a>ViewController Life Cycle *<small><update 20.06.15><small>*
 
 앱들은 " viewController " 로 이루어져 있음.
 이 각각의 viewController 들은 생명주기를 가지고 있음.
