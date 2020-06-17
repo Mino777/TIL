@@ -52,6 +52,7 @@
       <summary><a href="ETC/개발용어.md" target="_blank">개발용어</a></summary>
         <ul>
           <li><a href="ETC/개발용어.md#severless" target="_blank">Sever Less</a></li>
+          <li><a href="ETC/개발용어.md#libraryvsframework" target="_blank">라이브러리 VS 프레임워크</a></li>
         </ul>
       </details>
       <details>
