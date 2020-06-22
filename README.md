@@ -24,9 +24,11 @@
     </li>
   </ul>
 </details>
-<summary>Computer Science</summary>
+<details>
+  <summary>Computer Science</summary>
   <ul>
     <li>
+    <details>
       <summary><a href="Language/Swift.md" target="_blank">자료구조와 알고리즘</a></summary>
         <ul>
           <li><a href="Language/Swift.md#개요" target="_blank">자료구조의 개요</a></li>
