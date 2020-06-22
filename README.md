@@ -29,10 +29,10 @@
   <ul>
     <li>
     <details>
-      <summary><a href="Language/Swift.md" target="_blank">자료구조와 알고리즘</a></summary>
+      <summary><a href="CS/CS.md" target="_blank">자료구조와 알고리즘</a></summary>
         <ul>
-          <li><a href="Language/Swift.md#개요" target="_blank">자료구조의 개요</a></li>
-          <li><a href="Language/Swift.md#연결리스트" target="_blank">연결 리스트</a></li>
+          <li><a href="CS/CS.md#개요" target="_blank">자료구조의 개요</a></li>
+          <li><a href="CS/CS.md#연결리스트" target="_blank">연결 리스트</a></li>
         </ul>
       </details>
     </li>
