@@ -4,6 +4,7 @@
 
 - [About Swift](#aboutswift)
 - [Token, Expressions, Statements](#token)
+- [Literal, Identifier, Keyword](#literal)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -50,6 +51,7 @@ Swift는 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 
 
 ---
 ## <a name="token"></a>Token, Expressions, Statements *<small><update 20.12.16><small>*
+- 토큰, 표현식, 문장의 개념
 
 #### Token
 
@@ -69,9 +71,25 @@ Swift는 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 
 -   if, switch, guard, for in, while 등
 
 ----
+## <a name="literal"></a>**Literal, Identifier, Keyword** *<small><update 20.12.16><small>*
+- 리터럴, 식별자, 키워드의 개념
 
+#### Literal
 
+- 코드 내에서 의미가 변하지 않고 있는 그대로 사용되는 값
+- 각 자료형 Literal 들이 존재 ( ex) Integer Literals, Floating-point Literal 등 )
 
+#### Identifier
+
+- 코드에 포함된 요소를 구별하는데 사용되는 이름
+- ex) 변수의 이름, 함수의 이름 등
+
+#### Keyword
+
+- 프로그래밍 언어가 제공하는 기능을 위해서 예약되어있는 단어
+- ex) var, let, func 등
+
+---
 
 
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
