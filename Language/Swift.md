@@ -10,10 +10,10 @@
 
 ---
 > 참고
-> yagom's Swift Basic
-> [부스트코스] iOS 프로그래밍을 위한 스위프트 기초
-> kxcoding Mastering Swift
-> THE SWIFT PROGRAMMING LAGNUAGE GUIDE
+>* yagom's Swift Basic
+>* [부스트코스] iOS 프로그래밍을 위한 스위프트 기초
+>* kxcoding Mastering Swift
+>* THE SWIFT PROGRAMMING LAGNUAGE GUIDE
 ----
 
 ## <a name="aboutswift"></a>About Swift *<small><update 20.05.03><small>*
