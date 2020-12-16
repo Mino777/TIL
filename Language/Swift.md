@@ -5,6 +5,7 @@
 - [About Swift](#aboutswift)
 - [Token, Expressions, Statements](#token)
 - [Literal, Identifier, Keyword](#literal)
+- [Compile, Link, Run](#compile)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -90,7 +91,24 @@ Swift는 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 
 - ex) var, let, func 등
 
 ---
+## <a name="compile"></a>**Compile, Link, Run** *<small><update 20.12.16><small>*
+- 소스코드를 작성하고 프로그램을 생성하는 과정
 
+#### Compile
+- 텍스트로 작성한 code를 컴퓨터가 이해 가능한 0,1 binary code로 바꿔주는 과정
+- 변환에 필요한 프로그램이 compiler
+- xcode에서 컴파일러는 소스코드를 분석할 때 warning, error로 구분.
+
+#### Link
+- 소스코드들을 연결해주는 과정
+- 링크를 담당하는 도구는 Linker
+
+>소스코드를 컴파일하면 바이너리 코드로 변환되고, 거기에 프레임워크나 라이브러리에 포함된 코드가 Link되고 실행파일이 생성됨. 이러한 과정을 하나로 묶어서 build 라고 함. 이 과정에 필요에 따라 정적 분석, unitTest 같은 부가적인 작업이 포함되는 경우도 있음. 여기 까지가 Compile Time 이고 이후는 Runtime
+
+#### Run
+- 실행파일을 생성하는 방법 크게 두가지 debug, release mode
+
+---
 
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
