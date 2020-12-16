@@ -3,8 +3,10 @@
 ### 바로가기
 
 - [자료구조의 개요](#개요)
-- [연결 리스트](#연결리스트)
-- [양방향 연결 리스트](#양방향연결리스트)
+-- [연결 리스트](#연결리스트)
+-- [양방향 연결 리스트](#양방향연결리스트)
+-- [스택](#스택)
+
 
 ---
 >참고 
@@ -41,13 +43,13 @@
 - 다음 알고리즘은 O(n)의 시간 복잡도를 가짐
 ```c
 int main(void) {
-	int a, b;
-	cin >> a >> b;
-	int sum = 1;
-	for (int i = 0; i < b; i++) { // 어떠한 변수만큼 반복을 한다.
-		sum *= a;
-	}
-	cout << sum;
+    int a, b;
+    cin >> a >> b;
+    int sum = 1;
+    for (int i = 0; i < b; i++) { // 어떠한 변수만큼 반복을 한다.
+        sum *= a;
+    }
+    cout << sum;
 }
 ```
 - 다음 알고리즘은 O(n2)의 시간 복잡도를 가짐.
@@ -55,14 +57,14 @@ int main(void) {
 #include <iostream>
 using namespace std;
 int main(void) {
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j <= i; j++) {
-			cout << "*";
-			}
-		cout << '\n';
-	}
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j <= i; j++) {
+            cout << "*";
+            }
+        cout << '\n';
+    }
 }
 ```
 - 다음 알고리즘은 O(1)의 시간 복잡도를 가짐
@@ -70,9 +72,9 @@ int main(void) {
 #include <iostream>
 using namespace std;
 int main(void) {
-	int a, b;
-	cin >> a >> b
-	cout << a+b;
+    int a, b;
+    cin >> a >> b
+    cout << a+b;
 }
 ```
 
@@ -112,40 +114,40 @@ int arr[INF];
 int count = 0;
 
 void addBack(int data) {
-	arr[count] = data;
-	count++;
+    arr[count] = data;
+    count++;
 }
 
 void addFirst(int data) {
-	for (int i =count; i >= 1; i--) {
-		arr[i] = arr[i-1];
-	}
-	arr[0] = data;
-	count++;
+    for (int i =count; i >= 1; i--) {
+        arr[i] = arr[i-1];
+    }
+    arr[0] = data;
+    count++;
 }
 
 void show() {
-	for (int i = 0; i < count; i++) {
-		print("%d", arr[i]);
-	}
+    for (int i = 0; i < count; i++) {
+        print("%d", arr[i]);
+    }
 }
 
 int main(void) {
-	addFirst(4);
-	addFirst(5);
-	addBack(7);
-	addBack(6);
-	show();
-	return 0;
+    addFirst(4);
+    addFirst(5);
+    addBack(7);
+    addBack(6);
+    show();
+    return 0;
 }
 ```
 - 특정한 위치의 원소를 삭제하는 removeAt() 함수
 ```c
 void removeAt(int index) {
-	for (int i = index; i < count - 1; i++) {
-		arr[i] = arr[i + 1];
-	}
-	count--;
+    for (int i = index; i < count - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    count--;
 }
 ```
 
@@ -173,53 +175,53 @@ void removeAt(int index) {
 #include <stdlib.h> // 동적 라이브러리
 
 typedef struct {
-	int data;
-	struct Node *next;
+    int data;
+    struct Node *next;
 } Node;
 Node *head;
 
 void addFront(Node *root, int data) {
-	Node *node = (Node*) malloc(sizeof(Node));
-	node->data = data;
-	node->next = root->next;
-	root->next = node;
+    Node *node = (Node*) malloc(sizeof(Node));
+    node->data = data;
+    node->next = root->next;
+    root->next = node;
 }
 
 void removeFront(Node *root) {
-	Node *front = root->next;
-	root->next = front->next;
-	free(front);
+    Node *front = root->next;
+    root->next = front->next;
+    free(front);
 }
 
 void freeAll(Node *root) {
-	Node *cur = head->next;
-	while (cur != NULL) {
-		Node *next = cur->next;
-		free(cur);
-		cur = next;
-	}
+    Node *cur = head->next;
+    while (cur != NULL) {
+        Node *next = cur->next;
+        free(cur);
+        cur = next;
+    }
 }
 
 void showAll(Node *root) {
-	Node *cur = head->next;
-	while (cur != NULL) {
-		printf("%d ", cur->data);
-		cur = cur->next;
-	}
+    Node *cur = head->next;
+    while (cur != NULL) {
+        printf("%d ", cur->data);
+        cur = cur->next;
+    }
 }
 
 int main(void) {
-	head = (Node*) malloc(sizeof(Node));
-	head->next = NULL;
-	addFront(head, 2);
-	addFront(head, 1);
-	addFront(head, 7);
-	addFront(head, 9);
-	addFront(head, 8);
-	removeFront(head);
-	showAll(head);
-	freeAll(head);
-	return 0;
+    head = (Node*) malloc(sizeof(Node));
+    head->next = NULL;
+    addFront(head, 2);
+    addFront(head, 1);
+    addFront(head, 7);
+    addFront(head, 9);
+    addFront(head, 8);
+    removeFront(head);
+    showAll(head);
+    freeAll(head);
+    return 0;
 }
 
 ```
@@ -242,9 +244,9 @@ int main(void) {
 #include <stdlib.h> 
 
 typedef struct {  
-	int data;  
-	struct Node *prev; 
-	struct Node *next;
+    int data;  
+    struct Node *prev; 
+    struct Node *next;
 } Node;
 Node *head, *tail;
 ```
@@ -254,39 +256,39 @@ HEAD <=> 일반노드 <=> TAIL
 #### 양방향 연결 리스트 삽입 함수
 ```c
 void insert(int data) {  
-	Node* node = (Node*) malloc(sizeof(Node)); 
-	node->data = data;
-	Node* cur;
-	cur = head->next;
-	while (cur->data < data && cur != tail) {
-	 cur = cur->next;
+    Node* node = (Node*) malloc(sizeof(Node)); 
+    node->data = data;
+    Node* cur;
+    cur = head->next;
+    while (cur->data < data && cur != tail) {
+     cur = cur->next;
  }
-	 Node* prev = cur->prev;
-	 prev->next = node;
-	 node->prev = prev;
-	 cur->prev = node;
-	 node->next = cur; 
+     Node* prev = cur->prev;
+     prev->next = node;
+     node->prev = prev;
+     cur->prev = node;
+     node->next = cur; 
 }
 ```
 
 #### 양방향 연결 리스트 삭제 함수
 ```c
 void removeFront() {  
-	Node* node = head->next; 
-	head->next = node->next; 
-	Node* next = node->next; 
-	next->prev = head; 
-	free(node);
+    Node* node = head->next; 
+    head->next = node->next; 
+    Node* next = node->next; 
+    next->prev = head; 
+    free(node);
 }
 ```
 
 #### 양방향 연결 리스트 전체 출력 함수
 ```c
 void show() {
-	 Node* cur = head->next;
-	 while (cur != tail) { 
-		 printf("%d ", cur->data); 
-		 cur = cur->next; 
+     Node* cur = head->next;
+     while (cur != tail) { 
+         printf("%d ", cur->data); 
+         cur = cur->next; 
  }
 }
 ```
@@ -294,20 +296,20 @@ void show() {
 #### 완성된 양방향 연결 리스트 사용하기
 ```c
 int main(void) {  
-	head = (Node*) malloc(sizeof(Node)); 
-	tail = (Node*) malloc(sizeof(Node)); head->next = tail;  
-	head->prev = head;  
-	tail->next = tail;  
-	tail->prev = head;  
-	insert(2);  
-	insert(1);  
-	insert(3);  
-	insert(9);  
-	insert(7);  
-	removeFront();  
-	show();  
-	system("pause");  
-	return 0;
+    head = (Node*) malloc(sizeof(Node)); 
+    tail = (Node*) malloc(sizeof(Node)); head->next = tail;  
+    head->prev = head;  
+    tail->next = tail;  
+    tail->prev = head;  
+    insert(2);  
+    insert(1);  
+    insert(3);  
+    insert(9);  
+    insert(7);  
+    removeFront();  
+    show();  
+    system("pause");  
+    return 0;
 }
 ```
 
@@ -320,4 +322,148 @@ int main(void) {
 > 2. 양방향 연결 리스트를 이용하면 리스트의 앞에서부터 혹은 뒤에서부터 모두 접근할 수 있음
 
 ----
+
+## <a name="스택"></a>스택 *<small><update 20.12.16><small>*
+
+#### 스택
+1. 스택은 한쪽으로 들어가서 한쪽으로 나오는 자료구조
+2. 이러한 특성 때문에 수식 계산 등의 알고리즘에서 다방면으로 활용
+- PUSH: 스택에 데이터를 넣음.
+- POP: 스택에서 데이터를 빼냄.
+3. 스택은 배열을 이용한 구현 방법과 연결 리스트를 이용한 구현 방법으로 나뉨.
+
+#### 배열을 이용한 스택 구현
+- 스택의 선언
+```c
+#include <stdio.h> 
+#define SIZE 10000 
+#define INF 99999999 
+
+int stack[SIZE]; 
+int top = -1;
+```
+- 스택 삽입 함수
+```c
+void push(int data) {
+ if (top == SIZE - 1) { 
+    printf("스택 오버플로우가 발생했습니다.\n");
+    return; 
+    }
+     stack[++top] = data;
+}
+```
+- 스택 추출 함수
+```c
+int pop() {
+ if (top == -1) { 
+    printf("스택 언더플로우가 발생했습니다.\n");
+    return -INF;
+    } 
+ return stack[top--];
+}
+```
+- 스택 전체 출력 함수
+```c
+void show() {  
+    printf("--- 스택의 최상단 ---\n"); 
+     for (int i = top; i >= 0; i--) {
+     printf("%d\n", stack[i]);
+     } 
+    printf("--- 스택의 최하단 ---\n"); 
+}
+```
+- 완성된 스택 사용하기
+```c
+int main(void) {
+  push(7); 
+  push(5);
+  push(4);
+  pop();
+  push(6);
+  pop();
+  show();
+  system("pause");
+  return 0; 
+}
+```
+
+#### 연결 리스트를 이용한 스택 구현
+- 스택의 선언
+```c
+#include <stdio.h> 
+#include <stdlib.h> 
+#define INF 99999999
+
+typedef struct {
+     int data;
+     struct Node *next; 
+} Node;
+
+typedef struct {
+     Node *top; 
+} Stack;
+```
+
+- 스택 삽입 함수
+```c
+void push(Stack *stack, int data) {  
+    Node *node = (Node*) malloc(sizeof(Node)); 
+    node->data = data;  
+    node->next = stack->top;  
+    stack->top = node;
+}
+```
+
+- 스택 추출 함수
+```c
+int pop(Stack *stack) {
+    if (stack->top == NULL) { 
+         printf("스택 언더플로우가 발생했습니다.\n");
+         return -INF;
+      } 
+    Node *node = stack->top; 
+    int data = node->data; 
+    stack->top = node->next;
+    free(node);
+    return data;
+}
+```
+
+- 스택 전체 출력 함수
+```c
+void show(Stack *stack) {  
+    Node *cur = stack->top; 
+    printf("--- 스택의 최상단 ---\n"); 
+    while (cur != NULL) {
+         printf("%d\n", cur->data); 
+         cur = cur->next;
+      } 
+    printf("--- 스택의 최하단 ---\n"); 
+}
+```
+
+- 완성된 스택 사용하기
+```c
+int main(void) { 
+    Stack stack; 
+    stack.top = NULL; 
+    show(&stack); 
+    push(&stack, 7); 
+    push(&stack, 5); 
+    push(&stack, 4); 
+    pop(&stack); 
+    push(&stack, 6); 
+    pop(&stack); 
+    show(&stack); 
+    system("pause"); 
+    return 0;
+}
+```
+>결론
+>1. 한 쪽 끝에서만 자료를 넣고 뺄 수 있는 LIFO(Last In First Out) 형식의 자료 구조
+>2. 배열과 연결 리스트로 구현 가능
+
+---
+
+
 
