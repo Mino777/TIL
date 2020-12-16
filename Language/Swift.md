@@ -3,7 +3,15 @@
 ### 바로가기
 
 - [About Swift](#aboutswift)
+- [Token, Expressions, Statements](#token)
 - [Struct 와 Class의 차이](#structvsclass)
+
+---
+> 참고
+> yagom's Swift Basic
+> [부스트코스] iOS 프로그래밍을 위한 스위프트 기초
+> kxcoding Mastering Swift
+> THE SWIFT PROGRAMMING LAGNUAGE GUIDE
 ----
 
 ## <a name="aboutswift"></a>About Swift *<small><update 20.05.03><small>*
@@ -40,7 +48,31 @@ Swift는 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 
 
 출처: https://swift.org/about/ , https://blog.yagom.net/526/
 
+---
+## <a name="token"></a>Token, Expressions, Statements *<small><update 20.12.16><small>*
+
+#### Token
+
+-   공백이나 구두점으로 분리할 수 없는 가장 기본적인 요소, 가장 작은 요소. 원자와 같은 것
+-   token의 종류로는 Identifiers, Keywords, Punctuations, Operators, Literals
+-   공백은 토큰을 구분하는 역할을 함
+
+#### Expressions
+
+-   각 변수, 연산자, 함수 같은 것들이 하나 이상 모여서 하나의 값으료 표현되는 코드
+-   표현식을 통해서 하나의 결과값을 도출하는 것을 표현식을 평가한다고 표현. ( Evaluate )
+- 코드를 실행해서 값을 얻는다.
+
+#### Statement
+
+-   하나 이상의 표현식이 모여서 특정 작업을 실행하는 것이 statement.
+-   if, switch, guard, for in, while 등
+
 ----
+
+
+
+
 
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
@@ -125,5 +157,3 @@ personClass2.firstName // = Babo
 
 >일단 struct로 쓰자. 그리고 나서 class를 사용해야할 경우 class로 포팅하자.
 swift는 struct를 좋아한다.
-
------

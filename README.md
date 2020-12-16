@@ -18,6 +18,7 @@
       <summary><a href="Language/Swift.md" target="_blank">Swift</a></summary>
         <ul>
           <li><a href="Language/Swift.md#aboutswift" target="_blank">About Swift</a></li>
+          <li><a href="Language/Swift.md#token" target="_blank">Token, Expressions, Statements</a></li>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
@@ -33,6 +34,8 @@
         <ul>
           <li><a href="CS/CS.md#개요" target="_blank">자료구조의 개요</a></li>
           <li><a href="CS/CS.md#연결리스트" target="_blank">연결 리스트</a></li>
+          <li><a href="CS/CS.md#양방향연결리스트" target="_blank">양방향 연결 리스트</a></li>
+          <li><a href="CS/CS.md#스택" target="_blank">스택</a></li>
         </ul>
       </details>
     </li>
