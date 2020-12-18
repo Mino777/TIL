@@ -6,6 +6,7 @@
 - [Token, Expressions, Statements](#token)
 - [Literal, Identifier, Keyword](#literal)
 - [Compile, Link, Run](#compile)
+- [Special Characters](#special)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -107,6 +108,63 @@ Swift는 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 
 
 #### Run
 - 실행파일을 생성하는 방법 크게 두가지 debug, release mode
+---
+## <a name="special"></a>**Special Characters** *<small><update 20.12.18><small>*
+
+- 프로그래밍에서 자주 사용되는 특수문자 영문 명칭
+
+! : Exclamation Mark
+
+// ~ : Tilde
+
+` : Grave Accent / Back Tick
+
+@ : At Symbol
+
+// # : Sharp / Pound / Hashtag
+
+$ : Dollar Sign
+
+% : Percent Sign
+
+^ : Carrot
+
+& : Ampersand
+
+// *   : Asterisk
+
+() : Parentheses
+
+// -   Minus Sign / Hyphen
+
+_ : Underscore
+
+= : Equal Sign
+
+[ ] : Square Bracket
+
+{} : Curly Bracket / Brace
+
+\ : Backslash
+
+| : Vertical Bar / Pipe
+
+// ; : Semicolon
+
+// : : Colon
+
+, : Comma
+
+. : Period
+
+<> : Angle Bracket
+
+/ : Slash
+
+? : Question Mark
+
+
+---
 
 ---
 
