@@ -7,6 +7,7 @@
 - [Literal, Identifier, Keyword](#literal)
 - [Compile, Link, Run](#compile)
 - [Special Characters](#special)
+- [First Class Citizen](#citizen)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -165,7 +166,15 @@ _ : Underscore
 
 
 ---
+## <a name="citizen"></a>First Class Citizen *<small><update 20.12.18><small>*
+- First Class Citizen 주요 특징
 
+1. can be stored in variables and data structures
+- 상수와 변수에 저장할 수 있다.
+2. can be passed as a parameter to a function
+- 파라미터로 전달할 수 있다.
+3. can be returned as the result of a function
+- 함수에서 리턴할 수 있다.
 ---
 
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
