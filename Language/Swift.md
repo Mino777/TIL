@@ -9,6 +9,7 @@
 - [Special Characters](#special)
 - [First Class Citizen](#citizen)
 - [Naming Convention](#naming)
+- [Scope](#Scope)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -183,12 +184,25 @@ _ : Underscore
 - Camel Case
     * UpperCamelCase
     * lowerCamelCase
-- UpperCamelCase
+- UpperCamelCase 사용하는 경우
     * Class, Structure, Enumeration, Extension, Protocol
-- lowerCamelCase
+- lowerCamelCase 사용하는 경우
     * variable, constant, function, property, method, parameter
 ---
+## <a name="scope"></a>Scope *<small><update 20.12.19><small>*
+- 전역범위, 지역범위, 선언된 위치에 따른 접근 가능성 변화
 
+- Global Scope
+- Local or Nested Scope
+
+Scope Rules
+1. 동일한 범위에 있는 변수와 상수에 접근할 수 있다.
+2. 동일한 범위에서는 이전에 선언되어있는 변수와 상수에 접근할 수 있다.
+3. local scope 에서는 상위 스코프에 선언되어있는 변수와 상수에 접근할 수 있다.
+4. 상위 스코프에서는 하위 스코프에 선언되어있는 변수와 상수에 접근할 수 없다.
+5. 서로 다른 범위에 동일한 이름이 존재한다면 가장 인접한 범위에 있는 이름을 사용한다.
+
+---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
 1. Class는 상속을 지원하지만, Struct는 그렇지 못함.
