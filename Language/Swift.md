@@ -8,6 +8,7 @@
 - [Compile, Link, Run](#compile)
 - [Special Characters](#special)
 - [First Class Citizen](#citizen)
+- [Naming Convention](#naming)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -175,6 +176,17 @@ _ : Underscore
 - 파라미터로 전달할 수 있다.
 3. can be returned as the result of a function
 - 함수에서 리턴할 수 있다.
+---
+## <a name="naming"></a>Naming Convention *<small><update 20.12.19><small>*
+- Naming Convention of Swift
+
+- Camel Case
+    * UpperCamelCase
+    * lowerCamelCase
+- UpperCamelCase
+    * Class, Structure, Enumeration, Extension, Protocol
+- lowerCamelCase
+    * variable, constant, function, property, method, parameter
 ---
 
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
