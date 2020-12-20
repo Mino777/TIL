@@ -10,7 +10,8 @@
 - [First Class Citizen](#citizen)
 - [Naming Convention](#naming)
 - [Scope](#Scope)
-- [Overflow Operator](#overflowoperator)
+- [Overflow](#overflowoperator)
+- [Short-circuit Evaluation](#shortcircuit)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -204,7 +205,7 @@ Scope Rules
 5. 서로 다른 범위에 동일한 이름이 존재한다면 가장 인접한 범위에 있는 이름을 사용한다.
 
 ---
-## <a name="overflowoperator"></a>Overflow Operator *<small><update 20.12.20><small>*
+## <a name="overflow"></a>Overflow Operator *<small><update 20.12.20><small>*
 
 - Swift 는 Operator 에서 Overflow 를 허용하지 않음.
 - 그래서 Overflow를 허용해야 하는 상황에서 Overflow Operator 로 따로 처리를 해줘야함.
@@ -217,6 +218,39 @@ let c: Int8 = Int8.min
 let d: Int8 = c &- 1 // 127
 
 let e: Int8 = Int8.max &* 2 // -2
+```
+---
+## <a name="shortcircuit"></a>Short-circuit Evaluation *<small><update 20.12.20><small>*
+- Swift 가 조건식을 평가하는 방법
+
+```swift
+var a = 1
+var b = 1
+
+func updateLeft() -> Bool {
+    a += 1
+    return true
+}
+
+func updateRight() -> Bool {
+    b += 1
+    return true
+}
+
+if updateLeft() || updateRight() {
+    // 왼쪽이 이미 true 이기 때문에 오른쪽은 리턴하지 않음
+    // 따라서 a = 2 , b = 1 의 결과값이 나옴.
+    // 이것이 단락 평가 (Short-circuit Evaluation)
+}
+
+if updateLeft() && updateRight() {
+    // 왼쪽이 false 일 경우 거기서 평가를 끝내고 오른쪽은 리턴하지 않음.
+    // 따라서 a = 2, b = 1 의 결과값이 나옴.
+}
+
+a
+b
+
 ```
 
 ---
