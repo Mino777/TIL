@@ -26,6 +26,7 @@
           <li><a href="Language/Swift.md#naming" target="_blank">Naming Convention</a></li>
           <li><a href="Language/Swift.md#scope" target="_blank">Scope</a></li>
           <li><a href="Language/Swift.md#overflowoperator" target="_blank">Overflow Operator</a></li>
+          <li><a href="Language/Swift.md#shortcircuit" target="_blank">Short-circuit Evaluation</a></li>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
