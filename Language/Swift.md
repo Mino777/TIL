@@ -10,6 +10,7 @@
 - [First Class Citizen](#citizen)
 - [Naming Convention](#naming)
 - [Scope](#Scope)
+- [Overflow](#overflowoperator)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -182,12 +183,12 @@ _ : Underscore
 - Naming Convention of Swift
 
 - Camel Case
-    * UpperCamelCase
-    * lowerCamelCase
+	* UpperCamelCase
+	* lowerCamelCase
 - UpperCamelCase 사용하는 경우
-    * Class, Structure, Enumeration, Extension, Protocol
+	* Class, Structure, Enumeration, Extension, Protocol
 - lowerCamelCase 사용하는 경우
-    * variable, constant, function, property, method, parameter
+	* variable, constant, function, property, method, parameter
 ---
 ## <a name="scope"></a>Scope *<small><update 20.12.19><small>*
 - 전역범위, 지역범위, 선언된 위치에 따른 접근 가능성 변화
@@ -201,6 +202,22 @@ Scope Rules
 3. local scope 에서는 상위 스코프에 선언되어있는 변수와 상수에 접근할 수 있다.
 4. 상위 스코프에서는 하위 스코프에 선언되어있는 변수와 상수에 접근할 수 없다.
 5. 서로 다른 범위에 동일한 이름이 존재한다면 가장 인접한 범위에 있는 이름을 사용한다.
+
+---
+## <a name="overflow"></a>Overflow Operator *<small><update 20.12.20><small>*
+
+- Swift 는 Operator 에서 Overflow 를 허용하지 않음.
+- 그래서 Overflow를 허용해야 하는 상황에서 Overflow Operator 로 따로 처리를 해줘야함.
+
+```swift
+let a: Int8 = Int8.max
+let b: Int8 = a &+ 1 // -128
+
+let c: Int8 = Int8.min
+let d: Int8 = c &- 1 // 127
+
+let e: Int8 = Int8.max &* 2 // -2
+```
 
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
