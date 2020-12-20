@@ -10,7 +10,7 @@
 - [First Class Citizen](#citizen)
 - [Naming Convention](#naming)
 - [Scope](#Scope)
-- [Overflow](#overflowoperator)
+- [Overflow Operator](#overflowoperator)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -204,7 +204,7 @@ Scope Rules
 5. 서로 다른 범위에 동일한 이름이 존재한다면 가장 인접한 범위에 있는 이름을 사용한다.
 
 ---
-## <a name="overflow"></a>Overflow Operator *<small><update 20.12.20><small>*
+## <a name="overflowoperator"></a>Overflow Operator *<small><update 20.12.20><small>*
 
 - Swift 는 Operator 에서 Overflow 를 허용하지 않음.
 - 그래서 Overflow를 허용해야 하는 상황에서 Overflow Operator 로 따로 처리를 해줘야함.
