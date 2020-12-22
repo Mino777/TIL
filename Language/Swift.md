@@ -12,6 +12,7 @@
 - [Scope](#Scope)
 - [Overflow](#overflowoperator)
 - [Short-circuit Evaluation](#shortcircuit)
+- [Value Bindings In Switch](#valuebindings)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -251,6 +252,42 @@ if updateLeft() && updateRight() {
 a
 b
 
+```
+---
+## <a name="valuebindings"></a>Value Bindings In Switch *<small><update 20.12.22><small>*
+- switch 문에서의 Value Binding Pattern
+- 특정 x, y 값을 각각 다른 case에 정의하고 그 정의된 상수를 또 다른 case에서 사용
+```swift
+let a = 1
+switch a {
+case let value where value < 100:
+    print(value)
+default:
+    break
+}
+
+let point = (1, 2)
+switch point {
+case let (x, y):
+    print(x, y)
+case (let x, let y):
+    print(x, y)
+case (let x, var y):
+    print(x, y)
+case let(x, _):
+    print(x)
+}
+
+let anotherPoint = (2, 0)
+switch anotherPoint {
+case (let x, 0):
+    print("on the x-axis with an x value of \(x)")
+case (0, let y):
+    print("on the y-axis with a y value of \(y)")
+case let (x, y):
+    print("somewhere else at (\(x), \(y))")
+}
+// Prints "on the x-axis with an x value of 2"
 ```
 
 ---
