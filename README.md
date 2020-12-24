@@ -46,6 +46,7 @@
           <li><a href="CS/CS.md#양방향연결리스트" target="_blank">양방향 연결 리스트</a></li>
           <li><a href="CS/CS.md#스택" target="_blank">스택</a></li>
           <li><a href="CS/CS.md#큐" target="_blank">큐</a></li>
+          <li><a href="CS/CS.md#선택정렬과삽입정렬" target="_blank">선택 정렬과 삽입 정렬</a></li>
         </ul>
       </details>
     </li>
