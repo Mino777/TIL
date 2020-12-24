@@ -7,6 +7,7 @@
 	* [양방향 연결 리스트](#양방향연결리스트)
 	* [스택](#스택)
 	* [큐](#큐)	
+	* [선택 정렬과 삽입 정렬](#선택정렬과삽입정렬)
 
 
 ---
@@ -603,4 +604,88 @@ int main(void) {
 	return 0;
 }
 ```
+
+---
+## <a name="선택정렬과삽입정렬"></a>선택 정렬과 삽입 정렬 *<small><update 20.12.24><small>*
+
+#### 선택 정렬
+- 선택 정렬이란 가장 작은 것을 선택해서 앞으로 보내는 정렬 기법
+- 가장 작은 것을 선택하는 데에 N번, 앞으로 보내는 데에 N번의 연산으로 O(N2)의 시간 복잡도를 가짐.
+
+- 배열 선언
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <limits.h>
+#define SIZE 1000
+
+int a[SIZE];
+
+int swap(int *a, int *b) { 
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+```
+
+- 선택 정렬 수행
+```c
+int main(void) {
+	int n, min, index;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++) scanf("%d", &a[i]); 
+	for (int i = 0; i < n; i++) {
+		min = INT_MAX;
+		for (int j = i; j < n; j++) {
+		      if (min > a[j]) {
+		        min = a[j];
+		        index = j;
+		} 
+	}
+	swap(&a[i], &a[index]); 
+	}
+	system("pause");
+	return 0; 
+}
+```
+
+#### 삽입 정렬
+- 삽입 정렬이란 각 숫자를 적절한 위치에 삽입하는 정렬 기법.
+- 들어갈 위치를 선택하는 데에 N번, 선택하는 횟수로 N번이므로 O(N2)의 시간 복잡도를 가짐.
+
+- 배열 선언
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define SIZE 1000
+
+int a[SIZE];
+
+int swap(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+```
+
+- 삽입 정렬 수행
+```c
+int main(void) {
+	int n;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++) scanf("%d", &a[i]); 
+	for (int i = 0; i < n - 1; i++) {
+		int j = i;
+		while (j >= 0 && a[j] > a[j + 1]) {
+		    swap(&a[j], &a[j + 1]);
+			j--; 
+		}
+	} 
+	system("pause"); 
+	return 0;
+}
+```
+
+- 선택 정렬과 삽입 정렬은 시간 복잡도가 O(N2)인 가장 간단한 형태의 알고리즘.
+
 ---
