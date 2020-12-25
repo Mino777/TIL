@@ -16,6 +16,7 @@
 - [Labeled Statements](#labeledstatements)
 - [Optionals](#optional)
 - [Optional Binding](#optionalbinding)
+- [Nil-Coalescing Operator](#nil-coalescingoperator)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -371,6 +372,31 @@ if let num = a, let str = b, str.count < 5 { // 하나라도 바인딩이 실패
 } else {
     fatalError()
 }
+```
+---
+## <a name="nil-coalescingoperator"></a>Nil-Coalescing Operator *<small><update 20.12.25><small>*
+
+- 간단한 이항 연산자로 nil 값 피하기
+
+```swift
+var msg = ""
+var input: String? = "Swift"
+
+if let inputName = input {
+    msg = "Hello, " + inputName
+} else {
+    msg = "Hello, Stranger"
+}
+
+print(msg)
+
+var str = "Hello, " + (input != nil ? input! : "Stranger")
+print(str)
+
+//input = nil
+str = "Hello, " + (input ?? "Stranger")
+print(str)
+
 ```
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
