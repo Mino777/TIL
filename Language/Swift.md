@@ -14,6 +14,7 @@
 - [Short-circuit Evaluation](#shortcircuit)
 - [Value Bindings In Switch](#valuebindings)
 - [Labeled Statements](#labeledstatements)
+- [Optionals](#optional)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -308,7 +309,40 @@ outer: for i in 1...3 {
 // inner loop 1
 
 ```
+---
+## <a name="optional"></a>Optionals *<small><update 20.12.25><small>*
+- 값을 가지지 않아도 되는 형식
 
+```swift
+let str: String = "Swift" // Non-Optional
+let optionalStr: String? = nil // Optional \(String)
+
+let a: Int? = nil
+
+let b = a // b 의 type => Optional Int
+
+// Forced Unwrapping
+
+var num: Int? = nil
+
+num = 123
+
+print(num!)
+
+num = nil
+
+//print(num!) // fatal error
+
+if num != nil {
+    print(num!)
+}
+
+num = 123
+
+let before = num // Optional Int
+let after = num! // Int
+```
+- Forced Unwrapping은 매우 위험한 코드이니 특수한 상황이 아닌이상 최대한 사용하면 안된다. ( 값이 없는 경우 앱이 터져버림.)
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
