@@ -28,6 +28,7 @@
           <li><a href="Language/Swift.md#overflowoperator" target="_blank">Overflow Operator</a></li>
           <li><a href="Language/Swift.md#shortcircuit" target="_blank">Short-circuit Evaluation</a></li>
           <li><a href="Language/Swift.md#valuebindings" target="_blank">Value Bindings In Switch</a></li>
+          <li><a href="Language/Swift.md#labeledstatements" target="_blank">Labeled Statements</a></li>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
