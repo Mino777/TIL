@@ -13,6 +13,7 @@
 - [Overflow](#overflowoperator)
 - [Short-circuit Evaluation](#shortcircuit)
 - [Value Bindings In Switch](#valuebindings)
+- [Labeled Statements](#labeledstatements)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -288,6 +289,24 @@ case let (x, y):
     print("somewhere else at (\(x), \(y))")
 }
 // Prints "on the x-axis with an x value of 2"
+```
+---
+## <a name="labeledstatements"></a>Labeled Statements *<small><update 20.12.25><small>*
+- for 문, switch 문등에 lable 이름을 넣어 특정 구문을 실행하는 구문으로 사용이 가능.
+
+```swift
+outer: for i in 1...3 {
+    print("OUTER LOOP", i)
+    
+    for j in 1...3 {
+        print(" inner loop", j)
+        
+        break outer
+    }
+}
+//OUTER LOOP 1
+// inner loop 1
+
 ```
 
 ---
