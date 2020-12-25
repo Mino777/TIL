@@ -15,6 +15,7 @@
 - [Value Bindings In Switch](#valuebindings)
 - [Labeled Statements](#labeledstatements)
 - [Optionals](#optional)
+- [Optional Binding](#optionalbinding)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -343,6 +344,34 @@ let before = num // Optional Int
 let after = num! // Int
 ```
 - Forced Unwrapping은 매우 위험한 코드이니 특수한 상황이 아닌이상 최대한 사용하면 안된다. ( 값이 없는 경우 앱이 터져버림.)
+---
+## <a name="optionalbinding"></a>Optional Binding *<small><update 20.12.25><small>*
+- 안전한 Unwrapping
+
+```swift
+var num: Int? = nil
+
+if let num = num {
+    print(num)
+} else {
+    print("empty")
+}
+
+var str: String? = "str"
+
+guard let str = str else {
+    fatalError()
+}
+
+let a: Int? = 12
+let b: String? = "str"
+
+if let num = a, let str = b, str.count < 5 { // 하나라도 바인딩이 실패하면 구문 동작 안함
+    print(num, str)
+} else {
+    fatalError()
+}
+```
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
