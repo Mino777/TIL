@@ -14,9 +14,11 @@
 - [Short-circuit Evaluation](#shortcircuit)
 - [Value Bindings In Switch](#valuebindings)
 - [Labeled Statements](#labeledstatements)
-- [Optionals](#optional)
-- [Optional Binding](#optionalbinding)
-- [Nil-Coalescing Operator](#nil-coalescingoperator)
+- Optional
+	* [Optionals](#optional)
+	* [Optional Binding](#optionalbinding)
+	* [Nil-Coalescing Operator](#nil-coalescingoperator)
+	* [Optional Chaining](#OptionalChaining)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -398,6 +400,74 @@ str = "Hello, " + (input ?? "Stranger")
 print(str)
 
 ```
+---
+## <a name="OptionalChaining"></a>Optional Chaining *<small><update 20.12.25><small>*
+- 옵셔널을 연달아서 호출하기
+- 옵셔널 체이닝의 결과는 항상 옵셔널이다
+- 옵셔널 표현식이 하나라도 포함되면 옵셔널로 리턴된다.
+- 옵셔널 체이닝에 포함된 표현식 중에서 하나라도 nil을 리턴한다면 나중의 표현식을 평가하지 않고 바로 nil을 리턴한다
+
+```swift
+import UIKit
+
+struct Contacts {
+    var email: [String : String]?
+    var address: String?
+    
+    func printAddress() {
+        return print(address ?? "no address")
+    }
+}
+
+struct Person {
+    var name: String
+    var contacts: Contacts?
+    
+    init(name: String, email: String) {
+        self.name = name
+        contacts = Contacts(email: ["Home" : email], address: "Seoul")
+    }
+    
+    func getContacts() -> Contacts? {
+        return contacts
+    }
+}
+
+var p = Person(name: "James", email: "swfit@example.com")
+let a = p.contacts?.address
+
+var optionalP: Person? = Person(name: "James", email: "swfit@example.com")
+let b = optionalP?.contacts?.address
+b
+
+optionalP = nil
+let c = optionalP?.contacts?.address
+c
+
+p.getContacts()?.address
+
+let f: (() -> Contacts?)? = p.getContacts
+
+f?()?.address // 함수나 메소드가 리턴하는 옵셔널 값에 접근할때는 괄호 앞뒤에 ?
+
+let d = p.getContacts()?.printAddress() // optional void
+
+if let _ = p.getContacts()?.printAddress() {
+    
+}
+
+let e = p.contacts?.email?["Home"]
+
+p.contacts?.email?["Home"]?.count
+
+p.contacts?.address = "Daegu"
+p.contacts?.address
+
+optionalP?.contacts?.address = "Daegu"
+optionalP?.contacts?.address
+
+```
+
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
