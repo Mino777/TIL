@@ -21,6 +21,7 @@
 	* [Optional Chaining](#OptionalChaining)
 - Functions
 	* [Variadic Parameters](#VariadicParameters)
+	* [In-Out Parameters](#In-OutParameters)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -535,6 +536,30 @@ func printSum(of nums: Int...) {
 
 printSum(of: 1, 2, 3)
 printSum(of: 1, 2, 3, 4, 5)
+```
+---
+## <a name="In-OutParameters"></a>In-Out Parameters *<small><update 20.12.26><small>*
+- copyIn, copyOut 방식으로 동작
+- 함수 내부에서 값을 변경할 수 있음.
+- 상수, 리터럴, 기본 값, 가변 파라미터 불가
+
+```swift
+var num1 = 12
+var num2 = 34
+
+func swapNumber(_ a: inout Int, with b: inout Int) {
+    let tmp = a
+    a = b
+    b = tmp
+}
+
+num1
+num2
+
+swapNumber(&num1, with: &num2)
+
+num1 // 34
+num2 // 12
 ```
 
 ---
