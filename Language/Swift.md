@@ -19,6 +19,8 @@
 	* [Optional Binding](#optionalbinding)
 	* [Nil-Coalescing Operator](#nil-coalescingoperator)
 	* [Optional Chaining](#OptionalChaining)
+- Functions
+	* [Variadic Parameters](#VariadicParameters)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -466,6 +468,73 @@ p.contacts?.address
 optionalP?.contacts?.address = "Daegu"
 optionalP?.contacts?.address
 
+---
+// optional pattern
+
+let a: Int? = 0
+
+let b: Optional<Int> = 0
+
+if a == nil {
+    
+}
+
+if a == .none {
+    
+}
+
+if a == 0 {
+    
+}
+
+if a == .some(0) {
+    
+}
+
+if let x = a {
+    print(x)
+}
+
+if case .some(let x) = a {
+    print(x)
+}
+
+if case let x? = a {
+    print(x)
+}
+
+let list: [Int?] = [0, nil, nil, 3, nil, 5]
+
+for item in list {
+    guard let x = item else {
+        continue
+    }
+    print(x)
+}
+
+for case let x? in list {
+    print(x)
+}
+
+```
+---
+## <a name="VariadicParameters"></a>Variadic Parameters *<small><update 20.12.26><small>*
+- 하나의 파라미터로 두개이상의 아규먼트를 전달할 수 있다.
+- 아규먼트는 배열의 형태로 전달 된다.
+- 가변 파라미터는 개별 함수마다 하나씩만 선언할 수 있음.
+- 가변 파라미터는 기본값을 가질 수 없음.
+
+```swift
+func printSum(of nums: Int...) {
+    var sum = 0
+    for num in nums {
+        sum += num
+    }
+    print(sum)
+}
+
+printSum(of: 1, 2, 3)
+printSum(of: 1, 2, 3, 4, 5)
 ```
 
 ---
