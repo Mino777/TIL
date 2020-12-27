@@ -35,6 +35,7 @@
           <li><a href="Language/Swift.md#OptionalChaining" target="_blank">Optional Chaining</a></li>
           <li><a href="Language/Swift.md#VariadicParameters" target="_blank">Variadic Parameters</a></li>
           <li><a href="Language/Swift.md#In-OutParameters" target="_blank">In-Out Parameters</a></li>
+          <li><a href="Language/Swift.md#ImplicitReturn" target="_blank">Implicit Return</a></li>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
