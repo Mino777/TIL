@@ -22,6 +22,7 @@
 - Functions
 	* [Variadic Parameters](#VariadicParameters)
 	* [In-Out Parameters](#In-OutParameters)
+	* [Implicit Return](#ImplicitReturn)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -561,7 +562,20 @@ swapNumber(&num1, with: &num2)
 num1 // 34
 num2 // 12
 ```
+---
+## <a name="ImplicitReturn"></a>Implicit Return *<small><update 20.12.27><small>*
+- 함수안의 하나의 포현식만 있는 경우 return을 생략 해줘도 된다.
+- closure, method, subscript 등에서도 동일하게 사용
 
+```swift
+func add(a: Int, b: Int) -> Int {
+	// return a + b Explicit Return
+    a + b	// Implicit Return
+    // print(a + b) 표현식이 두개 이상인 경우 에러
+}
+
+add(a: 1, b: 2)
+```
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
