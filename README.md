@@ -45,6 +45,7 @@
           <li>Closure</li>
           <ul>
             <li><a href="Language/Swift.md#SyntaxOptimization" target="_blank">Syntax Optimization</a></li>
+            <li><a href="Language/Swift.md#EscapingClosure" target="_blank">Escaping Closure</a></li>
           </ul>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
