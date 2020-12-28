@@ -8,6 +8,7 @@
 	* [스택](#스택)
 	* [큐](#큐)	
 	* [선택 정렬과 삽입 정렬](#선택정렬과삽입정렬)
+	* [퀵 정렬](#퀵정렬)
 
 
 ---
@@ -689,3 +690,56 @@ int main(void) {
 - 선택 정렬과 삽입 정렬은 시간 복잡도가 O(N2)인 가장 간단한 형태의 알고리즘.
 
 ---
+## <a name="퀵정렬"></a>퀵 정렬 *<small><update 20.12.28><small>*
+#### 퀵 정렬
+1. 피벗을 기준으로 큰 값과 작은 값을 서로 교체하는 정렬 기법
+2. 값을 서로 교체하는데에 N번, 엇갈린 경우 교체 이후에 원소가 반으로 나누어지므로, 전체 원소를 나누는 데에 평균적으로 logN번이 소요되므로 평균적으로 O(NlogN)의 시간 복잡도를 가짐
+3. 원소를 절반씩 나눌 때 logN의 시간 복잡도가 나오는 대표적인 예시는 완전 이진 트리
+
+- 배열 선언
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define SIZE 1000
+
+int a[SIZE];
+
+int swap(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+```
+
+- 퀵 정렬 구현
+```c
+void quickSort(int start, int end) {
+	if (start >= end) return;
+	int key = start, i = start + 1, j = end, temp; 
+	while (i <= j) { // 엇갈릴 때까지 반복합니다.
+		while (i <= end && a[i] <= a[key]) i++; 
+		while (j > start && a[j] >= a[key]) j--; 
+		if (i > j) swap(&a[key], &a[j]);
+		else swap(&a[i], &a[j]);
+	}
+quickSort(start, j - 1); 
+quickSort(j + 1, end);
+}
+```
+
+- 퀵 정렬 사용
+```c
+int main(void) {
+	int n;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++) scanf("%d", &a[i]); 
+	quickSort(0, n - 1);
+	for (int i = 0; i < n; i++) printf("%d ", a[i]); 
+	system("pause");
+	return 0;
+}
+```
+
+- 퀵 정렬은 편향된 분할이 발생할 때 연산의 양이 O(N2)임. 따라서 실제로 정렬하는 경우 직접 구현하지 않음.
+- 따라서 C++의 라이브러리를 사용.
+- 라이브러리의 sort() 함수는 퀵 정렬을 기반으로 하되 O(NlogN)을 보장
