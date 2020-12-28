@@ -42,6 +42,10 @@
             <li><a href="Language/Swift.md#In-OutParameters" target="_blank">In-Out Parameters</a></li>
             <li><a href="Language/Swift.md#ImplicitReturn" target="_blank">Implicit Return</a></li>
           </ul>
+          <li>Closure</li>
+          <ul>
+            <li><a href="Language/Swift.md#SyntaxOptimization" target="_blank">Syntax Optimization</a></li>
+          </ul>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
