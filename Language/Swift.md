@@ -23,6 +23,8 @@
 	* [Variadic Parameters](#VariadicParameters)
 	* [In-Out Parameters](#In-OutParameters)
 	* [Implicit Return](#ImplicitReturn)
+- Closure
+	* [Syntax Optimization](#SyntaxOptimization)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -576,6 +578,43 @@ func add(a: Int, b: Int) -> Int {
 
 add(a: 1, b: 2)
 ```
+---
+## <a name="SyntaxOptimization"></a>Syntax Optimization *<small><update 20.12.28><small>*
+- Swift는 최대한 단순하게 작성하는 것을 선호.
+- 문법 최적화 규칙
+1. 파라미터와 리턴형을 생략할 수 있다.
+2. 파라미터 이름은 인자 이름 축약 (Shorthand Arguments Names)로 대체 ( 이 경우 파라미터 이름과 in keyward는 생략 )
+3. 단일 리턴문인 경우 Implicit Return ( return keyward 생략 )
+4. 인라인 클로저에서 후위 클로저로 변경
+5. 괄호 사이에 파라미터가 더이상 없다면 괄호를 생략
+
+```swift
+let products = [
+   "MacBook Air", "MacBook Pro",
+   "iMac", "iMac Pro", "Mac Pro", "Mac mini",
+   "iPad Pro", "iPad", "iPad mini",
+   "iPhone Xs", "iPhone Xr", "iPhone 8", "iPhone 7",
+   "AirPods",
+   "Apple Watch Series 4", "Apple Watch Nike+"
+]
+
+var proModels = products.filter { (name: String) -> Bool in
+    return name.contains("pro")
+}
+
+products.filter {
+    $0.contains("pro")
+}
+
+proModels.sort { (lhs: String, rhs: String) -> Bool in
+    return lhs.caseInsensitiveCompare(rhs) == .orderedDescending
+}
+
+proModels.sort {
+    $0.caseInsensitiveCompare($1) == .orderedDescending
+}
+```
+
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
