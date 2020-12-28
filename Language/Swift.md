@@ -25,6 +25,7 @@
 	* [Implicit Return](#ImplicitReturn)
 - Closure
 	* [Syntax Optimization](#SyntaxOptimization)
+	* [Escaping Closure](#EscapingClosure)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -612,6 +613,42 @@ proModels.sort { (lhs: String, rhs: String) -> Bool in
 
 proModels.sort {
     $0.caseInsensitiveCompare($1) == .orderedDescending
+}
+```
+---
+## <a name="EscapingClosure"></a>Escaping Closure *<small><update 20.12.28><small>*
+- 시작 시점과 종료 시점이 특정되지 않음.
+- 함수가 종료 된 뒤에 closure를 실행하려면 escaping 해줘야 함.
+
+```swift
+// Non Escaping
+func performNonEscaping(closure: () -> ()) {
+    print("start")
+    closure()
+    print("end")
+}
+
+performNonEscaping {
+    print("closure")
+}
+
+// Escaping
+func performEscaping(closure: @escaping () -> ()) {
+    print("start")
+    
+    var a = 12
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        closure()
+        a = 13
+        print(a)
+    }
+    
+    print("end")
+}
+
+performEscaping {
+    print("closure")
 }
 ```
 
