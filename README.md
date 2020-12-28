@@ -29,13 +29,19 @@
           <li><a href="Language/Swift.md#shortcircuit" target="_blank">Short-circuit Evaluation</a></li>
           <li><a href="Language/Swift.md#valuebindings" target="_blank">Value Bindings In Switch</a></li>
           <li><a href="Language/Swift.md#labeledstatements" target="_blank">Labeled Statements</a></li>
-          <li><a href="Language/Swift.md#optional" target="_blank">Optionals</a></li>
-          <li><a href="Language/Swift.md#optionalbinding" target="_blank">Optional Binding</a></li>
-          <li><a href="Language/Swift.md#nil-coalescingoperator" target="_blank">Nil-Coalescing Operator</a></li>
-          <li><a href="Language/Swift.md#OptionalChaining" target="_blank">Optional Chaining</a></li>
-          <li><a href="Language/Swift.md#VariadicParameters" target="_blank">Variadic Parameters</a></li>
-          <li><a href="Language/Swift.md#In-OutParameters" target="_blank">In-Out Parameters</a></li>
-          <li><a href="Language/Swift.md#ImplicitReturn" target="_blank">Implicit Return</a></li>
+          <li>Optional</li>
+          <ul>
+            <li><a href="Language/Swift.md#optional" target="_blank">Optionals</a></li>
+            <li><a href="Language/Swift.md#optionalbinding" target="_blank">Optional Binding</a></li>
+            <li><a href="Language/Swift.md#nil-coalescingoperator" target="_blank">Nil-Coalescing Operator</a></li>
+            <li><a href="Language/Swift.md#OptionalChaining" target="_blank">Optional Chaining</a></li>
+          </ul>
+          <li>Function</li>
+          <ul>
+            <li><a href="Language/Swift.md#VariadicParameters" target="_blank">Variadic Parameters</a></li>
+            <li><a href="Language/Swift.md#In-OutParameters" target="_blank">In-Out Parameters</a></li>
+            <li><a href="Language/Swift.md#ImplicitReturn" target="_blank">Implicit Return</a></li>
+          </ul>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
