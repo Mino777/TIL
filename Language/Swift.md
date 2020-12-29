@@ -16,6 +16,7 @@
 - [Labeled Statements](#labeledstatements)
 - String
 	* [String Indices](#StringIndices)
+	* [Substring](#Substring)
 - Optional
 	* [Optionals](#optional)
 	* [Optional Binding](#optionalbinding)
@@ -346,6 +347,33 @@ print(thirdStartCh)
 let thirdCharEndIndex = str.index(str.endIndex, offsetBy: -3)
 let thirdEndCh = str[thirdCharEndIndex]
 print(thirdEndCh)
+```
+---
+## <a name="Substring"></a>Substring *<small><update 20.12.29><small>*
+- 문자열을 처리할 때 메모리를 절약하기 위해 사용.
+- Substring은 값을 읽기만 할 때는 원본 문자열의 메모리를 공유하고, 값을 변경하는 시점에만 새로운 메모리를 생성.
+
+```swift
+let str = "Hello, Swift"
+let l = str.lowercased()
+
+var first = str.prefix(1)
+first
+
+first.insert("!", at: first.endIndex)
+str
+first
+
+let newStr = String(str.prefix(1)) // 새로운 메모리 생성
+
+// MARK: 특정 범위 추출
+let s = str[..<str.index(str.startIndex, offsetBy: 2)]
+
+str[str.index(str.startIndex, offsetBy: 2)...]
+
+let lower = str.index(str.startIndex, offsetBy: 2)
+let upper = str.index(str.startIndex, offsetBy: 5)
+str[lower ... upper]
 ```
 ---
 ## <a name="optional"></a>Optionals *<small><update 20.12.25><small>*
