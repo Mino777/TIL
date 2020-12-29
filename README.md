@@ -32,6 +32,7 @@
           <li>String</li>
           <ul>
             <li><a href="Language/Swift.md#StringIndices" target="_blank">String Indices</a></li>
+            <li><a href="Language/Swift.md#Substring" target="_blank">Substring</a></li>
           </ul>
           <li>Optional</li>
           <ul>
