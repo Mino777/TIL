@@ -14,6 +14,8 @@
 - [Short-circuit Evaluation](#shortcircuit)
 - [Value Bindings In Switch](#valuebindings)
 - [Labeled Statements](#labeledstatements)
+- String
+	* [String Indices](#StringIndices)
 - Optional
 	* [Optionals](#optional)
 	* [Optional Binding](#optionalbinding)
@@ -319,6 +321,31 @@ outer: for i in 1...3 {
 //OUTER LOOP 1
 // inner loop 1
 
+```
+---
+## <a name="StringIndices"></a>String Indices *<small><update 20.12.29><small>*
+- 문자열 인덱스로 특정 문자의 위치를 표현하는 방법
+```swift
+let str = "Swift"
+
+let firstCh = str[str.startIndex]
+print(firstCh)
+
+let lastCharIndex = str.index(before: str.endIndex) // 정수의 경우 -1로 구할 수 있지만 문자의 경우 이 메소드를 사용해야 함.
+let lastCh = str[lastCharIndex]
+print(lastCh)
+
+let secondCharIndex = str.index(after: str.startIndex)
+let secondCh = str[secondCharIndex]
+print(secondCh)
+
+let thirdCharStartIndex = str.index(str.startIndex, offsetBy: 2) // 이 메소드를 사용하면 정수처럼 접근 가능.
+let thirdStartCh = str[thirdCharStartIndex]
+print(thirdStartCh)
+
+let thirdCharEndIndex = str.index(str.endIndex, offsetBy: -3)
+let thirdEndCh = str[thirdCharEndIndex]
+print(thirdEndCh)
 ```
 ---
 ## <a name="optional"></a>Optionals *<small><update 20.12.25><small>*
