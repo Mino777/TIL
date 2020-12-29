@@ -10,6 +10,7 @@
 	* [선택 정렬과 삽입 정렬](#선택정렬과삽입정렬)
 	* [퀵 정렬](#퀵정렬)
 	* [계수 정렬](#계수정렬)
+	* [기수 정렬](#기수정렬)
 
 
 ---
@@ -749,6 +750,7 @@ int main(void) {
 #### 계수정렬
 1. 계수 정렬은 크기를 기준으로 데이터의 개수를 세는 정렬 알고리즘
 2. 각 데이터를 바로 크기를 기준으로 분류하므로 O(N)의 시간 복잡도를 가짐
+3. 데이터의 크기가 한정적일 때 사용
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS 
@@ -769,6 +771,49 @@ int main() {
 ```
 
 ---
+## <a name="기수정렬"></a>기수 정렬 *<small><update 20.12.29><small>*
+#### 기수정렬
+1. 기수 정렬은 자릿수를 기준으로 차례대로 데이터를 정렬하는 알고리즘
+2. 각 데이터를 자릿수를 기준으로 분류하므로, 가장 큰 자릿수를 D라고 했을 때 O(DN)의 시간 복잡도를 가짐.
+3. 기수 정렬은 계수 정렬보다 약간 더 느리지만, 숫자가 매우 큰 상황에서도 사용 가능.
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define MAX 10000
+
+void radixSort(int *a, int n) { 
+	int res[MAX], maxValue = 0; 
+	int exp = 1;
+	for (int i = 0; i < n; i++) {
+	    if (a[i] > maxValue) maxValue = a[i];
+	  }
+	while (maxValue / exp > 0) { // 1의 자리부터 계산
+		int bucket[10] = { 0 };
+		for (int i = 0; i < n; i++) bucket[a[i] / exp % 10]++; // 자릿수 배열 처리 		    for (int i = 1; i < 10; i++) bucket[i] += bucket[i - 1]; // 누적 계산
+		for (int i = n - 1; i >= 0; i--) { // 같은 자릿수 끼리는 순서를 유지
+		res[--bucket[a[i] / exp % 10]] = a[i]; }
+		for (int i = 0; i < n; i++) a[i] = res[i]; // 기본 배열 갱신
+		exp *= 10; 
+	}
+}
+
+int main(void) {
+  int a[MAX];
+  int i, n;
+  scanf("%d", &n);
+  for (i = 0; i < n; i++) {
+    scanf("%d", &a[i]);
+  }
+  radixSort(a, n);
+  for (i = 0; i < n; i++) {
+	printf("%d ", a[i]); 
+  }
+  system("pause");
+}
+
+```
+
+---
 
 
