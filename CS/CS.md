@@ -9,6 +9,7 @@
 	* [큐](#큐)	
 	* [선택 정렬과 삽입 정렬](#선택정렬과삽입정렬)
 	* [퀵 정렬](#퀵정렬)
+	* [계수 정렬](#계수정렬)
 
 
 ---
@@ -743,3 +744,31 @@ int main(void) {
 - 퀵 정렬은 편향된 분할이 발생할 때 연산의 양이 O(N2)임. 따라서 실제로 정렬하는 경우 직접 구현하지 않음.
 - 따라서 C++의 라이브러리를 사용.
 - 라이브러리의 sort() 함수는 퀵 정렬을 기반으로 하되 O(NlogN)을 보장
+---
+## <a name="계수정렬"></a>계수 정렬 *<small><update 20.12.29><small>*
+#### 계수정렬
+1. 계수 정렬은 크기를 기준으로 데이터의 개수를 세는 정렬 알고리즘
+2. 각 데이터를 바로 크기를 기준으로 분류하므로 O(N)의 시간 복잡도를 가짐
+
+```c
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+#define MAX_VALUE 10001
+
+int n, m;
+int a[MAX_VALUE];
+
+int main() {
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++) { scanf("%d", &m); a[m]++; } 
+	for (int i = 0; i < MAX_VALUE; i++) {
+	    while (a[i] != 0) { printf("%d ", i); a[i]--;  }
+	  }
+	system("pause"); 
+}
+```
+
+---
+
+
+
