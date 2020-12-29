@@ -29,6 +29,10 @@
           <li><a href="Language/Swift.md#shortcircuit" target="_blank">Short-circuit Evaluation</a></li>
           <li><a href="Language/Swift.md#valuebindings" target="_blank">Value Bindings In Switch</a></li>
           <li><a href="Language/Swift.md#labeledstatements" target="_blank">Labeled Statements</a></li>
+          <li>String</li>
+          <ul>
+            <li><a href="Language/Swift.md#StringIndices" target="_blank">String Indices</a></li>
+          </ul>
           <li>Optional</li>
           <ul>
             <li><a href="Language/Swift.md#optional" target="_blank">Optionals</a></li>
