@@ -10,7 +10,7 @@
   <ul>
     <li>
     <details>
-      <summary><a href="Language/clang" target="_blank">Clang</a></summary>
+      <summary><a href="Language/clang" target="_blank">C/C++</a></summary>
         <ul>
         </ul>
       </details>
