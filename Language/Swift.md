@@ -17,6 +17,7 @@
 - String
 	* [String Indices](#StringIndices)
 	* [Substring](#Substring)
+	* [String Editing](#StringEditing)
 - Optional
 	* [Optionals](#optional)
 	* [Optional Binding](#optionalbinding)
@@ -375,6 +376,104 @@ let lower = str.index(str.startIndex, offsetBy: 2)
 let upper = str.index(str.startIndex, offsetBy: 5)
 str[lower ... upper]
 ```
+---
+## <a name="StringEditing"></a>String Editing *<small><update 20.12.31><small>*
+- 추가
+```swift
+// 추가의 경우 append, appending, insert 등이 사용
+var str = "Hello"
+str.append(", ") // append 는 원본 값을 수정
+str
+
+let s = str.appending("Swift") // appending은 새로운 메모리 생성
+str
+s
+
+s.appending("!!")
+
+"File size is ".appendingFormat("%.1f", 12.3456)
+
+var str2 = "Hello Swift"
+
+str2.insert(contentsOf: ", ", at: str.index(str.startIndex, offsetBy: 5))
+
+if let sIndex = str2.firstIndex(of: "S") {
+    str2.insert(contentsOf: "Awesome ", at: sIndex)
+}
+
+str2
+str2.appending("!!")
+```
+- 수정
+```swift
+// 문자열 수정
+var str = "Hello, Objective-C"
+
+if let range = str.range(of: "Objective-C") {
+    str.replaceSubrange(range, with: "Swift") // replace 의 경우 원본 값 수정
+    
+    str
+}
+
+if let range = str.range(of: "Hello") {
+    let s = str.replacingCharacters(in: range, with: "Hi!") // replacing 의 경우 새로운 메모리 생성
+    
+    s
+    str
+}
+
+var s = str.replacingOccurrences(of: "Swift", with: "Awesome Swift!")
+s = str.replacingOccurrences(of: "swift", with: "Awesome Swift!") // 대소문자 구분함.
+s = str.replacingOccurrences(of: "swift", with: "Awesome Swift!", options: [.caseInsensitive]) // 옵션으로 구분 안하게
+```
+- 삭제
+```swift
+// 문자열 삭제
+var str = "Hello, Awesome Swift!!!"
+
+let lastCharIndex = str.index(before: str.endIndex)
+var removed = str.remove(at: lastCharIndex)
+
+removed
+str
+
+removed = str.removeFirst()
+removed
+str
+
+str.removeFirst(2)
+str
+
+str.removeLast()
+str
+
+str.removeLast(2)
+str
+
+if let removeRange = str.range(of: "Awesome") {
+    str.removeSubrange(removeRange)
+    str
+}
+
+str.removeAll() // 파라미터 없이 삭제하면 메모리 공간까지 삭제
+str
+
+str.removeAll(keepingCapacity: true) // 메모리 공간을 삭제하지 않음.
+
+str = "Hello, Awesome Swift!!!"
+
+var substr = str.dropLast() // drop 은 원본과 메모리 공유 ( 그래서 타입이 Substring )
+str
+
+substr = str.dropLast(3)
+
+substr = str.drop { (ch) -> Bool in
+    return ch != ","
+}
+substr
+```
+
+
 ---
 ## <a name="optional"></a>Optionals *<small><update 20.12.25><small>*
 - 값을 가지지 않아도 되는 형식
