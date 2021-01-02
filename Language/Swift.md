@@ -20,6 +20,7 @@
 	* [String Editing](#StringEditing)
 	* [Comparing Strings](#ComparingStrings)
 	* [String Searching](#StringSearching)
+	* [Character Set](#CharacterSet)
 - Optional
 	* [Optionals](#optional)
 	* [Optional Binding](#optionalbinding)
@@ -526,6 +527,46 @@ common = str.commonPrefix(with: str3)
 str.commonPrefix(with: str3, options: [.caseInsensitive])
 str3.commonPrefix(with: str, options: [.caseInsensitive])
 ```
+---
+## <a name="CharacterSet"></a>Character Set *<small><update 20.01.02><small>*
+
+```swift
+let a = CharacterSet.uppercaseLetters
+
+let b = a.inverted
+
+var str = "loRem Ipsum"
+var charSet = CharacterSet.uppercaseLetters
+
+if let range = str.rangeOfCharacter(from: charSet) {
+    print(str.distance(from: str.startIndex, to: range.lowerBound))
+}
+
+if let range = str.rangeOfCharacter(from: charSet, options: [.backwards]) {
+    print(str.distance(from: str.startIndex, to: range.lowerBound))
+}
+
+str = " A p p l e "
+charSet = .whitespaces // 처음과 끝부분의 공백 제거
+
+let trimmed = str.trimmingCharacters(in: charSet) // 문자열에서 해당 옵션에 해당하는 부분 삭제
+print(trimmed)
+
+var editTarget = CharacterSet.uppercaseLetters
+
+editTarget.insert("#")
+editTarget.insert(charactersIn: "~!@")
+
+editTarget.remove("A")
+editTarget.remove(charactersIn: "BCD")
+
+let customCharSet = CharacterSet(charactersIn: "@.")
+let email = "userId@example.com"
+
+let components = email.components(separatedBy: customCharSet)
+// print -> ["userId", "example", "com"]
+```
+
 ---
 ## <a name="optional"></a>Optionals *<small><update 20.12.25><small>*
 - 값을 가지지 않아도 되는 형식
