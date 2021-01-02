@@ -18,6 +18,7 @@
 	* [String Indices](#StringIndices)
 	* [Substring](#Substring)
 	* [String Editing](#StringEditing)
+	* [Comparing Strings](#ComparingStrings)
 - Optional
 	* [Optionals](#optional)
 	* [Optional Binding](#optionalbinding)
@@ -471,6 +472,37 @@ substr = str.drop { (ch) -> Bool in
     return ch != ","
 }
 substr
+```
+---
+## <a name="ComparingStrings"></a>Comparing Strings *<small><update 20.01.02><small>*
+- compare, prefix, suffix, 대소문자
+```swift
+let largeA = "Apple"
+let smallA = "apple"
+let b = "Banana"
+
+largeA == smallA
+largeA != smallA
+
+largeA < smallA
+largeA < b
+smallA < b
+
+largeA.compare(smallA) == .orderedSame
+largeA.compare(smallA) == .orderedAscending
+largeA.compare(smallA) == .orderedDescending
+
+largeA.caseInsensitiveCompare(smallA) == .orderedSame
+
+largeA.compare(smallA, options: [.caseInsensitive]) == .orderedSame
+
+let str = "Hello, Swift Programming!"
+let prefix = "Hello"
+let suffix = "Programming!"
+
+str.hasPrefix(prefix)
+str.lowercased().hasPrefix(prefix.lowercased())
+str.hasSuffix(suffix)
 ```
 
 
