@@ -35,6 +35,7 @@
             <li><a href="Language/Swift.md#Substring" target="_blank">Substring</a></li>
             <li><a href="Language/Swift.md#StringEditing" target="_blank">String Editing</a></li>
             <li><a href="Language/Swift.md#ComparingStrings" target="_blank">Comparing Strings</a></li>
+            <li><a href="Language/Swift.md#StringSearching" target="_blank">String Searching</a></li>
           </ul>
           <li>Optional</li>
           <ul>
