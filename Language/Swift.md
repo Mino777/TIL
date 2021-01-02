@@ -19,6 +19,7 @@
 	* [Substring](#Substring)
 	* [String Editing](#StringEditing)
 	* [Comparing Strings](#ComparingStrings)
+	* [String Searching](#StringSearching)
 - Optional
 	* [Optionals](#optional)
 	* [Optional Binding](#optionalbinding)
@@ -504,8 +505,27 @@ str.hasPrefix(prefix)
 str.lowercased().hasPrefix(prefix.lowercased())
 str.hasSuffix(suffix)
 ```
+---
+## <a name="StringSearching"></a>String Searching *<small><update 20.01.02><small>*
+- contains, range, commonPrefix
+```swift
+let str = "Hello, Swift"
 
+str.contains("Swift")
+str.lowercased().contains("swfit")
 
+str.range(of: "Swift")
+str.range(of: "swift", options: [.caseInsensitive])
+
+let str2 = "Hello, Programming"
+let str3 = str2.lowercased()
+
+var common = str.commonPrefix(with: str2) // 공통된 접두어
+
+common = str.commonPrefix(with: str3)
+str.commonPrefix(with: str3, options: [.caseInsensitive])
+str3.commonPrefix(with: str, options: [.caseInsensitive])
+```
 ---
 ## <a name="optional"></a>Optionals *<small><update 20.12.25><small>*
 - 값을 가지지 않아도 되는 형식
