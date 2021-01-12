@@ -33,6 +33,8 @@
 - Closure
 	* [Syntax Optimization](#SyntaxOptimization)
 	* [Escaping Closure](#EscapingClosure)
+- Collection
+	* [Set](#Set)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -897,6 +899,150 @@ func performEscaping(closure: @escaping () -> ()) {
 performEscaping {
     print("closure")
 }
+```
+---
+## <a name="Set"></a>Set *<small><update 21.01.12><small>*
+- 검색속도가 중요한 경우에 배열대신 사용
+- 배열과 달리 인덱스를 사용하지않고, 정렬되어있지 않음.
+- 중복된 요소를 허용하지않음.
+- Hashing 알고리즘을 사용하기 때문에 속도가 빠름
+
+```swift
+let set: Set<Int> = [1, 2, 2, 3, 3, 3]
+set.count
+
+set.contains(1)
+
+var words = Set<String>()
+
+var insertResult = words.insert("Swift")
+insertResult.inserted // true
+insertResult.memberAfterInsert
+
+insertResult = words.insert("Swift")
+insertResult.inserted // false
+insertResult.memberAfterInsert
+
+var updateResult = words.update(with: "Swift")
+updateResult
+
+updateResult = words.update(with: "Apple")
+updateResult // nil -> nil로 리턴되면 insert, 값으로 리턴되면 update
+
+var value = "Swift"
+value.hashValue
+
+updateResult = words.update(with: value)
+updateResult
+
+value = "Hello"
+
+updateResult = words.update(with: value)
+updateResult
+
+struct SampleData: Hashable {
+    var hashValue: Int = 123
+    var data: String
+    
+    init(_ data: String) {
+        self.data = data
+    }
+    
+    static func == (lhs: SampleData, rhs: SampleData) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+}
+
+var sampleSet = Set<SampleData>()
+// 새로운 요소로 추가
+var data = SampleData("Swift")
+data.hashValue
+
+var r = sampleSet.insert(data)
+r.inserted
+r.memberAfterInsert
+sampleSet
+
+data.data = "Hello"
+data.hashValue
+
+r = sampleSet.insert(data)
+r.inserted
+r.memberAfterInsert
+sampleSet // data -> "Swift"
+
+sampleSet.update(with: data)
+sampleSet // data -> "Hello" 로 update
+
+var a: Set = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+var b: Set = [1, 3, 5, 7, 9]
+var c: Set = [2, 4, 6, 8, 10]
+let d: Set = [1, 7, 5, 9, 3]
+
+// 부분집합, 진부분집합
+a.isSubset(of: a) // 부분집합
+a.isStrictSubset(of: a) // 진부분집합
+
+b.isSubset(of: a)
+b.isStrictSubset(of: a)
+
+// 상위집합
+a.isSuperset(of: a)
+a.isStrictSuperset(of: a)
+
+a.isSuperset(of: b)
+a.isStrictSuperset(of: b)
+
+a.isSuperset(of: c)
+a.isStrictSuperset(of: c)
+
+// 교집합
+a.isDisjoint(with: b) // false 일 경우에 교집합.
+a.isDisjoint(with: c)
+b.isDisjoint(with: c)
+
+// 집합연산
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+b = [1, 3, 5, 7, 9]
+c = [2, 4, 6, 8, 10]
+
+// 합집합
+var result = b.union(c)
+
+result = b.union(a)
+
+b.formUnion(c) // 원본 변경
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+b = [1, 3, 5, 7, 9]
+c = [2, 4, 6, 8, 10]
+
+// 교집합
+result = a.intersection(b)
+result = c.intersection(b)
+
+a.formIntersection(b)
+
+b.formIntersection(c)
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+b = [1, 3, 5, 7, 9]
+c = [2, 4, 6, 8, 10]
+
+// 여집합
+result = a.symmetricDifference(b)
+result = c.symmetricDifference(b)
+
+a.formSymmetricDifference(b)
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+b = [1, 3, 5, 7, 9]
+c = [2, 4, 6, 8, 10]
+
+// 차집합
+result = a.subtracting(b)
+a.subtract(b) // 원본 변경
+
 ```
 
 ---
