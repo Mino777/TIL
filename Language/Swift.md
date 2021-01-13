@@ -36,6 +36,7 @@
 - Collection
 	* [Set](#Set)
 	* [Iterating Collections](#IteratingCollections)
+	* [KeyValuePair](#KeyValuePair)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1105,6 +1106,28 @@ func withForEach() {
 
 withForIn()
 withForEach()
+```
+---
+## <a name="KeyValuePair"></a>KeyValuePair *<small><update 21.01.14><small>*
+- Swift가 제공하는 경량 collection
+- 딕셔너리에서 키값은 반드시 해셔블 프로토콜을 채용한 타입만 사용해야함, 동일한 키를 한번만 저장할 수 있음, 정렬 x
+- 키형식의 제한이 없음. 동일한 키를 두번이상 저장하는것도 가능, 저장한 순서를 유지, 접근할 때 키로 접근하는 딕셔너리와 달리 인덱스로 접근.
+- 순서가 중요한 경우에 딕셔너리대신 사용
+
+```swift
+let words: KeyValuePairs = ["A" : "Apple", "B" : "Banana", "C": "City"]
+
+words[0]
+words[0].key
+words[0].value
+
+for elem in words {
+    print(elem)
+}
+
+words.forEach { (elem) in
+    print(elem)
+}
 ```
 
 
