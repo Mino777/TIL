@@ -35,6 +35,7 @@
 	* [Escaping Closure](#EscapingClosure)
 - Collection
 	* [Set](#Set)
+	* [Iterating Collections](#IteratingCollections)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1044,6 +1045,68 @@ result = a.subtracting(b)
 a.subtract(b) // 원본 변경
 
 ```
+
+---
+## <a name="IteratingCollections"></a>Iterating Collections *<small><update 21.01.13><small>*
+- collection 열거
+- for-in 과 forEach 의 차이점?
+- for-in은 Swift가 제공하는 built-in 함수
+- forEach는 collection에서 제공하는 기능이며 closure 방식으로 사용
+- 그렇기 때문에, forEach는 break, continue 문 사용 불가
+- forEach 에서 클로저 내 return을 사용하는 경우, 밖의 스코프에는 영향을 주지 않고 오직 현재 호출 클로저만 빠져나간다
+
+```swift
+// for-in
+var arr = [1, 2, 3]
+for num in arr {
+    print(num)
+}
+
+var set: Set = [1, 2, 3]
+for num in set.sorted() {
+    print(num)
+}
+
+var dict = ["A" : 1, "B" : 2, "C" : 3]
+for (key, value) in dict.sorted(by: < ) {
+    print(key, value)
+}
+
+// forEach
+arr.forEach { (num) in
+    print(num)
+}
+
+set.forEach { (num) in
+    print(num)
+}
+
+dict.forEach { (elem) in
+    print(elem.key, elem.value)
+}
+
+func withForIn() {
+    print(#function)
+    for num in arr {
+        print(num)
+    }
+    break
+    return
+}
+
+func withForEach() {
+    print(#function)
+    arr.forEach { (num) in
+        print(num)
+    }
+    
+    return
+}
+
+withForIn()
+withForEach()
+```
+
 
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
