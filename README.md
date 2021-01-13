@@ -59,6 +59,7 @@
           <li>Collection</li>
           <ul>
             <li><a href="Language/Swift.md#Set" target="_blank">Set</a></li>
+            <li><a href="Language/Swift.md#IteratingCollections" target="_blank">Iterating Collections</a></li>
           </ul>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
