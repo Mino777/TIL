@@ -40,6 +40,7 @@
 - Enumeration
 	* [Enumeration Type](#EnumerationType)
 	* [RawValues](#RawValues)
+	* [Associated Values](#AssociatedValues)	
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1196,8 +1197,35 @@ enum ControlChar: Character { // 원시값을 Character로 지정한 경우에�
 }
 
 ```
+---
+## <a name="AssociatedValues"></a>Associated Values *<small><update 21.01.21><small>*
+- 연관 값을 사용하는 Enum case
+
+```swift
+enum VideoInterface {
+    case dvi(width: Int, height: Int)
+    case hdmi(Int, Int, Double, Bool)
+    case displayPort(CGSize)
+}
+
+var input = VideoInterface.dvi(width: 2048, height: 1536)
 
 
+switch input {
+case .dvi(width: 2048, height: 1536):
+    print("dvi 2048 x 1536")
+case .dvi(width: 2048, _):
+    print("dvi 2048 x Any")
+case .dvi:
+    print("dvi")
+case .hdmi(let width, let height, let version, let audioEnabled):
+    print("hdmi \(width) x \(height) version: \(version) audioEnabled: \(audioEnabled)")
+case let .displayPort(size):
+    print("dp \(size)")
+}
+
+input = .hdmi(1, 1, 1, true)
+```
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
