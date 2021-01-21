@@ -43,6 +43,7 @@
 	* [Associated Values](#AssociatedValues)	
 	* [Enumeration Case Pattern](#EnumerationCasePattern)
 	* [CaseIterable](#CaseIterable)
+	* [Non-frozen Enumeration](#Non-frozenEnumeration)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1309,6 +1310,33 @@ Weekday.allCases.randomElement()
 
 for w in Weekday.allCases {
     print(w)
+}
+```
+
+---
+## <a name="Non-frozenEnumeration"></a>Non-frozen Enumeration *<small><update 21.01.21><small>*
+- 새로운 case를 안전하게 처리
+- default 앞에 @unknown 을 붙여주는 경우에 케이스 처리가 안된 부분이 있을 경우 경고 처리를 해줄 수 있음
+
+```swift
+enum ServiceType {
+    case onlineCourse
+    case offlineCamp
+    case onlineCamp
+    case seminar
+}
+
+let selectedType = ServiceType.onlineCourse
+
+switch selectedType {
+case .onlineCourse:
+    print("send online course email")
+case .offlineCamp:
+    print("send offline camp email")
+case .onlineCamp:
+    print("send online camp email")
+@unknown default:
+    break
 }
 ```
 ---
