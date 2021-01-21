@@ -62,6 +62,10 @@
             <li><a href="Language/Swift.md#IteratingCollections" target="_blank">Iterating Collections</a></li>
             <li><a href="Language/Swift.md#KeyValuePair" target="_blank">KeyValuePair</a></li>
           </ul>
+          <li>Enumeration</li>
+          <ul>
+            <li><a href="Language/Swift.md#EnumerationType" target="_blank">Enumeration Type</a></li>
+          </ul>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
         </ul>
       </details>
