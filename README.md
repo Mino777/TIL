@@ -71,7 +71,10 @@
             <li><a href="Language/Swift.md#CaseIterable" target="_blank">CaseIterable</a></li>
             <li><a href="Language/Swift.md#Non-frozenEnumeration" target="_blank">Non-frozen Enumeration</a></li>
           </ul>
+          <li>Structures and Classes</li>
+          <ul>
           <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
+          </ul>
         </ul>
       </details>
     </li>
