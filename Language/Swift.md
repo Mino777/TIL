@@ -41,6 +41,7 @@
 	* [Enumeration Type](#EnumerationType)
 	* [RawValues](#RawValues)
 	* [Associated Values](#AssociatedValues)	
+	* [Enumeration Case Pattern](#EnumerationCasePattern)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1226,6 +1227,61 @@ case let .displayPort(size):
 
 input = .hdmi(1, 1, 1, true)
 ```
+---
+## <a name="EnumerationCasePattern"></a>Enumeration Case Pattern *<small><update 21.01.21><small>*
+
+```swift
+enum Transportaion {
+    case bus(number: Int)
+    case taxi(company: String, number: String)
+    case subway(lineNumber: Int, express: Bool)
+}
+
+var tpt = Transportaion.bus(number: 7)
+
+switch tpt {
+case .bus(let n):
+    print(n)
+case .taxi(let c, var n):
+    print(c, n)
+case let .subway(l, e):
+    print(l, e)
+}
+
+tpt = Transportaion.subway(lineNumber: 2, express: false)
+
+if case let .subway(2, express) = tpt { // 2호선 인지 확인하고 급행인지 아닌지 분기해주는 코드
+    if express {
+        
+    } else {
+        
+    }
+}
+
+if case .subway(_, true) = tpt {
+    print("express")
+}
+
+let list = [
+    Transportaion.subway(lineNumber: 2, express: false),
+    Transportaion.bus(number: 402),
+    Transportaion.subway(lineNumber: 7, express: true),
+    Transportaion.taxi(company: "SeoulTaxi", number: "1234")
+]
+
+for case let .subway(n, _) in list {
+    print("1. subway \(n)")
+}
+
+for case let .subway(n, true) in list {
+    print("2. subway \(n)")
+}
+
+for case let .subway(n, true) in list where n == 2 {
+    print("3. subway \(n)")
+}
+```
+
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
