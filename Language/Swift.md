@@ -1230,6 +1230,8 @@ input = .hdmi(1, 1, 1, true)
 ---
 ## <a name="EnumerationCasePattern"></a>Enumeration Case Pattern *<small><update 21.01.21><small>*
 
+- 조건문과 반복문에서 연관 값을 매칭
+
 ```swift
 enum Transportaion {
     case bus(number: Int)
@@ -1281,7 +1283,33 @@ for case let .subway(n, true) in list where n == 2 {
     print("3. subway \(n)")
 }
 ```
+---
 
+## <a name="EnumerationCasePattern"></a>Enumeration Case Pattern *<small><update 21.01.21><small>*
+
+- 모든 case를 열거할 수 있게 도와주는 CaseIterable 프로토콜
+
+```swift
+enum Weekday: Int, CaseIterable { // CaseIterable protocol 을 채택할 경우, Allcases라는 collection 프로퍼티가 생성됨.
+   case sunday
+   case monday
+   case tuesday
+   case wednesday
+   case thursday
+   case friday
+   case saturday
+}
+
+let rnd = Int.random(in: 0...Weekday.allCases.count)
+
+Weekday(rawValue: rnd)
+
+Weekday.allCases.randomElement()
+
+for w in Weekday.allCases {
+    print(w)
+}
+```
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
 
