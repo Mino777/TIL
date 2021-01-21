@@ -73,7 +73,8 @@
           </ul>
           <li>Structures and Classes</li>
           <ul>
-          <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
+            <li><a href="Language/Swift.md#structvsclass" target="_blank">Struct와 Class의 차이</a></li>
+            <li><a href="Language/Swift.md#InitializerSyntax" target="_blank">Initializer Syntax</a></li>
           </ul>
         </ul>
       </details>
