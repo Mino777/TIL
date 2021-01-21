@@ -50,6 +50,7 @@
 	* [Value Types vs Reference Types](#ValueTypesvsReferenceTypes)
 - Property
 	 * [Lazy Stored Property](#LazyStoredProperty)
+	 * [Computed Property](#ComputedProperty)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1494,3 +1495,51 @@ var post = BlogPost()
 post.attachment
 post.date
 ```
+
+---
+## <a name="ComputedProperty"></a>Computed Property *<small><update 21.01.21><small>*
+
+- 계산 속성
+- 수학적 계산이 아니라 다른 속성을 기반으로 속성값이 결정된다는 의미
+- Stored Property는 값을 저정할 메모리 공간을 가지고 있음
+- Computed Property는 값을 지정할 메모리 공간을 가지고 있지 않음
+- 다른 속성에 저장된 값을 읽어서 필요한 계산을 실행한 다음에 리턴하거나, 속성으로 전달된 값을 다른 속성에 저장.
+
+```swift
+class Person {
+    var name: String
+    var yearOfBirth: Int
+    
+    init(name: String, year: Int) {
+        self.name = name
+        self.yearOfBirth = year
+    }
+    
+    var age: Int {
+        get {
+            let calender = Calendar.current
+            let now = Date()
+            let year = calender.component(.year, from: now)
+            return year - yearOfBirth
+        }
+        set {
+            let calender = Calendar.current
+            let now = Date()
+            let year = calender.component(.year, from: now)
+            yearOfBirth = year - newValue
+        }
+    }
+    
+}
+
+let p = Person(name: "Mino", year: 1996)
+p.age
+
+p.age = 50
+p.yearOfBirth
+```
+
+---
+
+
+
