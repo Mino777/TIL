@@ -39,6 +39,7 @@
 	* [KeyValuePair](#KeyValuePair)
 - Enumeration
 	* [Enumeration Type](#EnumerationType)
+	* [RawValues](#RawValues)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1114,7 +1115,7 @@ withForEach()
 - Swift가 제공하는 경량 collection
 - 딕셔너리에서 키값은 반드시 해셔블 프로토콜을 채용한 타입만 사용해야함, 동일한 키를 한번만 저장할 수 있음, 정렬 x
 - 키형식의 제한이 없음. 동일한 키를 두번이상 저장하는것도 가능, 저장한 순서를 유지, 접근할 때 키로 접근하는 딕셔너리와 달리 인덱스로 접근.
-- 순서가 중요한 경우에 딕셔너리대신 사용
+- 순서가 중요한 경우에 딕셔너리대신 사용 ( 그냥 딕셔너리 쓰고 소트하면 되지 않낭? )
 
 ```swift
 let words: KeyValuePairs = ["A" : "Apple", "B" : "Banana", "C": "City"]
@@ -1158,6 +1159,44 @@ case .center:
     print("left")
 }
 ```
+---
+## <a name="RawValues"></a>RawValues *<small><update 21.01.21><small>*
+- enum에 원시값을 지정해줄 수 있음
+
+```swift
+enum Alignment: Int {
+    case left
+    case right = 100
+    case center
+}
+
+Alignment.left.rawValue
+Alignment.right.rawValue
+Alignment.center.rawValue
+
+// Alignment.left.rawValue = 10 // 원시값은 immutable
+
+Alignment(rawValue: 0) // left
+Alignment(rawValue: 200) // nil
+
+enum Weekday: String {
+    case sunday
+    case monday = "MON"
+    case tuesday
+    case wednesday
+}
+
+Weekday.sunday.rawValue
+Weekday.monday.rawValue
+
+
+enum ControlChar: Character { // 원시값을 Character로 지정한 경우에는 반드시 원시값을 지정해줘야함.
+    case tab = "\t"
+    case newLine = "\n"
+}
+
+```
+
 
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
