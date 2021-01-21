@@ -42,6 +42,7 @@
 	* [RawValues](#RawValues)
 	* [Associated Values](#AssociatedValues)	
 	* [Enumeration Case Pattern](#EnumerationCasePattern)
+	* [CaseIterable](#CaseIterable)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1285,7 +1286,7 @@ for case let .subway(n, true) in list where n == 2 {
 ```
 ---
 
-## <a name="EnumerationCasePattern"></a>Enumeration Case Pattern *<small><update 21.01.21><small>*
+## <a name="CaseIterable"></a>CaseIterable *<small><update 21.01.21><small>*
 
 - 모든 case를 열거할 수 있게 도와주는 CaseIterable 프로토콜
 
