@@ -79,6 +79,7 @@
           <li>Property</li>
           <ul>
             <li><a href="Language/Swift.md#LazyStoredProperty" target="_blank">Lazy Stored Property</a></li>
+            <li><a href="Language/Swift.md#ComputedProperty" target="_blank">Computed Property</a></li>
           </ul>
       </details>
     </li>
