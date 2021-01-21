@@ -44,7 +44,9 @@
 	* [Enumeration Case Pattern](#EnumerationCasePattern)
 	* [CaseIterable](#CaseIterable)
 	* [Non-frozen Enumeration](#Non-frozenEnumeration)
-- [Struct 와 Class의 차이](#structvsclass)
+- Structures and Classes
+	* [Structure 와 Class의 차이](#structvsclass)
+	* [Initializer Syntax](#InitializerSyntax)
 
 ---
 > 참고
@@ -1340,12 +1342,12 @@ case .onlineCamp:
 }
 ```
 ---
-## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
-
-1. Class는 상속을 지원하지만, Struct는 그렇지 못함.
-2. Class는 참조 타입이지만, Struct는 값 타입.
-3. Class는 heap 메모리에 저장, Struct는 stack 메모리에 저장.
-
+## <a name="structvsclass"></a>Structure 와 Class의 차이 *<small><update 21.01.21><small>*
+1. Custom Data Type을 만들기 위해 필요한 Enumeration, Structure, Class
+2. Structure, class 모두 멤버변수로 property, method, initializer, subscript, extension, protocol 가능
+3. Structure는 Value Type 이며 Stack에 저장.
+4. Class는 Reference Type 이며 Heap에 저장.
+5. Structure는 Deinitializer, Inheritance, Reference Counting 이 불가하지만 Class 는 모두 가능
 >예시
 ```swift
 struct PersonStruct {
@@ -1423,3 +1425,33 @@ personClass2.firstName // = Babo
 
 >일단 struct로 쓰자. 그리고 나서 class를 사용해야할 경우 class로 포팅하자.
 swift는 struct를 좋아한다.
+
+---
+
+## <a name="InitializerSyntax"></a>Initializer Syntax *<small><update 21.01.21><small>*
+
+```swift
+class Position {
+    var x: Double
+    var y: Double
+    
+    init() { // 생성자는 속성 초기화가 가장 중요한 규칙.
+        x = 0.0
+        y = 0.0
+    }
+    
+    init(value: Double) {
+        x = value
+        y = value
+    }
+}
+
+let a = Position() // 인스턴스 생성
+a.x // 0으로 초기화
+a.y
+
+let b = Position(value: 100)
+b.x
+b.y
+```
+
