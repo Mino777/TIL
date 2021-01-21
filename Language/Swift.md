@@ -37,6 +37,8 @@
 	* [Set](#Set)
 	* [Iterating Collections](#IteratingCollections)
 	* [KeyValuePair](#KeyValuePair)
+- Enumeration
+	* [Enumeration Type](#EnumerationType)
 - [Struct 와 Class의 차이](#structvsclass)
 
 ---
@@ -1129,7 +1131,33 @@ words.forEach { (elem) in
     print(elem)
 }
 ```
+----
+## <a name="EnumerationType"></a>Enumeration Type *<small><update 21.01.21><small>*
+- 열거형은 독립적인 자료형
+- 열거형은 코드의 가독성과 안전성을 높여줌
 
+```swift
+enum Alignment {
+    case left
+    case right
+    case center
+}
+
+Alignment.left
+
+var textAlignment = Alignment.center
+
+textAlignment = .right
+
+switch textAlignment {
+case .left:
+    print("left")
+case .right:
+    print("left")
+case .center:
+    print("left")
+}
+```
 
 ---
 ## <a name="structvsclass"></a>Struct 와 Class의 차이 *<small><update 20.05.20><small>*
