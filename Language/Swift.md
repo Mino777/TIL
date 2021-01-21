@@ -45,9 +45,11 @@
 	* [CaseIterable](#CaseIterable)
 	* [Non-frozen Enumeration](#Non-frozenEnumeration)
 - Structures and Classes
-	* [Structure 와 Class의 차이](#structvsclass)
+	* [Structure vs Class](#structvsclass)
 	* [Initializer Syntax](#InitializerSyntax)
-
+	* [Value Types vs Reference Types](#ValueTypesvsReferenceTypes)
+- Property
+	 * [Lazy Stored Property](#LazyStoredProperty)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1455,3 +1457,40 @@ b.x
 b.y
 ```
 
+---
+
+## <a name="LazyStoredProperty"></a>Lazy Stored Property *<small><update 21.01.21><small>*
+
+- 지연 저장 속성
+- lazy 변수는 처음 사용되기 전까지는 연산이 되지 않는다.
+- struct와 class에서만 사용 가능
+- Computed Property에는 lazy 키워드 사용 불가 ( 처음 사용될 때 메모리에 값을 올리고 그 이후 부터는 계속해서 메모리에 올라온 값을 사용. 사용할때 마다 값을 연산하여 사용하는 computed property에서는 사용할 수 없음. )
+- lazy에 어떤 특별한 연산을 통해 값을 넣어주기 위해서는 코드 실행 블록인 closure를 사용
+
+
+```swift
+struct Image {
+    init() {
+        print("New Image")
+    }
+}
+
+struct BlogPost {
+    let title: String = "Title"
+    let content: String = "Content"
+    lazy var attachment: Image = Image()
+    
+    let date: Date = Date()
+    
+    lazy var formattedDate: String = {
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .medium
+        return f.string(from: date)
+    }()
+}
+
+var post = BlogPost()
+post.attachment
+post.date
+```
