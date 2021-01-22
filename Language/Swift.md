@@ -54,6 +54,7 @@
 	 * [Property Observer](#PropertyObserver)
 - Inheritance and Ploymorphism
 	 * [Inheritance and Overriding](#InheritanceandOverriding)
+	 * [Overloading](#Overloading)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1663,4 +1664,63 @@ class Oval: Circle {
 }
 
 
+```
+
+---
+
+## <a name="Overloading"></a>Overloading *<small><update 21.01.22><small>*
+
+- Overriding은 상속된 멤버를 현재 클래스에 적합하게 다시 구현할떄 사용
+- Overloading은 하나의 형식에서 동일한 이름을 가진 다수의 멤버를 구현할때 사용
+- 스위프트는 Overloading을 지원함. 그렇기 때문에 이름이 같아도 자료형이 다르면 다른것으로 인식
+- 함수, 메소드, 서브스크립트, 생성자 -> Overloading을 지원
+- Overloading Rule #1 - 함수 이름이 동일하면 파라미터 수로 식별
+- Overloading Rule #2 - 함수 이름, 파라미터 수가 동일하면 파라미터 자료형으로 식별
+- Overloading Rule #3 - 함수 이름, 파라미터가 동일하면 Argument Label로 식별
+- Overloading Rule #4 - 함수 이름, 파라미터, Argument Label이 동일하면 리턴형으로 식별 // 리턴형으로 식별은 가급적이면 안하는게 좋음
+
+```swift
+func process(value: Int) {
+    print("Int")
+}
+
+func process(value: String) {
+    print("String")
+}
+
+func process(value: String, anotherValue: String) {
+    
+}
+
+func process(_ value: String) {
+    print("str")
+}
+
+func process(value: Double) -> Int {
+    return Int(value)
+}
+
+func process(value: Double) -> String? {
+    return String(value)
+}
+
+process(value: 0)
+process(value: "")
+process("str")
+
+var results: Int = process(value: 1234)
+
+struct Rectangle {
+    func area() -> Double {
+        return 0.0
+    }
+    
+    static func area() -> Double {
+        return 1
+    }
+}
+
+let r = Rectangle()
+r.area()
+Rectangle.area()
 ```
