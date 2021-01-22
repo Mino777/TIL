@@ -55,6 +55,7 @@
 - Inheritance and Ploymorphism
 	 * [Inheritance and Overriding](#InheritanceandOverriding)
 	 * [Overloading](#Overloading)
+	 * [Type Casting](#TypeCasting)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1723,4 +1724,99 @@ struct Rectangle {
 let r = Rectangle()
 r.area()
 Rectangle.area()
+```
+
+---
+## <a name="TypeCasting"></a>Type Casting *<small><update 21.01.22><small>*
+
+- 타입캐스팅은 인스턴스의 타입을 확인하거나, 인스턴스의 타입을 슈퍼클래스 또는 서브클래스 타입처럼 다루기위해 사용
+
+```swift
+class Figure {
+   let name: String
+   
+   init(name: String) {
+      self.name = name
+   }
+   
+   func draw() {
+      print("draw \(name)")
+   }
+}
+
+class Triangle: Figure {
+   override func draw() {
+      super.draw()
+      print("🔺")
+   }
+}
+
+class Rectangle: Figure {
+   var width = 0.0
+   var height = 0.0
+   
+   override func draw() {
+      super.draw()
+      print("⬛️ \(width) x \(height)")
+   }
+}
+
+class Square: Rectangle {
+   
+}
+
+class Circle: Figure {
+   var radius = 0.0
+   
+   override func draw() {
+      super.draw()
+      print("🔴")
+   }
+}
+
+// Type Check Operator
+// type check는 Runtime에서 확인
+
+let num = 123
+
+num is Int
+num is Double
+num is String
+
+let t = Triangle(name: "Triangle")
+let r = Rectangle(name: "Rect")
+let s = Square(name: "Square")
+let c = Circle(name: "Circle")
+
+r is Rectangle
+r is Figure
+r is Square
+
+// Compile Time Cast
+var upcasted: Figure = s
+let nsstr = "str" as NSString
+upcasted = s as Figure
+
+// Runtime Cast
+upcasted as? Square // Conditional Cast
+upcasted as! Square // Forced Cast -> 느낌표는 최대한 사용 금지
+upcasted as? Rectangle
+upcasted as! Rectangle
+
+upcasted as? Circle // nil
+//upcasted as! Circle // crash
+
+if let c = upcasted as? Circle {
+    
+}
+
+let list = [t, r, s, c] // 가장 인접한 Super Class인 Figure Class 로 upcasting
+
+for item in list {
+    item.draw() // 다형성 Polymorphism -> 업캐스팅 되어있는 인스턴스를 통해서 메소드를 호출하더라도 실제 형식에서 오버라이딩한 메소드가 호출된다.
+    
+    if let c = item as? Circle {
+        c.radius
+    }
+}
 ```
