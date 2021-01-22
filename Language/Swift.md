@@ -52,6 +52,8 @@
 	 * [Lazy Stored Property](#LazyStoredProperty)
 	 * [Computed Property](#ComputedProperty)
 	 * [Property Observer](#PropertyObserver)
+- Inheritance and Ploymorphism
+	 * [Inheritance and Overriding](#InheritanceandOverriding)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1352,6 +1354,7 @@ case .onlineCamp:
 3. Structure는 Value Type 이며 Stack에 저장.
 4. Class는 Reference Type 이며 Heap에 저장.
 5. Structure는 Deinitializer, Inheritance, Reference Counting 이 불가하지만 Class 는 모두 가능
+6. 값 형식인 Struct에서 속성을 바꾸는 메소드를 구현할 때에는 반드시 mutating으로 선언해야함.
 >예시
 ```swift
 struct PersonStruct {
@@ -1561,4 +1564,103 @@ class Size {
 
 let s = Size()
 s.width = 123
+```
+
+---
+
+## <a name="InheritanceandOverriding"></a>Inheritance and Overriding *<small><update 21.01.22><small>*
+
+- class에서 상속을 통해 Super Class로부터 멤버를 상속
+- final class는 상속이 금지된 class이므로 상속 불가
+- Super Class로부터 상속한 멤버를 재정의 -> Overriding
+- Overriding이 가능한 대상은 methods, properties, subscripts, initializers
+- Super Class를 기반으로 하는 방법과 아예 새롭게 재정의 하는 방법이 있음.
+
+```swift
+class Figure {
+    var name = "UnKnown"
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Circle: Figure {
+    var radius = 0.0
+}
+
+let c = Circle(name: "Circle")
+c.radius
+c.name
+c.draw()
+
+final class Rectangle: Figure { // final class는 상속이 금지된 class
+    var widht = 0.0
+    var height = 0.0
+}
+
+// class Square: Rectange { //error
+//
+//}
+
+----
+// Overriding
+
+class Figure {
+    var name = "Unknown"
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Circle: Figure {
+    var radius = 0.0
+    
+    var diameter: Double {
+        return radius * 2
+    }
+    
+    //    override func draw() { // Super Class 를 무시하고 새롭게 구현
+    //        print("Overriding \(name)")
+    //    }
+    
+    override func draw() { // Super Class 를 기반으로 구현
+        super.draw()
+        print("Overriding \(name)")
+    }
+}
+
+let c = Circle(name: "Circle")
+c.draw()
+
+class Oval: Circle {
+    override var radius: Double {
+        willSet {
+            print(newValue)
+        }
+        didSet {
+            print(oldValue)
+        }
+    }
+    
+    override var diameter: Double { // 읽기 전용 프로퍼티 상속은 읽기만 가능, 프로퍼티 옵저버도 불가
+        get {
+            return super.diameter
+        }
+        set {
+            super.radius = newValue / 2
+        }
+    }
+}
+
+
 ```
