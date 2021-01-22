@@ -85,6 +85,7 @@
           <li>Inheritance and Ploymorphism</li>
           <ul>
             <li><a href="Language/Swift.md#InheritanceandOverriding" target="_blank">Inheritance and Overriding</a></li>
+            <li><a href="Language/Swift.md#Overloading" target="_blank">Overloading</a></li>
           </ul>
       </details>
     </li>
