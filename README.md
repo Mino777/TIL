@@ -86,6 +86,7 @@
           <ul>
             <li><a href="Language/Swift.md#InheritanceandOverriding" target="_blank">Inheritance and Overriding</a></li>
             <li><a href="Language/Swift.md#Overloading" target="_blank">Overloading</a></li>
+            <li><a href="Language/Swift.md#TypeCasting" target="_blank">Type Casting</a></li>
           </ul>
       </details>
     </li>
