@@ -82,6 +82,10 @@
             <li><a href="Language/Swift.md#ComputedProperty" target="_blank">Computed Property</a></li>
             <li><a href="Language/Swift.md#PropertyObserver" target="_blank">Property Observer</a></li>
           </ul>
+          <li>Inheritance and Ploymorphism</li>
+          <ul>
+            <li><a href="Language/Swift.md#InheritanceandOverriding" target="_blank">Inheritance and Overriding</a></li>
+          </ul>
       </details>
     </li>
   </ul>
