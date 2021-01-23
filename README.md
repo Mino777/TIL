@@ -88,6 +88,10 @@
             <li><a href="Language/Swift.md#Overloading" target="_blank">Overloading</a></li>
             <li><a href="Language/Swift.md#TypeCasting" target="_blank">Type Casting</a></li>
           </ul>
+          <li>Initializer and Deinitializer</li>
+          <ul>
+            <li><a href="Language/Swift.md#Initializer" target="_blank">Initializer</a></li>
+          </ul>
       </details>
     </li>
   </ul>
