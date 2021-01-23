@@ -56,6 +56,8 @@
 	 * [Inheritance and Overriding](#InheritanceandOverriding)
 	 * [Overloading](#Overloading)
 	 * [Type Casting](#TypeCasting)
+- Initializer and Deinitializer
+	 * [Initializer](#Initializer)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1819,4 +1821,48 @@ for item in list {
         c.radius
     }
 }
+```
+
+---
+
+## <a name="Initializer"></a>Initializer*<small><update 21.01.22><small>*
+
+```swift
+class Position {
+    var x = 0.0
+    var y: Double // 기본값이 없을경우 init 해줘야함
+    var z: Double? // 옵셔널은 기본값이 없을경우 기본으로 nil로 초기화
+    
+    init() {
+        y = 0.0
+    }
+    
+    // 평소에 init을 안해도 되는 부분은 Compiler에서 Default Initializer를 제공하기 때문.
+}
+
+let p = Position()
+
+class SizeObj {
+    var width = 0.0
+    var height = 0.0
+    
+    init(width: Double, height: Double) {
+        self.width = width
+        self.height = height
+    }
+    
+    convenience init(value: Double) {
+        self.init(width: value, height: value) // 이런식으로 다른 initializer를 호출하는것은 Initializer Delegation
+    }
+}
+
+struct SizeValue {
+    var width = 0.0
+    var height = 0.0
+}
+
+let s = SizeValue()
+SizeValue(width: 1.2, height: 3.4) // Memberwise Initializer
+// 구조체에서 직접 Initializer를 구현할경우 더이상 사용할 수 없음.
+// 그래서 Default Initializer 처럼 sturct는 Memberwise Initializer를 제공함
 ```
