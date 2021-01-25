@@ -91,6 +91,7 @@
           <li>Initializer and Deinitializer</li>
           <ul>
             <li><a href="Language/Swift.md#Initializer" target="_blank">Initializer</a></li>
+            <li><a href="Language/Swift.md#ClassInitializer" target="_blank">Class Initializer</a></li>
           </ul>
       </details>
     </li>
