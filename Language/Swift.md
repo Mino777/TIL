@@ -58,6 +58,7 @@
 	 * [Type Casting](#TypeCasting)
 - Initializer and Deinitializer
 	 * [Initializer](#Initializer)
+	 * [Class Initializer](#ClassInitializer)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1825,7 +1826,7 @@ for item in list {
 
 ---
 
-## <a name="Initializer"></a>Initializer*<small><update 21.01.22><small>*
+## <a name="Initializer"></a>Initializer *<small><update 21.01.22><small>*
 
 ```swift
 class Position {
@@ -1865,4 +1866,64 @@ let s = SizeValue()
 SizeValue(width: 1.2, height: 3.4) // Memberwise Initializer
 // 구조체에서 직접 Initializer를 구현할경우 더이상 사용할 수 없음.
 // 그래서 Default Initializer 처럼 sturct는 Memberwise Initializer를 제공함
+```
+
+---
+## <a name="ClassInitializer"></a>Class Initializer *<small><update 21.01.25><small>*
+- class에서 사용하는 Initializer는 지정 생성자와 간편 생성자로 나뉨. ( Designated Initializer, Convenience Initializer )
+- class의 메인 Initializer는 Designated Initializer. ( 클래스가 가진 모든 속성을 초기화 )
+- Convenience Initializer는 다양한 초기화 방법을 구현하기 위한 유틸리티 성격을 지님.
+
+```swift
+class Position {
+    var x: Double
+    var y: Double
+    // Designated Initializer
+    init(x: Double, y: Double) {
+        self.x = x
+        self.y = y
+    }
+    // Convenience Initializer
+    convenience init(x: Double) {
+        self.init(x: x, y: 0.0)
+    }
+}
+
+class Figure {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func draw() {
+        print("draw \(name)")
+    }
+    
+    convenience init() {
+        self.init(name: "UnKnown")
+    }
+}
+
+// initailizer inheritance
+class Rectangle: Figure {
+    var width: Double = 0.0
+    var height: Double = 0.0
+    
+    init(name: String, width: Double, height: Double) {
+        self.width = width
+        self.height = height
+        super.init(name: name)
+    }
+    
+    override init(name: String) {
+        width = 0
+        height = 0
+        super.init(name: name)
+    }
+    
+    convenience init() { // convenience는 오버라이딩이란 개념이 적용되지 않음.
+        self.init(name: "UnKnown")
+    }
+}
 ```
