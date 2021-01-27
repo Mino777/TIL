@@ -95,6 +95,7 @@
             <li><a href="Language/Swift.md#RequiredInitializer" target="_blank">Required Initializer</a></li>
             <li><a href="Language/Swift.md#InitializerDelegation" target="_blank">Initializer Delegation</a></li>
           </ul>
+          <li><a href="Language/Swift.md#Extension" target="_blank">Extension</a></li>
       </details>
     </li>
   </ul>
