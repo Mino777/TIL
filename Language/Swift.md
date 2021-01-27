@@ -60,6 +60,7 @@
 	 * [Initializer](#Initializer)
 	 * [Class Initializer](#ClassInitializer)
 	 * [Required Initializer](#RequiredInitializer)
+	 * [Initializer Delegation](#InitializerDelegation)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1965,4 +1966,71 @@ class Rectangle: Figure {
     }
     
 }
+```
+
+---
+
+## <a name="InitializerDelegation"></a>Initializer Delegation *<small><update 21.01.27><small>*
+
+- Initializer Delegation은 초기화 코드에서 중복을 최대한 제거하고, 모든 속성을 효율적으로 초기화하기 위해서 사용.
+- 값형식과 참조형식에서 서로 다른 규칙으로 구현
+- Initializer Delegation Rules
+1. designated 생성자는 반드시 슈퍼 클래스의 designated 생성자를 호출해야 한다.
+2. convenience 생성자는 반드시 같은 클래스의 다른 생성자를 호출 해야한다.
+3. Convenience 생성자를 호출 했을 때 최종적으로는 반드시 designated 생성자가 호출 되어야 한다.
+
+```swift
+struct Size {
+    var width: Double
+    var height: Double
+    
+    init(w: Double, h: Double) {
+        width = w
+        height = h
+    }
+    
+    init(value: Double) { // Initializer Delegation 첫번째 이니셜라이저에게 위임, 유지보수가 쉬워짐.
+        self.init(w: value, h: value)
+    }
+}
+
+class Figure {
+    let name: String
+    
+    // delegate across
+    init(name: String) { // designated
+        self.name = name
+    }
+    
+    convenience init() {
+        self.init(name: "unknown")
+    }
+}
+
+class Rectangle: Figure {
+    var width = 0.0
+    var height = 0.0
+    
+    //Rule1(Delegate Up)
+    init(n: String, w: Double, h: Double) {
+        width = w
+        height = h
+        super.init(name: n)
+    }
+    
+    convenience init(value: Double) {
+        self.init(n: "rect", w: value, h: value)
+    }
+}
+
+class Squre: Rectangle { //delegated up 불가
+    convenience init(value: Double) {
+        self.init(n: "squre", w: value, h: value)
+    }
+    
+    convenience init() {
+        self.init(value: 0.0)
+    }
+}
+
 ```
