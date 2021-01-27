@@ -61,6 +61,7 @@
 	 * [Class Initializer](#ClassInitializer)
 	 * [Required Initializer](#RequiredInitializer)
 	 * [Initializer Delegation](#InitializerDelegation)
+- [Extension](#Extension)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2032,5 +2033,219 @@ class Squre: Rectangle { //delegated up 불가
         self.init(value: 0.0)
     }
 }
+
+```
+
+---
+
+## <a name="Extension"></a>Extension *<small><update 21.01.27><small>*
+
+- 이름 그대로 형식을 확장하는데 사용
+- 확장 가능한 것 : Class / Structure / Enumeration / Protocol
+- 멤버를 추가하는 것은 가능 하지만, 기존 멤버를 오버라이딩 하는 것은 불가능(상속을 통해 서브클래싱 해야됨)
+
+#### Extension Syntax
+```swift
+struct Size {
+    var width = 0.0
+    var height = 0.0
+}
+
+extension Size {
+    var area: Double {
+        return width * height
+    }
+}
+ 
+let s = Size()
+s.width
+s.height
+s.area
+ 
+extension Size: Equatable {
+    //비교 연산
+    public static func == (lhs: Size, rhs: Size) -> Bool {
+        return lhs.width == rhs.width && lhs.height == rhs.height
+    }
+}
+```
+
+```swift
+// Adding Properties
+
+//Date 형식에 년도를 리턴하는 속성 추가
+extension Date {
+    var year: Int {
+        let cal = Calendar.current
+        return cal.component(.year, from: self)
+    }
+    var month: Int {
+        let cal = Calendar.current
+        return cal.component(.month, from: self)
+    }
+}
+ 
+//let today = Date()
+//today.year
+//today.month
+
+//Double 형식에 라디안/디그리 변환 속성 추가
+extension Double {
+    var radianValue: Double {
+        return (Double.pi * self) / 180.0
+    }
+ 
+    var degreeValue: Double {
+        return self * 180.0 / Double.pi
+    }
+}
+ 
+let dv = 45.0
+dv.radianValue
+dv.radianValue.degreeValue
+
+// Adding Methods
+
+//Double 형식에 화씨/섭씨 온도 변환 메소드 추가
+extension Double {
+    func toFahrenheit() -> Double {
+        return self * 9 / 5 + 32
+    }
+ 
+    func toCelsius() -> Double {
+        return (self - 32) * 5 / 9
+    }
+ 
+    static func converToFahrenheit(from celsius: Double) ->
+        Double {
+            return celsius.toFahrenheit()
+    }
+ 
+    static func converToCelsius(from fahrenheit: Double) ->
+        Double {
+            return fahrenheit.toCelsius()
+    }
+}
+ 
+let c = 30.0
+c.toFahrenheit() //화씨 변환
+ 
+Double.converToFahrenheit(from: 30.0)
+ 
+//Date 형식에 문자열 포멧팅 메소드 추가
+extension Date {
+    func toString(format: String = "yyyyMMdd") ->
+        String {
+            let privateFormatter = DateFormatter()
+            privateFormatter.dateFormat = format
+            return privateFormatter.string(from: self)
+    }
+}
+ 
+let today = Date()
+today.toString()
+ 
+today.toString(format: "MM/dd/yyyy")
+ 
+//String 형식에 랜덤 문자열 생성 메소드 추가
+//지정된 길이의 랜덤 문자열 생성을 스트링 형식에 추가
+extension String {
+    static func random(length: Int, characterIn chars:
+        String =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJZ1234567890") -> String {
+        var randomString = String()
+        randomString.reserveCapacity(length) //지정 길이만큼의 리소스 확보
+ 
+        for _ in 0 ..< length {
+            guard let char = chars.randomElement() else {
+                continue
+            }
+ 
+            randomString.append(char)
+        }
+ 
+        return randomString
+    }
+}
+ 
+String.random(length: 5)
+
+// Adding Initializer
+
+//Date 형식에 년,월,일로 초기화 하는 생성자 추가
+extension Date {
+    init?(year: Int, month: Int, day: Int) {
+        let cal = Calendar.current
+        var comp = DateComponents()
+        comp.year = year
+        comp.month = month
+        comp.day = day
+ 
+        guard let date = cal.date(from: comp) else {
+            return nil
+        }
+        self = date //셀프로 초기화
+    }
+}
+ 
+Date(year: 2014, month: 4, day: 16)
+ 
+ 
+//UIColor 클래스에 RGB 파라미터를 받는 생성자 추가
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        self.init(red: CGFloat(red) / 255, green: CGFloat(green) / 255,
+                  blue: CGFloat(blue) / 255, alpha: 1.0)
+    }
+}
+ 
+UIColor(red: 0, green: 0, blue: 255)
+ 
+struct Size2 {
+    var width = 0.0
+    var height = 0.0
+ 
+}
+
+extension Size2 {
+    // extenstion 으로 초기화 해주면 기본 생성자와 함께 사용가능하다 
+    init(value: Double) {
+        width = value
+        height = value
+    }
+}
+Size2()
+Size2(width: 12, height: 34)
+
+// Adding Subscript
+
+//String 형식에 정수 인덱스를 처리하는 서브스크립트 추가
+extension String {
+    subscript(idx: Int) -> String? {
+        guard (0 ..< count).contains(idx) else {
+            return nil
+        }
+ 
+        let target = index(startIndex, offsetBy: idx)
+        return String(self[target])
+    }
+}
+ 
+let str = "Swift"
+str[1]
+str[100]
+ 
+//Date 형식에 컴포넌트를 리턴하는 서브스트립트 추가
+extension Date {
+    subscript(component: Calendar.Component) -> Int? {
+        let cal = Calendar.current
+        return cal.component(component, from: self)
+    }
+}
+ 
+let today1 = Date()
+today1[.year]
+today1[.month]
+today1[.day]
 
 ```
