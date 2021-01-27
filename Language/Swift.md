@@ -59,6 +59,7 @@
 - Initializer and Deinitializer
 	 * [Initializer](#Initializer)
 	 * [Class Initializer](#ClassInitializer)
+	 * [Required Initializer](#RequiredInitializer)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -1925,5 +1926,43 @@ class Rectangle: Figure {
     convenience init() { // convenience는 오버라이딩이란 개념이 적용되지 않음.
         self.init(name: "UnKnown")
     }
+}
+```
+---
+
+## <a name="RequiredInitializer"></a>Required Initializer *<small><update 21.01.25><small>*
+
+- 서브클래스에서 반드시 동일한 이니셜라이저를 구현 하도록 해주는 생성자.
+
+```swift
+class Figure {
+    var name: String
+    
+    required init(name: String) {
+        self.name = name
+    }
+    
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Rectangle: Figure {
+    var width = 0.0
+    var height = 0.0
+    
+    init() {
+        width = 0.0
+        height = 0.0
+        super.init(name: "unknown")
+    }
+    
+    required init(name: String) {
+        width = 0.0
+        height = 0.0
+        super.init(name: name)
+        fatalError("init(name:) has not been implemented")
+    }
+    
 }
 ```
