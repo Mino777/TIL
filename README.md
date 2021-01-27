@@ -93,6 +93,7 @@
             <li><a href="Language/Swift.md#Initializer" target="_blank">Initializer</a></li>
             <li><a href="Language/Swift.md#ClassInitializer" target="_blank">Class Initializer</a></li>
             <li><a href="Language/Swift.md#RequiredInitializer" target="_blank">Required Initializer</a></li>
+            <li><a href="Language/Swift.md#InitializerDelegation" target="_blank">Initializer Delegation</a></li>
           </ul>
       </details>
     </li>
