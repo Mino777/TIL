@@ -66,6 +66,7 @@
 	 * [Protocol Syntax](#ProtocolSyntax)
 	 * [Protocol Requirements](#ProtocolRequirements)
 	 * [Equatable](#Equatable)
+	 * [Hashable](#Hashable)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2516,4 +2517,62 @@ let b = Person(name: "Paul", age: 27)
 
 a == b
 a != b
+```
+---
+
+## <a name="Hashable"></a>Hashable *<small><update 21.01.29><small>*
+
+- 딕셔너리 키 타입과 셋 요소 타입은 반드시 Hashable 프로토콜을 채용해야한다.
+- Hash 장점: 값의 유일성을 보장하고 검색 속도가 빠름.
+- 열거형 선언에 연관값이 포함되어 있지 않다면 자동으로 채용
+
+```swift
+enum ServiceType {
+   case onlineCourse
+   case offlineCamp
+}
+
+let types: [ServiceType: String]
+let typeSet: Set = [ServiceType.onlineCourse]
+
+
+enum VideoInterface: Hashable {
+   case dvi(width: Int, height: Int)
+   case hdmi(width: Int, height: Int, version: Double, audioEnabled: Bool)
+//   case displayPort(size: CGSize)
+}
+
+let interfaces: [VideoInterface: String]
+let interfaceSEt: Set = [VideoInterface.dvi(width: 1024, height: 768)]
+
+// Hashable for Structures
+struct Person: Hashable {
+    let name: String
+    let age: Int
+}
+
+let set: Set = [Person(name: "Tom", age: 12)]
+
+// Hashable for Classes
+class Person { // Hashable 의 경우 Equatable을 상속하고 있기 때문에 Equatable과 동일하게 따로 구현 해줘야함.
+    let name: String
+    let age: Int
+    
+    init() {
+        name = "Mino"
+        age = 0
+    }
+}
+
+extension Person: Hashable, Equatable {
+    static func == (lhs: Person, rhs: Person) -> Bool {
+        return lhs.name == rhs.name && lhs.age == rhs.age
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(age)
+    }
+}
+
 ```
