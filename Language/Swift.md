@@ -62,6 +62,8 @@
 	 * [Required Initializer](#RequiredInitializer)
 	 * [Initializer Delegation](#InitializerDelegation)
 - [Extension](#Extension)
+- Protocol
+	 * [Protocol Syntax](#ProtocolSyntax)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2248,4 +2250,44 @@ today1[.year]
 today1[.month]
 today1[.day]
 
+```
+
+## <a name="ProtocolSyntax"></a>Protocol Syntax *<small><update 21.01.28><small>*
+
+프로토콜(Protocol)
+- 인터페이스
+- 최소한으로 가져아 할 속성이나 메서드를 정의.
+- 구현은 하지 않음. 정의만!
+- 공통적으로 제공하는 멤버 목록.
+- 구현해야하는 멤버가 선언되어있음.
+
+```swift
+// Defining Protocols
+protocol Something {
+    func doSomething()
+}
+
+// Adopting Protocols
+struct Size: Something {
+    func doSomething() {
+        print(#function)
+    }
+    
+}
+
+// Class-Only Protocols
+protocol SomethingObject: AnyObject, Something {
+    
+}
+
+//struct Value: SomethingObject {
+    //불가
+//}
+
+class Object: SomethingObject {
+    func doSomething() {
+        print(#function)
+    }
+    
+}
 ```
