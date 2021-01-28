@@ -64,6 +64,7 @@
 - [Extension](#Extension)
 - Protocol
 	 * [Protocol Syntax](#ProtocolSyntax)
+	 * [Protocol Requirements](#ProtocolRequirements)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2290,4 +2291,160 @@ class Object: SomethingObject {
     }
     
 }
+```
+---
+## <a name="ProtocolRequirements"></a>Protocol Requirements *<small><update 21.01.28><small>*
+
+```swift
+// Property Requirements
+// 프로토콜에서 속성은 무조건 var 키워드로!
+
+protocol Figure {
+    static var name: String { get set }
+    var age: Int { get }
+}
+
+struct Rectangle: Figure {
+    static var name: String = "Rect"
+    var age: Int
+}
+
+class Circle: Figure {
+    var age: Int = 0
+
+    class var name: String {
+        get {
+            return "Circle"
+        }
+        set {
+
+        }
+    }
+}
+
+// Method Requirements
+// Method Head 부분만 선언.
+
+protocol Resettable {
+    mutating func reset()
+    static func reset()
+}
+
+class Size: Resettable {
+    var width = 0.0
+    var height = 0.0
+
+    func reset() {
+        width = 0.0
+        height = 0.0
+    }
+
+    static func reset() {
+
+    }
+}
+
+struct ValueSize: Resettable {
+    var width = 0.0
+    var height = 0.0
+
+    mutating func reset() { // 값 형식의 인스턴스 메소드에서 속성값을 바꾸러면 mutatitng keyword 필요
+        width = 0.0
+        height = 0.0
+    }
+
+    static func reset() {
+
+    }
+}
+
+// Initializer Requirements
+// method와 마찬가지로 바디 생략
+
+protocol Figure {
+    var name: String { get }
+    init(name: String)
+}
+
+struct Rectangle: Figure {
+    var name: String // Memberwise 생성자로 요구사항 충족
+}
+
+class Circle: Figure {
+    var name: String
+
+    required init(name: String) {
+        self.name = name
+    }
+}
+
+final class Triangle: Figure { // final class 는 더이상 상속을 고려하지 않아도 되기 때문에 required init 불필요
+    var name: String
+
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Oval: Circle {
+    var prop: Int
+
+    init() {
+        prop = 0
+        super.init(name: "Oval")
+    }
+
+    required convenience init(name: String) {
+        self.init()
+    }
+}
+
+protocol Grayscale {
+    init?(white: Double)
+}
+
+struct Color: Grayscale {
+    init(white: Double) {
+
+    }
+}
+
+// Subscript Requirements
+protocol List {
+    subscript(idx: Int) -> Int { get }
+}
+
+struct DataStore: List {
+    subscript(idx: Int) -> Int {
+        get { // get 요구사항만 충족시켜도 가능.
+            return 0
+        }
+        set {
+
+        }
+    }
+}
+
+// Optional Requirements
+// Optional 형식을 지칭하는것이 아닌, 단어 그대로 선택형 이라는 뜻
+// class 에서만 채용이 가능함. -> AnyObject protocol이 자동으로 상속되기 떄문.
+
+@objc protocol Drawable {
+    @objc optional var strokeWidth: Double { get set }
+    @objc optional var strokeColor: UIColor { get set }
+    func draw()
+    @objc optional func reset()
+}
+
+class Rectangle: Drawable {
+    func draw() {
+        
+    }
+}
+
+let r: Drawable = Rectangle()
+r.draw()
+r.strokeWidth
+r.strokeColor
+r.reset?()
 ```
