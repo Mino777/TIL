@@ -65,6 +65,7 @@
 - Protocol
 	 * [Protocol Syntax](#ProtocolSyntax)
 	 * [Protocol Requirements](#ProtocolRequirements)
+	 * [Equatable](#Equatable)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2447,4 +2448,72 @@ r.draw()
 r.strokeWidth
 r.strokeColor
 r.reset?()
+```
+
+---
+
+## <a name="Equatable"></a>Equatable *<small><update 21.01.28><small>*
+
+- 값의 동일성을 비교할 수 있는 타입이라면, 반드시 구현해야하는 프로토콜
+- int, double, string 같은 타입들은 이미 Equatable 채용 따라서 ==, != 연산자 사용이 가능
+- 연관값이 선언되지 않은 열거형은 Equatable 구현이 자동으로 추가되고, 연관값을 가지고 있고 모든 연관값의 형식이 Equatable을 구현한 형식인 경우에도 자동으로 추가.
+
+```swift
+enum Gender {
+    case female
+    case male
+}
+
+Gender.female == Gender.male
+
+struct MySize {
+    let width: Double
+    let height: Double
+}
+
+enum VideoInterface: Equatable {
+    case dvi(width: Int, height: Int)
+    case hdmi(width: Int, height: Int, version: Double, audioEnabled: Bool)
+    case displayPort(size: CGSize)
+}
+
+let a = VideoInterface.hdmi(width: 2560, height: 1440, version: 2.0, audioEnabled: true)
+let b = VideoInterface.displayPort(size: CGSize(width: 3840, height: 2160))
+
+a == b
+
+// Equatable for Structures
+struct Person: Equatable {
+    let name: String
+    let age: Int
+}
+
+let a = Person(name: "Steve", age: 50)
+let b = Person(name: "Paul", age: 27)
+
+a == b
+
+// Comparable for Classes
+class Person { // class는 자동으로 추가해주지 않음.
+    
+    let name: String
+    let age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+extension Person: Equatable {
+    static func == (lhs: Person, rhs: Person) -> Bool {
+        return lhs.name == rhs.name && lhs.age == rhs.age
+    }
+}
+
+let a = Person(name: "Steve", age: 50)
+let b = Person(name: "Paul", age: 27)
+
+a == b
+a != b
 ```
