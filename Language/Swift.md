@@ -67,6 +67,7 @@
 	 * [Protocol Requirements](#ProtocolRequirements)
 	 * [Equatable](#Equatable)
 	 * [Hashable](#Hashable)
+	 * [Comparable](#Comparable)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2575,4 +2576,30 @@ extension Person: Hashable, Equatable {
     }
 }
 
+```
+---
+
+## <a name="Comparable"></a>Comparable *<small><update 21.01.29><small>*
+
+- 값의 크기와 순서를 비교해야 하는 타입에서 필수로 구현해야하는 프로토콜
+- ==, != --> Equatable / >, >=, <, <= --> Comparable
+
+```swift
+enum Weekday: Int {
+   case sunday
+   case monday
+   case tuesday
+   case wednesday
+   case thursday
+   case friday
+   case saturday
+}
+
+extension Weekday: Comparable {
+    static func < (lhs: Weekday, rhs: Weekday) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+}
+
+Weekday.sunday < Weekday.monday
 ```
