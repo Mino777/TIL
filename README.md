@@ -101,6 +101,7 @@
             <li><a href="Language/Swift.md#ProtocolSyntax" target="_blank">Protocol Syntax</a></li>
             <li><a href="Language/Swift.md#ProtocolRequirements" target="_blank">Protocol Requirements</a></li>
             <li><a href="Language/Swift.md#Equatable" target="_blank">Equatable</a></li>
+            <li><a href="Language/Swift.md#Hashable" target="_blank">Hashable</a></li>
           </ul>
       </details>
     </li>
