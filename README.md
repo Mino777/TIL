@@ -96,6 +96,10 @@
             <li><a href="Language/Swift.md#InitializerDelegation" target="_blank">Initializer Delegation</a></li>
           </ul>
           <li><a href="Language/Swift.md#Extension" target="_blank">Extension</a></li>
+          <li>Protocol</li>
+          <ul>
+            <li><a href="Language/Swift.md#ProtocolSyntax" target="_blank">Protocol Syntax</a></li>
+          </ul>
       </details>
     </li>
   </ul>
