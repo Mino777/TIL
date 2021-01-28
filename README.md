@@ -99,6 +99,7 @@
           <li>Protocol</li>
           <ul>
             <li><a href="Language/Swift.md#ProtocolSyntax" target="_blank">Protocol Syntax</a></li>
+            <li><a href="Language/Swift.md#ProtocolRequirements" target="_blank">Protocol Requirements</a></li>
           </ul>
       </details>
     </li>
