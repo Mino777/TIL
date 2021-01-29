@@ -107,6 +107,7 @@
           <li>Generic</li>
           <ul>
             <li><a href="Language/Swift.md#GenericFunction" target="_blank">Generic Function</a></li>
+            <li><a href="Language/Swift.md#GenericTypes" target="_blank">Generic Types</a></li>
           </ul>
       </details>
     </li>
