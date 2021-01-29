@@ -74,6 +74,7 @@
 	 * [Associated Types](#AssociatedTypes)
 - Error Handling
     * [Error Handling](#ErrorHandling)
+    * [defer Statements](#deferStatements)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2840,3 +2841,50 @@ func multiHandleError() throws {
     }
 }
 ```
+---
+## <a name="deferStatements"></a>defer Statements *<small><update 21.01.29><small>*
+
+- Scope 종료 시점으로 코드의 실행을 연기
+- 주로 코드에 사용했던 자원을 정리할 때 활용
+
+```swift
+func processFile(path: String) {
+    print("1")
+    let file = FileHandle(forReadingAtPath: path)
+    
+    defer { // 함수가 종료될때 까지 연기됨. 항상 함수가 종료되는 시점에 실행
+        print("2")
+        file?.closeFile()
+    }
+    
+    if path.hasSuffix(".jpg") {
+        print("3")
+        return
+    }
+    
+    defer {
+        print("5")
+    }
+    
+    print("4")
+}
+
+processFile(path: "file.jpg")
+
+func testDefer() {
+    defer {
+        print(1)
+    }
+    
+    defer {
+        print(2)
+    }
+    
+    defer { // 가장 마지막에 예약된 블록이 먼저 실행.
+        print(3)
+    }
+}
+
+testDefer() // 3 2 1
+```
+
