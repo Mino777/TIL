@@ -71,6 +71,7 @@
 - Generics
 	 * [Generic Function](#GenericFunction)
 	 * [Generic Types](#GenericTypes)
+	 * [Associated Types](#AssociatedTypes)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2726,6 +2727,41 @@ struct Stack<T> {
     }
     mutating func pop() -> T {
         return items.removeLast()
+    }
+}
+
+```
+
+## <a name="AssociatedTypes"></a>Associated Types *<small><update 21.01.29><small>*
+
+- 제네릭 프로토콜을 선언할때는 Associated Type이 필요함.
+
+```swift
+protocol QueueCompatible {
+    associatedtype Element: Equatable // 프로토콜에서 사용하는 placeholder 형식이며, 요구사항을 채용하는 것이 아님.
+    func enqueue(value: Element)
+    func dequeue() -> Element?
+}
+
+class IntegerQueue: QueueCompatible {
+    typealias Element = Int
+    
+    func enqueue(value: Int) {
+        
+    }
+    
+    func dequeue() -> Int? {
+        return 0
+    }
+}
+
+class DoubleQueue: QueueCompatible { // 실제 사용하는 타입으로 연관 타입을 추론할 수 있기 때문에 typealias를 생략할 수 있음.
+    func enqueue(value: Double) {
+        
+    }
+    
+    func dequeue() -> Double? {
+        return 0
     }
 }
 
