@@ -70,6 +70,7 @@
 	 * [Comparable](#Comparable)
 - Generics
 	 * [Generic Function](#GenericFunction)
+	 * [Generic Types](#GenericTypes)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2683,5 +2684,49 @@ var dS = "Programming"
 swapValue(lhs: &cS, rhs: &dS)
 cS
 dS
+
+```
+
+## <a name="GenericTypes"></a>Generic Types *<small><update 21.01.29><small>*
+
+- 제네릭 함수를 추가하면 Swift는 자신만의 제네릭 타입을 정의할 수 있음.
+- 사용자 클래스, 구조체, 열거형은 어떤 타입으로도 작업할 수 있음. 유사하게는 배열과 딕셔너리가 있음.
+
+```swift
+struct Color<T> {
+    var red: T
+    var green: T
+    var blue: T
+}
+
+var c = Color(red: 128, green: 80, blue: 200)
+
+let d: Color<Double> = Color(red: 128.0, green: 80.0, blue: 200.0)
+
+let arr: Array<Int>
+
+let dict: Dictionary<String, Double>
+
+extension Color { // extensions 에서 type parameter를 변경하는건 불가능. <T> -> compile error
+    func getComponents() -> [T] {
+        return [red, green, blue]
+    }
+}
+
+let intColor = Color(red: 1, green: 2, blue: 3)
+intColor.getComponents()
+
+let dblColor = Color(red: 1.0, green: 2.0, blue: 3.0)
+dblColor.getComponents()
+
+struct Stack<T> {
+    var items = [T]()
+    mutating func push(item: T) {
+        items.append(item)
+    }
+    mutating func pop() -> T {
+        return items.removeLast()
+    }
+}
 
 ```
