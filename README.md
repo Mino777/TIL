@@ -104,6 +104,10 @@
             <li><a href="Language/Swift.md#Hashable" target="_blank">Hashable</a></li>
             <li><a href="Language/Swift.md#Comparable" target="_blank">Comparable</a></li>
           </ul>
+          <li>Generic</li>
+          <ul>
+            <li><a href="Language/Swift.md#GenericFunction" target="_blank">Generic Function</a></li>
+          </ul>
       </details>
     </li>
   </ul>
