@@ -68,6 +68,8 @@
 	 * [Equatable](#Equatable)
 	 * [Hashable](#Hashable)
 	 * [Comparable](#Comparable)
+- Generics
+	 * [Generic Function](#GenericFunction)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2602,4 +2604,84 @@ extension Weekday: Comparable {
 }
 
 Weekday.sunday < Weekday.monday
+```
+
+## <a name="GenericFunction"></a>Generic Function *<small><update 21.01.29><small>*
+
+- 제네릭 함수는 형식에 관계없이 하나의 구현으로 모든 자료형을 처리.
+- 제네릭을 사용하면 형식에 의존하지 않는 범용 코드를 작성할 수 있고, 코드의 재사용성과 유지보수가 편해진다는 장점이 있음.
+
+```swift
+func swapInteger(lhs: inout Int, rhs: inout Int) {
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+}
+
+var a = 10
+var b = 20
+
+swapInteger(lhs: &a, rhs: &b)
+a
+b
+
+
+func swapInteger16(lhs: inout Int16, rhs: inout Int16) {
+    // ...
+}
+
+func swapInteger64(lhs: inout Int64, rhs: inout Int64) {
+    // ...
+}
+
+func swapDouble(lhs: inout Double, rhs: inout Double) {
+    // ...
+}
+
+func swapValue<T: Equatable>(lhs: inout T, rhs: inout T) { // T -> Type Parameter
+    if lhs == rhs {
+        return
+    }
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+    
+    print("first func")
+}
+
+a = 1
+b = 2
+swapValue(lhs: &a, rhs: &b)
+a
+b
+
+var c = 1.2
+var d = 3.4
+swapValue(lhs: &c, rhs: &d)
+c
+d
+
+func swapValue(lhs: inout String, rhs: inout String) {
+    print("")
+    
+    if lhs.caseInsensitiveCompare(rhs) == .orderedSame {
+        return
+    }
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+    
+    print("second func")
+}
+
+var aS = 1
+var bS = 2
+swapValue(lhs: &aS, rhs: &bS)
+
+var cS = "Swift"
+var dS = "Programming"
+swapValue(lhs: &cS, rhs: &dS)
+cS
+dS
+
 ```
