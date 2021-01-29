@@ -110,6 +110,10 @@
             <li><a href="Language/Swift.md#GenericTypes" target="_blank">Generic Types</a></li>
             <li><a href="Language/Swift.md#AssociatedTypes" target="_blank">Associated Types</a></li>
           </ul>
+          <li>Error Handling</li>
+          <ul>
+            <li><a href="Language/Swift.md#ErrorHandling" target="_blank">Error Handling</a></li>
+          </ul>
       </details>
     </li>
   </ul>
