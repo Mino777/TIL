@@ -72,6 +72,8 @@
 	 * [Generic Function](#GenericFunction)
 	 * [Generic Types](#GenericTypes)
 	 * [Associated Types](#AssociatedTypes)
+- Error Handling
+    * [Error Handling](#ErrorHandling)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2765,4 +2767,76 @@ class DoubleQueue: QueueCompatible { // 실제 사용하는 타입으로 연관 
     }
 }
 
+```
+
+---
+
+## <a name="ErrorHandling"></a>Error Handling *<small><update 21.01.29><small>*
+
+- 프로그램 내에서 에러가 발생한 상황에 대해 대응하고 이를 복구하는 과정
+- swift에서는 런타임에 에러가 발생한 경우 이를 처리하기 위한 발생(Throwing), 감지(Catching), 전파(propagating), 조작(manipulating) 을 지원하는 일급 클래스를 제공.
+
+```swift
+enum DataParsingError: Error {
+    case invalidType
+    case invalidField
+    case missingRequiredField(String)
+}
+// Throw
+func parsing(data: [String: Any]) throws {
+    guard let _ = data["name"] else {
+        throw DataParsingError.missingRequiredField("name")
+    }
+    
+    guard let _ = data["age"] as? Int else {
+        throw DataParsingError.invalidType
+    }
+}
+
+// try Statements
+try? parsing(data: [:])
+```
+#### do-catch Statements
+```swift
+func handleError() throws {
+    do {
+        try parsing(data: ["name":""])
+    } catch DataParsingError.invalidType {
+        print("invalid Type Error")
+    } catch {
+        print("handle error")
+    }
+}
+
+try? handleError()
+
+func handleErrors() throws {
+    do {
+        try parsing(data: ["name" : ""])
+    } catch { // 패턴이 없는 catch 블록
+        if let error = error as? DataParsingError {
+            switch error {
+            case .invalidType:
+                print("invalid type")
+            default:
+                print("handle error")
+            }
+        }
+    }
+}
+
+try? handleErrors()
+```
+#### Multi-pattern Catch Clauses
+- Swift 5.3부터 도입. 캐치블럭이 두개이상의 에러를 동시에 매칭할 수 있도록 개선되었음.
+```swift
+func multiHandleError() throws {
+    do {
+        try parsing(data: ["name":""])
+    } catch DataParsingError.invalidType, DataParsingError.invalidField { // 이런식으로 동시에 매칭이 가능
+        print("invalid Type Error")
+    } catch {
+        print("handle error")
+    }
+}
 ```
