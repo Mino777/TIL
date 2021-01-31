@@ -75,6 +75,9 @@
 - Error Handling
     * [Error Handling](#ErrorHandling)
     * [defer Statements](#deferStatements)
+    * [Result Type](#ResultType)
+ - Selector, Keypath
+	 * [Selector](#Selector)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2887,4 +2890,60 @@ func testDefer() {
 
 testDefer() // 3 2 1
 ```
+---
 
+## <a name="Selector"></a>Selector *<small><update 21.01.31><small>*
+
+ - Selector는 UIKit에서 메소드를 지칭하거나, 속성의 게터나 세터를 지칭할 때 활용. ( 지칭 => 메소드 호출이 아니라 메소드를 가리키는 특정 인스턴스를 얻는다는 뜻. )
+ - 코드를 통해 버튼과 메소드를 연결하거나 제스쳐와 메소드를 연결할때 사용
+ - UIKit은 objective-c로 개발되었고, objective-c는 function type을 제공하지 않음.
+
+```swift
+class Figure {
+    @objc let color: UIColor = .blue
+
+    @objc func draw() { // @objc 코드는 struct에서 사용 불가
+      print("draw something")
+   }
+}
+
+let selector = #selector(Figure.draw)
+
+let colorSelector = #selector(getter: Figure.color)
+```
+
+#### 실제 사용
+```swift
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var numberLabel: UILabel!
+    
+    @objc func reset() {
+        numberLabel.text = "0"
+    }
+    
+    @objc func update(_ sender: Any) {
+        let rnd = Int.random(in: 1...1000)
+        numberLabel.text = "\(rnd)"
+    }
+    
+    lazy var updateBtn: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Update", for: .normal)
+        btn.frame = CGRect(x: 0.0, y: self.view.frame.height - 100, width: view.frame.width, height: 60.0)
+        return btn
+    }()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(updateBtn)
+        
+        updateBtn.addTarget(self, action: #selector(ViewController.update), for: .touchUpInside)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
+    }
+    
+}
+```
