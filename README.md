@@ -115,6 +115,10 @@
             <li><a href="Language/Swift.md#ErrorHandling" target="_blank">Error Handling</a></li>
             <li><a href="Language/Swift.md#deferStatements" target="_blank">defer Statements</a></li>
           </ul>
+          <li>Selector, Keypath</li>
+          <ul>
+            <li><a href="Language/Swift.md#Selector" target="_blank">Selector</a></li>
+          </ul>
       </details>
     </li>
   </ul>
