@@ -78,6 +78,7 @@
     * [Result Type](#ResultType)
  - Selector, Keypath
 	 * [Selector](#Selector)
+	 * [Keypath](#Keypath)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -2946,4 +2947,59 @@ class ViewController: UIViewController {
     }
     
 }
+```
+
+---
+
+## <a name="Keypath"></a>Keypath *<small><update 21.01.31><small>*
+
+ - Key Value Coding과 Key Value Observing의 근간을 이루는 개념
+ - a.b.c 처럼 하나 이상의 키가 점으로 이루어진 형태. a.b.c의 경우 c라는 속성에 접근하는 Keypath
+ - String으로 사용할 수 있으나, 오타와 같은 안정성 리스크를 줄이기위해 Keypath String Expression, Keypath Expression을 사용
+ - Keypath String Expression의 경우 타입캐스팅이 필요한데, 타입캐스팅 과정에서 에러가 날 수 있기 때문에 Keypath Expression보다 불안정함.
+
+```swift
+// Keypath String Expression
+class Person: NSObject { // Keypath String Expression으로 속성에 접근하려면 NSObject, @objc가 필요 -> struct에선 불가
+   @objc let name: String = "Jane Doe"
+   @objc var age: Int = 0
+}
+
+let p = Person()
+
+p.value(forKey: "name") // 단순 String으로 접근
+
+var keypath = #keyPath(Person.name) // Keypath String Expression
+p.value(forKey: keypath)
+p.value(forKeyPath: keypath)
+
+// Keypath Expression
+struct Person2 {
+   let name: String = "Jane Doe"
+   var age: Int = 0
+}
+
+var p2 = Person2()
+
+let keyPathToName = \Person2.name // KeyPath - 읽기전용
+let keyPathToAge = \Person2.age // WritableKeyPath - 변경가능
+
+let naveValue = p2[keyPath: keyPathToName]
+let ageValue = p2[keyPath: keyPathToAge]
+p2[keyPath: keyPathToAge] = 1
+
+var keyPathToLength = \Person2.name.count
+p2[keyPath: keyPathToLength]
+
+keyPathToLength = keyPathToName.appending(path: \.count) // Keypath 확장 가능
+p2[keyPath: keyPathToLength]
+
+// Keypath Types
+/*
+ class AnyKeyPath
+ class PartialKeyPath<Root>: AnyKeyPath
+ class KeyPath<Root, Value>: PartialKeyPath<Root>
+ class WritableKeyPath<Root, Value>: KeyPath<Root, Value>
+ class ReferenceWritableKeyPath<Root, Value>: WritableKeyPath<Root, Value>
+ */
 ```
