@@ -118,6 +118,7 @@
           <li>Selector, Keypath</li>
           <ul>
             <li><a href="Language/Swift.md#Selector" target="_blank">Selector</a></li>
+            <li><a href="Language/Swift.md#Keypath" target="_blank">Keypath</a></li>
           </ul>
       </details>
     </li>
