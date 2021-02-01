@@ -120,6 +120,11 @@
             <li><a href="Language/Swift.md#Selector" target="_blank">Selector</a></li>
             <li><a href="Language/Swift.md#Keypath" target="_blank">Keypath</a></li>
           </ul>
+          <li>Memory, Value Type & Reference Type</li>
+          <ul>
+            <li><a href="Language/Swift.md#ValueTypevsReferenceType" target="_blank">Value Type vs Reference Type</a></li>
+          </ul>
+          <li><a href="Language/Swift.md#Metatype" target="_blank">Metatype</a></li>
       </details>
     </li>
   </ul>
