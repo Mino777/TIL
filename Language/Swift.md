@@ -82,6 +82,7 @@
  - Memory, Value Type & Reference Type
 	 * [Value Type vs Reference Type](#ValueTypevsReferenceType)
 	 * [ARC](#ARC)
+	 *  [Strong Reference Cycle](#StrongReferenceCycle)
 - [Metatype](#Metatype)
 ---
 > 참고
@@ -3084,6 +3085,113 @@ person3 = person1 // 현재 Person Instance의 참조 카운팅은 3
 person1 = nil
 person2 = nil // nil을 저장하는것은 소유권을 포기하는 것과 같음. 참조 카운팅은 1
 person3 = nil // 참조 카운팅이 0이 되면서 제거되고, 소멸자가 호출.
+```
+---
+
+## <a name="StrongReferenceCycle"></a>Strong Reference Cycle *<small><update 21.02.01><small>*
+- Strong Reference Cycle이란 변수와 인스턴스간의 레퍼런스는 사라졌지만, 각 인스턴스간의 참조가 여전히 남아있어서 참조 카운트가 0이 될 수 없어 해당 인스턴스에 접근할 방법이 없어져 메모리 누수가 발생하는 상황.
+- ARC는 메모리 관리를 대신 처리해주지만, 참조 싸이클까지 자동으로 처리하지 못함.
+- 따라서 Weak Reference 와 Unowned Reference를 통해 해결. -> 두 방식 모두 인스턴스 사이에 강한 참조를 제거하는 방식으로 문제를 해결.
+- Weak Reference 와 Unowned Reference는 강한 참조와 달리 참조 카운트를 증가시키거나 감소시키지 않음. 인스턴스에 접근 할 수는 있지만 인스턴스가 사라지지 않도록 유지하는것은 불가.
+- Weak Reference는 인스턴스를 참조하지만, 소유하지는 않음. 이런 특징으로 소유자에 비해서 짧은 생명주기를 가진 인스턴스를 참조할 때 주로 사용
+- Unowned Reference는 약한 참조와 동일한 방식이지만 옵셔널 방식이 아님. 따라서 nil로 초기화 되지 않음. 소유자와 생명주기가 같거나 더 긴 인스턴스를 참조할 때 주로 사용
+
+```swift
+// Strong Reference Cycle
+class Person {
+    var name = "John Doe"
+    var car: Car?
+    
+    deinit {
+        print("person deinit")
+    }
+}
+
+class Car {
+    var model: String
+    var lessee: Person?
+    
+    init(model: String) {
+        self.model = model
+    }
+    
+    deinit {
+        print("car deinit")
+    }
+}
+
+var person: Person? = Person()
+var rentedCar: Car? = Car(model: "Porsche") // 참조 카운트 1
+
+person?.car = rentedCar
+rentedCar?.lessee = person // 참조 카운트 2
+
+person = nil
+rentedCar = nil // 참조 카운트 1 여전히 참조가 남아있음. 메모리 누수 발생.
+
+// Weak Reference
+class Person {
+    var name = "John Doe"
+    var car: Car?
+    
+    deinit {
+        print("person deinit")
+    }
+}
+
+class Car {
+    var model: String
+    weak var lessee: Person?
+    
+    init(model: String) {
+        self.model = model
+    }
+    
+    deinit {
+        print("car deinit")
+    }
+}
+
+var person: Person? = Person()
+var rentedCar: Car? = Car(model: "Porsche")
+
+person?.car = rentedCar
+rentedCar?.lessee = person // person 인스턴스를 소유하지않고 참조 카운트가 증가하지 않음.
+
+person = nil // 참조 카운트 0 Strong Reference Cycle 제거 -> Person 소멸자 호출
+rentedCar = nil // 참조 카운트 0 Strong Reference Cycle 제거 -> Car 소멸자 호출
+
+// Unowned Reference
+class Person {
+    var name = "John Doe"
+    var car: Car?
+    
+    deinit {
+        print("person deinit")
+    }
+}
+
+class Car {
+    var model: String
+    unowned var lessee: Person?
+    
+    init(model: String, lessee: Person) {
+        self.model = model
+        self.lessee = lessee
+    }
+    
+    deinit {
+        print("car deinit")
+    }
+}
+
+var person: Person? = Person()
+var rentedCar: Car? = Car(model: "Porsche", lessee: person!)
+
+person?.car = rentedCar
+
+person = nil
+rentedCar = nil
 ```
 
 
