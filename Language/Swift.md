@@ -79,6 +79,9 @@
  - Selector, Keypath
 	 * [Selector](#Selector)
 	 * [Keypath](#Keypath)
+ - Memory, Value Type & Reference Type
+	 * [Value Type vs Reference Type](#ValueTypevsReferenceType)
+- [Metatype](#Metatype)
 ---
 > 참고
 >* yagom's Swift Basic
@@ -3002,4 +3005,134 @@ p2[keyPath: keyPathToLength]
  class WritableKeyPath<Root, Value>: KeyPath<Root, Value>
  class ReferenceWritableKeyPath<Root, Value>: WritableKeyPath<Root, Value>
  */
+```
+---
+## <a name="ValueTypevsReferenceType"></a>Value Type vs Reference Type *<small><update 21.02.01><small>*
+
+- Value Type: Structure, Enumeration, Tuple
+- Reference Type: Class, Closure
+- Value Type은 stack에 저장되어있는 값을 비교.
+- Reference Type은 heap에 저장되어있는 값을 비교. -> 형식에 관계없이 실제 값을 비교
+
+```swift
+struct SizeValue {
+   var width = 0.0
+   var height = 0.0
+}
+
+var value = SizeValue() // stack에 메모리 공간 생성 및 저장
+
+var value2 = value // 값 복사, 복사본이 새로운 메모리 생성 및 저장 value와 개별 인스턴스
+value2.width = 1.0
+value2.height = 2.0
+
+value // 0 0
+value2 // 1 2
+
+class SizeObject {
+   var width = 0.0
+   var height = 0.0
+}
+
+var object = SizeObject() // stack에는 heap 메모리 주소가 저장되고, heap에는 인스턴스가 저장
+                          // 값 형식과 달리 인스턴스에 바로 접근할 수 없고 항상 stack에 거쳐서 접근.
+
+var object2 = object // stack에 새로운 메모리 공간이 생성되고, 이전 주소가 그대로 복사됨.
+
+object2.width = 1.0
+object2.height = 2.0
+
+object // 1 2
+object2 // 1 2
+
+let v = SizeValue()
+
+let o = SizeObject()
+o.width = 1.0
+o.height = 2.0
+```
+
+
+
+---
+## <a name="Metatype"></a>Metatype *<small><update 21.02.01><small>*
+
+ - Metatype은 값의 타입을 표현하는 타입.
+ - 예시로 아이폰으로 사진을 찍으면 EXIF이라는 메타데이터가 저장됨. (날짜, 시간, 조리개값 등등의 데이터를 설명하는 메타데이터)
+
+```swift
+func checkType(of value: Any) {
+   let typeOfValue = type(of: value) // type(of:) 메타타입 인스턴스
+   
+   print("\(value) => \(typeOfValue)")
+}
+
+let name = "Jane Doe"
+checkType(of: name)
+
+let age = 0
+checkType(of: age)
+
+// tableView 예시
+class MyCell: UITableViewCell {
+    
+}
+
+class CellRegistrationViewController: UIViewController {
+    
+    let tableView = UITableView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.register(MyCell.self, forCellReuseIdentifier: "cell") 
+        // Metatype을 파라미터로 전달할때는 self를 붙여야함. 여기서 self는 기존의 self와 다른 메타타입 인스턴스를 리턴하는 속성.
+        
+    }
+}
+
+// json decoder 예시
+struct Book: Codable {
+    let id: Int
+    let title: String
+    let description: String
+}
+
+
+class JSONDecodingViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        do {
+            let decoder = JSONDecoder()
+            
+            try decoder.decode(Book.self, from: jsonData)
+        } catch {
+            
+        }
+    }
+}
+
+// VC 예시
+class GenericFactoryViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let vc = instantiateViewController(ofType: JSONDecodingViewController.self)
+    }
+}
+
+extension UIViewController {
+    func instantiateViewController<VC: UIViewController>(ofType type: VC.Type) -> VC? {
+        let vcClassName = String(describing: type)
+        return storyboard?.instantiateViewController(withIdentifier: vcClassName) as? VC
+    }
+    
+    func duplicateCurrentViewController() -> UIViewController? {
+        let vcType = type(of: self)
+        return vcType.init()
+    }
+}
 ```
