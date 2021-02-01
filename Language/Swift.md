@@ -81,6 +81,7 @@
 	 * [Keypath](#Keypath)
  - Memory, Value Type & Reference Type
 	 * [Value Type vs Reference Type](#ValueTypevsReferenceType)
+	 * [ARC](#ARC)
 - [Metatype](#Metatype)
 ---
 > 참고
@@ -3051,7 +3052,39 @@ let o = SizeObject()
 o.width = 1.0
 o.height = 2.0
 ```
+---
 
+## <a name="ARC"></a>ARC *<small><update 21.02.01><small>*
+
+- ARC(Automatic Reference Countinh
+- stack에 저장된 데이터는 자동으로 제거되기 때문에 특별한 관리 불필요.
+- heap에 저장되는 데이터는 필요하지 않는 시점에 직접 관리해야함.
+- 메모리 관리 모델은 heap에 저장되는 데이터를 관리. -> class 인스턴스에 메모리를 관리.
+- keyword - Ownership Policy, Reference Count ( 참조 카운트가 1 이상이면 유지, 0이되면 제거 ), Strong Reference, Weak Reference, Unowned Reference
+- 기존 object-c 에서는 MRC(Manual Reference Counting) 과 ARC를 같이 지원.
+- MRC는 관련 코드를 직접 작성해야 하기 때문에 안정성을 보장하지 못하고, 디버깅이 어려움. 그래서 Compiler 단에서 자동으로 작성해주는 ARC 도입.
+
+```swift
+class Person {
+   var name = "John Doe"
+   
+   deinit {
+      print("person deinit")
+   }
+}
+
+var person1: Person?
+var person2: Person?
+var person3: Person?
+
+person1 = Person()
+person2 = person1
+person3 = person1 // 현재 Person Instance의 참조 카운팅은 3
+
+person1 = nil
+person2 = nil // nil을 저장하는것은 소유권을 포기하는 것과 같음. 참조 카운팅은 1
+person3 = nil // 참조 카운팅이 0이 되면서 제거되고, 소멸자가 호출.
+```
 
 
 ---
