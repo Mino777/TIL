@@ -124,6 +124,7 @@
           <ul>
             <li><a href="Language/Swift.md#ValueTypevsReferenceType" target="_blank">Value Type vs Reference Type</a></li>
             <li><a href="Language/Swift.md#ARC" target="_blank">ARC</a></li>
+            <li><a href="Language/Swift.md#StrongReferenceCycle" target="_blank">Strong Reference Cycle</a></li>
           </ul>
           <li><a href="Language/Swift.md#Metatype" target="_blank">Metatype</a></li>
       </details>
