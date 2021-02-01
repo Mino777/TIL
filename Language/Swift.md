@@ -82,7 +82,8 @@
  - Memory, Value Type & Reference Type
 	 * [Value Type vs Reference Type](#ValueTypevsReferenceType)
 	 * [ARC](#ARC)
-	 *  [Strong Reference Cycle](#StrongReferenceCycle)
+	 * [Strong Reference Cycle](#StrongReferenceCycle)
+	 * [Closure Capture List](#ClosureCaptureList)
 - [Metatype](#Metatype)
 ---
 > 참고
@@ -3094,7 +3095,7 @@ person3 = nil // 참조 카운팅이 0이 되면서 제거되고, 소멸자가 �
 - 따라서 Weak Reference 와 Unowned Reference를 통해 해결. -> 두 방식 모두 인스턴스 사이에 강한 참조를 제거하는 방식으로 문제를 해결.
 - Weak Reference 와 Unowned Reference는 강한 참조와 달리 참조 카운트를 증가시키거나 감소시키지 않음. 인스턴스에 접근 할 수는 있지만 인스턴스가 사라지지 않도록 유지하는것은 불가.
 - Weak Reference는 인스턴스를 참조하지만, 소유하지는 않음. 이런 특징으로 소유자에 비해서 짧은 생명주기를 가진 인스턴스를 참조할 때 주로 사용
-- Unowned Reference는 약한 참조와 동일한 방식이지만 옵셔널 방식이 아님. 따라서 nil로 초기화 되지 않음. 소유자와 생명주기가 같거나 더 긴 인스턴스를 참조할 때 주로 사용
+- Unowned Reference는 약한 참조와 동일한 방식. Swift 5 부터 옵셔널 방식으로 사용 가능. 하지만 참조 대상이 사라진경우 직접 초기화 하지 않으면 크래쉬가 남. 소유자와 생명주기가 같거나 더 긴 인스턴스를 참조할 때 주로 사용
 
 ```swift
 // Strong Reference Cycle
@@ -3193,7 +3194,55 @@ person?.car = rentedCar
 person = nil
 rentedCar = nil
 ```
+---
 
+## <a name="ClosureCaptureList"></a>Closure Capture List *<small><update 21.02.01><small>*
+
+- Closure가 인스턴스를 캡쳐하고, 인스턴스가 클로저를 강한 참조로 저장하고 있다면 인스턴스가 해제되지 않음.
+- Closure 내의 Strong Reference Cycle 을 Closure Capture List로 해결 할 수 있음.
+- Closure Capture List의 경우 축약형태에서 in을 생략할 수 없음
+- Reference Type을 캡쳐할 때는 반드시 weak 키워드나 unowned 키워드를 추가해줘야함.
+
+```swift
+class Car {
+    var totalDrivingDistance = 0.0
+    var totalUsedGas = 0.0
+    
+    lazy var gasMileage: () -> Double = { [weak self] in
+        guard let strongSelf = self else {
+            return 0.0
+        }
+        return strongSelf.totalDrivingDistance / strongSelf.totalUsedGas
+    }
+    
+    func drive() {
+        self.totalDrivingDistance = 1200.0
+        self.totalUsedGas = 73.0
+    }
+    
+    deinit {
+        print("car deinit")
+    }
+}
+
+var myCar: Car? = Car()
+myCar?.drive()
+
+myCar?.gasMileage()
+myCar = nil
+
+
+// Value Type
+var a = 0
+var b = 0
+let c = { [a] in
+    print(a, b)
+}
+
+a = 1 // 0 값 형식을 Closure Capture List에 추가하면 참조대신 복사본을 캡쳐함.
+b = 2
+c()
+```
 
 ---
 ## <a name="Metatype"></a>Metatype *<small><update 21.02.01><small>*
