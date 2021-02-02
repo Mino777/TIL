@@ -11,6 +11,7 @@
 	* [퀵 정렬](#퀵정렬)
 	* [계수 정렬](#계수정렬)
 	* [기수 정렬](#기수정렬)
+	* [이진트리](#이진트리)
 
 
 ---
@@ -790,8 +791,7 @@ void radixSort(int *a, int n) {
 	  }
 	while (maxValue / exp > 0) { // 1의 자리부터 계산
 		int bucket[10] = { 0 };
-		for (int i = 0; i < n; i++) bucket[a[i] / exp % 10]++; // 자릿수 배열 처리 		    
-		for (int i = 1; i < 10; i++) bucket[i] += bucket[i - 1]; // 누적 계산
+		for (int i = 0; i < n; i++) bucket[a[i] / exp % 10]++; // 자릿수 배열 처리 		    for (int i = 1; i < 10; i++) bucket[i] += bucket[i - 1]; // 누적 계산
 		for (int i = n - 1; i >= 0; i--) { // 같은 자릿수 끼리는 순서를 유지
 		res[--bucket[a[i] / exp % 10]] = a[i]; }
 		for (int i = 0; i < n; i++) a[i] = res[i]; // 기본 배열 갱신
@@ -817,4 +817,101 @@ int main(void) {
 
 ---
 
+## <a name="이진트리"></a>이진트리 *<small><update 21.02.02><small>*
 
+- 트리(Tree)는 나무의 형태를 뒤집은 것과 같은 형태의 자료구조
+- Keyword: 루트 노드, 가지, 리프 노드, 부모/자식 노드, 형제 노드
+- 길이(Length)란 출발 노드에서 목적지 노드까지 거쳐야 하는 가짓수를 의미
+- 깊이(Depth)란 루트 노드에서 특정 노드까지의 길이를 의미
+- 트리의 높이(Height)란 루트 노드에서 가장 깊은 노드까지의 길이
+- 이진 트리(Binary Tree)는 최대 2개의 자식을 가질 수 있는 트리
+- 포화 이진 트리(Full Binary Tree)는 리프 노드를 제외한 모든 노드가 두 자식을 가지고 있는 트리
+- 완전 이진 트리(Complete Binary Tree)는 모든 노드들이 왼쪽 자식부터 차근차근 채워진 트리
+- 높이 균형 트리(Height Balanced Tree)는 왼쪽 자식 트리와 오른쪽 자식 트리의 높이가 1 이상 차이 나지 않는 트리
+- 이진 트리는 많은 양의 노드를 낮은 높이에서 관리할 수 있다는 점에서 데이터 활용의 효율성이 높아짐
+- 데이터 저장, 탐색 등의 다양한 목적에서 사용
+- 이진 트리는 포인터를 이용하여 구현하면 효과적인 데이터 관리가 가능
+
+#### 이진트리 구현
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int data;
+    struct Node *leftChild;
+    struct Node *rightChild;
+} Node;
+
+Node* initNode(int data, Node* leftChild, Node* rightChild) {
+    Node* node = (Node*)malloc(sizeof(Node));
+    node->data = data;
+    node->leftChild = leftChild;
+    node->rightChild = rightChild;
+    return node;
+}
+```
+
+#### 이진트리의 전위 순회
+1. 자기 자신 출력
+2. 왼쪽 자식 방문
+3. 오른쪽 자식 방문
+
+```c
+void preorder(Node* root) {
+  if (root) {
+    printf("%d ", root->data);
+    preorder(root->leftChild);
+    preorder(root->rightChild);
+  } 
+}
+```
+
+#### 이진트리의 중위 순회
+1. 왼쪽 자식을 방문
+2. 자기 자신 출력
+3. 오른쪽 자식 방문
+
+```c
+void inorder(Node* root) {
+  if (root) {
+    inorder(root->leftChild);
+    printf("%d ", root->data);
+    inorder(root->rightChild);
+  } 
+}
+```
+
+#### 이진트리의 후위 순회
+1. 왼쪽 자식 방문
+2. 오른쪽 자식 방문
+3. 자기 자신 출력
+
+```c
+void postorder(Node* root) {
+  if (root) {
+    postorder(root->leftChild);
+    postorder(root->rightChild);
+    printf("%d ", root->data);
+  } 
+}
+```
+
+#### 이진트리 사용
+```c
+int main(void) {
+	Node* n7 = initNode(50, NULL, NULL); 
+	Node* n6 = initNode(37, NULL, NULL); 
+	Node* n5 = initNode(23, NULL, NULL); 
+	Node* n4 = initNode(5, NULL, NULL); 
+	Node* n3 = initNode(48, n6, n7); 
+	Node* n2 = initNode(17, n4, n5); 
+	Node* n1 = initNode(30, n2, n3); preorder(n1);
+	printf("\n");
+	inorder(n1);
+	printf("\n");
+	postorder(n1);
+	system("pause");
+	return 0;
+}
+```
