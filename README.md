@@ -148,6 +148,7 @@
           <li><a href="CS/CS.md#퀵정렬" target="_blank">퀵 정렬</a></li>
           <li><a href="CS/CS.md#계수정렬" target="_blank">계수 정렬</a></li>
           <li><a href="CS/CS.md#기수정렬" target="_blank">기수 정렬</a></li>
+          <li><a href="CS/CS.md#이진트리" target="_blank">이진트리</a></li>
         </ul>
       </details>
     </li>
