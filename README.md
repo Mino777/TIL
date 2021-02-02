@@ -149,6 +149,7 @@
           <li><a href="CS/CS.md#계수정렬" target="_blank">계수 정렬</a></li>
           <li><a href="CS/CS.md#기수정렬" target="_blank">기수 정렬</a></li>
           <li><a href="CS/CS.md#이진트리" target="_blank">이진트리</a></li>
+          <li><a href="CS/CS.md#우선순위큐" target="_blank">우선순위 큐</a></li>
         </ul>
       </details>
     </li>
