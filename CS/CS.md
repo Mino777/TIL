@@ -13,12 +13,14 @@
 	* [기수 정렬](#기수정렬)
 	* [이진트리](#이진트리)
 	* [우선순위 큐](#우선순위큐)
+	* [그래프](#그래프)
 
 
 ---
 >참고
 >* 패스트 캠퍼스 컴퓨터공학 ALL IN ONE
 >* [부스트코스] 모두를 위한 컴퓨터 과학 (CS50 2019)
+>* raywenderlich / swift-algorithm-club
 ----
 
 ## <a name="개요"></a>자료구조의 개요 *<small><update 20.06.22><small>*
@@ -1030,3 +1032,99 @@ int main(void) {
 
 ---
 
+## <a name="그래프"></a>그래프 *<small><update 21.02.06><small>*
+
+- 그래프(Graph)란 사물을 정점(Vertex)와 간선(Edge)으로 나타내기 위한 도구
+- 그래프는 두 가지 방식으로 구현
+1. 인접 행렬(Adjacency Matrix): 2차원 배열을 사용하는 방식
+2. 인접 리스트(Adjacency List): 리스트를 사용하는 방식
+
+#### 무방향 비가중치 그래프와 인접 행렬
+- 모든 간선이 방향성을 가지지 않는 그래프를 무방향 그래프라고 함.
+- 모든 간선에 가중치가 없는 그래프를 비가중치 그래프라고 함.
+- 무방향 비가중치 그래프가 주어졌을 때 연결되어 있는 상황을 인접 행렬로 출력할 수 있음.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int a[1001][1001];
+int n, m;
+int main(void) {
+    scanf("%d %d", &n, &m);
+    for (int i = 0; i < m; i++) {
+        int x, y;
+        scanf("%d %d", &x, &y);
+        a[x][y] = 1;
+        a[y][x] = 1;
+    }
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+    system("pause");
+}
+```
+
+#### 방향 가중치 그래프와 인접 리스트
+- 모든 간선이 방향을 가지는 그래프를 방향 그래프라고 함.
+- 모든 간선에 가중치가 있는 그래프를 가중치 그래프라고 함.
+- 무방향 비가중치 그래프가 주어졌을 때 연결되어 있는 상황을 인접 리스트로 출력할 수 있음
+
+```c
+// MARK: 연결 리스트 구조체 만들기
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct {
+    int index;
+    int distance;
+    struct Node *next;
+} Node;
+
+// MARK: 연결 리스트 삽입 함수
+void addFront(Node *root, int index, int distance) {
+    Node *node = (Node*)malloc(sizeof(Node));
+    node->index = index;
+    node->distance = distance;
+    node->next = root->next;
+    root->next = node;
+}
+
+// MARK: 연결 리스트 출력 함수
+void showAll(Node *root) {
+    Node *cur = root->next;
+    while (cur != NULL) {
+        printf("%d(거리: %d) ", cur->index, cur->distance);
+        cur = cur->next;
+    }
+}
+
+// MARK: 연결리스트 사용
+int main(void) {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    Node** a = (Node**)malloc(sizeof(Node*) * (n + 1));
+    for (int i = 1; i <= n; i++) {
+        a[i] = (Node*)malloc(sizeof(Node));
+        a[i]->next = NULL;
+    }
+    for (int i = 0; i < m; i++) {
+        int x, y, distance;
+        scanf("%d %d %d", &x, &y, &distance);
+        addFront(a[x], y, distance);
+    }
+    for (int i = 1; i <= n; i++) {
+        printf("원소 [%d]: ", i);
+        showAll(a[i]);
+        printf("\n");
+    }
+    system("pause");
+    return 0;
+}
+```
+
+#### 결론
+1. 인접 행렬은 모든 정점들의 연결 여부를 저장하여 𝑂(𝑉2)의 공간을 요구하므로 공간 효율성이 떨어지지만 두 정점이 서로 연결되어 있는지 확인하기 위해 𝑂(1)의 시간을 요구.
+2. 인접 리스트는 연결된 간선의 정보만을 저장하여 𝑂(𝐸)의 공간을 요구하므로 공간효율성이 우수하지만 두 정점이 서로 연결되어 있는지 확인하기 위해 𝑂(𝑉)의 시간을 요구.
