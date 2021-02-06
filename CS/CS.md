@@ -15,7 +15,7 @@
 	* [우선순위 큐](#우선순위큐)
 	* [그래프](#그래프)
 	* [깊이 우선 탐색](#깊이우선탐색)
-
+	* [너비 우선 탐색](#너비우선탐색)
 
 ---
 >참고
@@ -1130,6 +1130,8 @@ int main(void) {
 1. 인접 행렬은 모든 정점들의 연결 여부를 저장하여 𝑂(𝑉2)의 공간을 요구하므로 공간 효율성이 떨어지지만 두 정점이 서로 연결되어 있는지 확인하기 위해 𝑂(1)의 시간을 요구.
 2. 인접 리스트는 연결된 간선의 정보만을 저장하여 𝑂(𝐸)의 공간을 요구하므로 공간효율성이 우수하지만 두 정점이 서로 연결되어 있는지 확인하기 위해 𝑂(𝑉)의 시간을 요구.
 
+---
+
 ## <a name="깊이우선탐색"></a>깊이 우선 탐색 *<small><update 21.02.06><small>*
 
 - 깊이 우선 탐색(Depth First Search)은 탐색을 함에 있어서 보다 깊은 것을 우선적으로 하여 탐색하는 알고리즘
@@ -1194,3 +1196,121 @@ int main(void) {
 
 #### 결론
 - 깊이 우선 탐색은 𝑂(𝑁)의 시간이 소요되는 전수 탐색 알고리즘
+
+---
+
+## <a name="너비우선탐색"></a>너비 우선 탐색 *<small><update 21.02.06><small>*
+
+- 너비 우선 탐색(Breadth First Search)은 너비를 우선으로 하여 탐색을 수행하는 탐색 알고리즘
+- DFS와 마찬가지로 맹목적으로 전체 노드를 탐색하고자 할 때 자주 사용되며 큐(Queue) 자료구조에 기초
+- 너비 우선 탐색은 고급 그래프 탐색 알고리즘에서 자주 활용되므로 고급개발자가 되기 위해서는 너비 우선 탐색에 대해 숙지 해야 함.
+
+1. 탐색 시작 노드를 큐에 삽입하고 방문 처리
+2. 큐에서 노드를 꺼내 해당 노드의 인접 노드 중에서 방문하지 않은 노드들을 모두 큐에 삽입하고, 방문 처리
+3. 2번의 과정을 더 이상 수행할 수 없을때까지 반복
+
+```c
+// MARK: 연결 리스트 정의
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#define INF 99999999
+#define MAX_SIZE 1001
+typedef struct {
+    int index;
+    struct Node *next;
+} Node;
+
+typedef struct {
+    Node *front;
+    Node *rear;
+    int count;
+} Queue;
+
+Node** a;
+int n, m, c[MAX_SIZE];
+
+// MARK: 연결 리스트 삽입 함수
+void addFront(Node *root, int index) {
+    Node *node = (Node*)malloc(sizeof(Node));
+    node->index = index;
+    node->next = root->next;
+    root->next = node;
+}
+
+// MARK: 큐 삽입 함수
+void queuePush(Queue *queue, int index) {
+    Node *node = (Node*)malloc(sizeof(Node));
+    node->index = index;
+    node->next = NULL;
+    if (queue->count == 0) {
+        queue->front = node;
+    }
+    else {
+        queue->rear->next = node;
+    }
+    queue->rear = node;
+    queue->count++;
+}
+
+// MARK: 큐 추출 함수
+int queuePop(Queue *queue) {
+    if (queue->count == 0) {
+        printf("큐 언더플로우가 발생했습니다.\n");
+        return -INF;
+    }
+    Node *node = queue->front;
+    int index = node->index;
+    queue->front = node->next;
+    free(node);
+    queue->count--;
+    return index;
+}
+
+// MARK: 너비 우선 탐색 함수
+void bfs(int start) {
+    Queue q;
+    q.front = q.rear = NULL;
+    q.count = 0;
+    queuePush(&q, start);
+    c[start] = 1;
+    while (q.count != 0) {
+        int x = queuePop(&q);
+        printf("%d ", x);
+        Node *cur = a[x]->next;
+        while (cur != NULL) {
+            int next = cur->index;
+            if (!c[next]) {
+                queuePush(&q, next);
+                c[next] = 1;
+            }
+            cur = cur->next;
+        }
+    }
+}
+
+// MARK: 너비 우선 탐색 사용
+int main(void) {
+    scanf("%d %d", &n, &m);
+    a = (Node**)malloc(sizeof(Node*) * (MAX_SIZE));
+    for (int i = 1; i <= n; i++) {
+        a[i] = (Node*)malloc(sizeof(Node));
+        a[i]->next = NULL;
+    }
+    for (int i = 0; i < m; i++) {
+        int x, y;
+        scanf("%d %d", &x, &y);
+        addFront(a[x], y);
+        addFront(a[y], x);
+    }
+    bfs(1);
+    system("pause");
+    return 0;
+}
+
+```
+
+#### 결론
+1. 너비 우선 탐색은 𝑂(𝑁)의 시간이 소요되는 전수 탐색 알고리즘
+
+---
