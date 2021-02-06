@@ -151,6 +151,7 @@
           <li><a href="CS/CS.md#이진트리" target="_blank">이진트리</a></li>
           <li><a href="CS/CS.md#우선순위큐" target="_blank">우선순위 큐</a></li>
           <li><a href="CS/CS.md#그래프" target="_blank">그래프</a></li>
+          <li><a href="CS/CS.md#깊이우선탐색" target="_blank">깊이 우선 탐색</a></li>
         </ul>
       </details>
     </li>
