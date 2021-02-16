@@ -207,6 +207,12 @@
           <li><a href="ETC/Tip.md#stackedit" target="_blank">마크다운 에디터 stackEdit</a></li>
         </ul>
       </details>
+      <details>
+      <summary><a href="ETC/기술면접질문.md" target="_blank">기술면접질문</a></summary>
+        <ul>
+          <li><a href="ETC/Tip.md#면접1" target="_blank">Value Type / Reference Type의 차이</a></li>
+        </ul>
+      </details>
     </li>
   </ul>
 </details>
