@@ -210,7 +210,7 @@
       <details>
       <summary><a href="ETC/기술면접질문.md" target="_blank">기술면접질문</a></summary>
         <ul>
-          <li><a href="ETC/Tip.md#면접1" target="_blank">Value Type / Reference Type의 차이</a></li>
+          <li><a href="ETC/기술면접질문.md#면접1" target="_blank">Value Type / Reference Type의 차이</a></li>
         </ul>
       </details>
     </li>
