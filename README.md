@@ -212,6 +212,7 @@
         <ul>
           <li><a href="ETC/기술면접질문.md#면접1" target="_blank">Value Type / Reference Type의 차이</a></li>
           <li><a href="ETC/기술면접질문.md#면접2" target="_blank">Weak, Strong, Unowned</a></li>
+          <li><a href="ETC/기술면접질문.md#면접3" target="_blank">ARC</a></li>
         </ul>
       </details>
     </li>
