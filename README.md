@@ -214,6 +214,7 @@
           <li><a href="ETC/기술면접질문.md#면접2" target="_blank">Weak, Strong, Unowned</a></li>
           <li><a href="ETC/기술면접질문.md#면접3" target="_blank">ARC</a></li>
           <li><a href="ETC/기술면접질문.md#면접4" target="_blank">Escaping Closure</a></li>
+          <li><a href="ETC/기술면접질문.md#면접5" target="_blank">Frame / Bounds</a></li>
         </ul>
       </details>
     </li>
