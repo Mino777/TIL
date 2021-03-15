@@ -175,6 +175,12 @@
           <li><a href="IOS/IOS.md#networking" target="_blank">Networking in IOS</a></li>
         </ul>
       </details>
+      <details>
+      <summary><a href="IOS/RxSwift.md" target="_blank">RxSwift</a></summary>
+        <ul>
+          <li><a href="IOS/RxSwift.md#aboutrxswift" target="_blank">About RxSwift</a></li>
+        </ul>
+      </details>
     </li>
   </ul>
 </details>
