@@ -30,8 +30,8 @@
 	- next: 최신/다음 데이터를 전달하는 이벤트
 	- completed: 성공적으로 일련의 이벤트들을 종료시키는 이벤트. 즉, observable이 성공적으로 자신의 생명주기를 완료했으며, 추가적으로 이벤트를 생성하지 않을 것임을 의미.
 	- error: Observable이 에러를 발생시켰으며, 추가적으로 이벤트를 생성하지 않을 것임을 의미.
-![](https://assets.alexandria.raywenderlich.com/books/rxs/images/f8d3cff7dafeb96562b1d9031cf41b30959aea0c036be76b0bb03070e392fed9/original.png)
-![](https://assets.alexandria.raywenderlich.com/books/rxs/images/5e255ce9e0cb680c862ff81cddb3f721957ced5c1fa019660974b265367f0fd2/original.png)
+![image](https://user-images.githubusercontent.com/54234176/114350201-dcb8b880-9ba3-11eb-8172-5ccfee8701b8.png)
+![image](https://user-images.githubusercontent.com/54234176/114350228-e4785d00-9ba3-11eb-9143-c7b210a1c5cf.png)
 	- 상기 세가지 유형의 Observable 이벤트는, Observable 또는 observer의 본질에 대한 어떤 가정도 하지 않음.
 	- 따라서 Delegate Protocol을 사용하거나, 클래스 통신을 위해 클로저를 삽입할 필요가 없음.
 	- 실생활에서 아이디어를 얻으려면 Finite/Infinite Observable Sequences를 이해해야함.
@@ -98,7 +98,8 @@
 	    showAlert(text: string)
   })
 	```
-	![](https://assets.alexandria.raywenderlich.com/books/rxs/images/4733ac0cfa80353413c2f1e0a5058322dfc7daca1d6cd13323b5b3fe85378083/original.png)
+	![image](https://user-images.githubusercontent.com/54234176/114350316-04a81c00-9ba4-11eb-91c2-98d329feee06.png)
+
 
 	- UIDevice.rx.orientation이 .landscape 또는 .potrait 값을 생성할 때 마다, Rx는 각각의 연산자를 데이터의 형태로 방출.
 		- 먼저 filter는 .landscape가 아닌 값만을 내놓음. 만약 디바이스가 landscape 모드라면 나머지 코드는 진행되지 않을 것이다. 왜냐하면 filter가 해당 이벤트의 실행을 막을 것이기 때문.
@@ -110,7 +111,8 @@
 - 스케쥴러는 DispatchQueue와 동일한 것. 하지만 훨씬 강력하고 쓰기 쉽다.
 - RxSwift에는 여러가지의 스케쥴러가 이미 정의되어 있으며, 99%의 상황에서 사용가능하므로 아마 개발자가 자신만의 스케쥴러를 생성할 일은 없을 것. 
 - 기존까지 GCD를 통해서 일련의 코드를 작성했다면 스케쥴러를 통한 RxSwift는 다음과 같이 작동한다.
-![](https://assets.alexandria.raywenderlich.com/books/rxs/images/28bdd14bbb8cebcb00fcdc724a10d4f34c19a2b14bcdda5c7ed1f59af513b6f4/original.png)
+![image](https://user-images.githubusercontent.com/54234176/114350368-15589200-9ba4-11eb-9a5c-d42bfcb6fef8.png)
+
 - 각색깔로 표시된 task들은 다음과 같이 각각 스케쥴 된다.
 	- network subscription은 1로 표시된 custom NSOperation Scheduler에서 구동된다.
 	- 여기서 출력된 데이터는 다음 블록인 Background Concurrent Scheduler의 2로 가게된다.
@@ -123,7 +125,8 @@
 - Microsoft의 MVVM 아키텍처는 데이터 바인딩을 제공하는 플랫폼에서 이벤트 기반 소프트웨어용으로 개발되었기 때문에, RxSwift는 MVVM과 같이 쓸 때 아주 멋지게 작동한다.
 	- ViewModel을 사용하면 Observable<T> 속성을 노출할 수 있으며 ViewController의 UIKit에 직접 바인딩이 가능.
 	- 이렇게 하면 모델 데이터를 UI에 바인딩하고 표현하고 코드를 작성하는 것이 매우 간단해짐.
-![](https://assets.alexandria.raywenderlich.com/books/rxs/images/0625dc8cc2e93bdc9324fafea84fadaaf4729dfd39d114996486bb185bdb53e0/original.png)
+![image](https://user-images.githubusercontent.com/54234176/114350406-21445400-9ba4-11eb-9057-bd743854c056.png)
+
 
 ### RxCocoa
 - RxCocoa는 RxSwift의 동반 라이브러리로, UIKit과 Cocoa 프레임워크 기반 개발을 지원하는 모든 클래스를 보유하고 있음.
@@ -136,7 +139,8 @@
   })
 	```
 	- RxCocoa는 rx.isOn과 같은 프로퍼티를 UISwitch 클래스에 추가해주며, 이를 통해 이벤트 시퀀스를 확인할 수 있음.
-![](https://assets.alexandria.raywenderlich.com/books/rxs/images/cedb9fef08575f6d7985d0d78f296bd79ecf1f61c42dc703cc45bc0e91765b11/original.png)
+![image](https://user-images.githubusercontent.com/54234176/114350459-299c8f00-9ba4-11eb-9621-a7f0a9c09fa0.png)
+
 - RxCocoa는 UITextField, URLSession, UIViewController 등에 rx를 추가하여 사용.
 
 ---
