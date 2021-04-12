@@ -159,11 +159,11 @@
   </ul>
 </details>
 <details>
-  <summary>IOS</summary>
+  <summary>iOS</summary>
   <ul>
     <li>
       <details>
-      <summary><a href="IOS/IOS.md" target="_blank">IOS</a></summary>
+      <summary><a href="IOS/IOS.md" target="_blank">iOS</a></summary>
         <ul>
           <li><a href="IOS/IOS.md#appprojectfile" target="_blank">AppProject File</a></li>
           <li><a href="IOS/IOS.md#infoplist" target="_blank">Info.plist</a></li>
