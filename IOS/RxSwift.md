@@ -145,8 +145,160 @@
 
 ---
 
+
 ## <a name="observable"></a>Observable *<small><update 21.04.12><small>*
 #### Observable?
+- Rx에서의 가장 중요한 개념
+- observable = observable sequence = sequence
+- 중요한 것은 비동기.
+- Obseravble들은 일정 기간 동안 계속해서 이벤트를 생성하며, 이러한 과정을 보통 emitting 이라고 표현.
+- 각각의 이벤트들은 숫자나 커스텀한 인스턴스 등과 같은 값을 가질 수 있으며, 또는 탭과 같은 제스처를 인식할 수도 있음.
+- 이러한 개념들을 가장 잘 이해할 수 있는 방법은 marble diagrams를 이용하는 것.
+	- marble diagram : 시간의 흐름에 따라서 값을 표시하는 방식
+	- 시간은 왼쪽에서 오른쪽으로 흐른다는 가정
+	- [RxMarbles](https://rxmarbles.com/)
 
+```swift
+/*
+ Observable
+ 
+ - Observable은 이벤트를 전달.
+ - Next: 방출, Emission (Observer, Subscriber로 전달)
+ - Error: 에러 발생시 전달, Observable 주기 끝에 실행, Notification
+ - Completed: 성공적으로 실행 시 전달, Observable 주기 끝에 실행, Notification
+ - Observable은 error, completed 이벤트를 전달한 뒤엔 더이상 이벤트를 전달하지 않는다.
+ - Observable을 영원히 실행할 목적이 아니라면, onError, onComleted 둘 중 하나는 꼭 처리해주어야 함.
+ 
+ Observer
+ - Observer를 Subscriber라고도 부름.
+ - Observable을 감시하고 있다가 전달되는 이벤트를 처리한다.
+ - 이때 observable을 감사히고 있는 것을 Subscribe라고 한다.
+ 
+ */
+
+// Observable 를 생성, 정의하는 방법 크게 두가지
+// #1 create 연산자 활용
+// create : Observable 타입 프로토콜에 선언되어있는 타입 메서드, Operator 라고도 한다.
+// - Observer를 인자로 받아 Disposable을 반환한다.
+Observable<Int>.create { (observer) -> Disposable in
+    // observer애서 on 메서드를 호출하고, 구독자로 0이 저장되어있는 next 이벤트가 전달된다.
+    observer.onNext(0)
+    // 1이 저장되어있는 next 이벤트가 전달된다.
+    observer.onNext(1)
+    // completed이벤트가 전달되고 Observable이 종료된다. 이후 다른 이벤트를 전달할 수는 없다.
+    observer.onCompleted()
+    // Disposables 는 메모리 정리에 필요한 객체이다.
+    return Disposables.create()
+}
+
+
+// #2 다른 여러가지 연산자 활용
+// from 연산자는 파라미터로 전달받은 값을 순서대로 방출하고 Completed Event를 전달하는 Observable을 생성한다.
+// 이처럼 create 이외로도 상황에 따른 다양한 Operator 사용이 가능하다.
+Observable.from([0, 1])
+// 이벤트 전달 시점은 Observer가 Observalbe을 구독하는 시점에 Next이벤트를 통해 방출 및 Completed 이벤트가 전달된다.
+
+let o1 = Observable<Int>.create { (observer) -> Disposable in
+    
+   observer.on(.next(0))
+    
+   observer.onNext(1)
+   
+   observer.onCompleted()
+   
+   return Disposables.create()
+}
+
+// 중요한 규칙 Observer는 동시에 두개 이상의 이벤트를 처리하지않음.
+// Observable은 Observer가 하나의 이벤트를 처리한 후에 이어지는 이벤트를 처리함.
+// 여러 이벤트를 동시에 처리하지않음.
+
+// #1
+o1.subscribe {
+    // subscribe 클로져 내 start가 연달아 end 없이 두번 호출되는 경우는 없다.
+    print("-- Start --")
+    print($0)
+    // 순수 값을 추출하여 출력할 수 있으며, Optional 이므로 Optional Binding 이 필요하다.
+    if let elem = $0.element {
+        print(elem)
+    }
+    print("-- End --")
+}
+
+print("---------")
+
+// #2
+// 세부적인 구독 처리도 가능
+// $0.element 같은 방식으로 접근 할 필요 없이 onNext: 클로져 인자값을 통해 element에 바로 접근할 수 있다.
+o1.subscribe(onNext: { elem in
+    print(elem)
+})
+
+Observable.from([1, 2, 3])
+
+
+let subscription1 = Observable.from([1, 2, 3])
+    .subscribe(onNext: { elem in
+        print("Next", elem)
+    }, onError: { error in
+        print("Error", error)
+    }, onCompleted: {
+        print("Completed")
+    }, onDisposed: {
+        print("Disposed")
+    })
+
+subscription1.dispose()
+
+
+var disposeBag = DisposeBag()
+
+// Disposed 는 옵저버가 전달 하는 이벤트가 아니다.
+// -> 리소스가 해제되는 시점에 자동으로 호출되는 것이 Disposed이다.
+// 하지만 Rxswift 공식 문서에서는 Disposed를 정리/명시해줄 것을 권고한다.
+Observable.from([1, 2, 3])
+    .subscribe {
+        print($0)
+    }.disposed(by: disposeBag)
+// - 위와 같이 disposed(by: Bag) 식으로 DisposeBag을 사용할 수 있다.
+// - 해당 subscription에서 반환되는 Disposable은 bag에 추가된다.
+// - 이렇게 추가된 Disposable 들은 Disposebag이 해제되는 시점에 함께 해제된다.
+
+// 새로운 DisposeBag으로 초기화하면 이전까지 담겨있던 Disposable들은 함께 해제된다.
+disposeBag = DisposeBag()
+
+
+// 1씩 증가하는 정수를 1초간격으로 출력하는 Observable
+// 해당 작업의 종료를 위해서는 Dispose 처리가 필요하다.
+let subscription2 = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
+    .subscribe(onNext: { elem in
+        // Emission
+        // Next 1 ~ 3이 출력
+        print("Next", elem)
+    }, onError: { error in
+        // Notification
+        print("Error", error)
+    }, onCompleted: {
+        // Notification
+        // Observable 완료 시 실행
+        print("Completed")
+        // Disposed는 Observable이 전달하는 이벤트는 아니다. Observable과 관련된 모든 리소스가 제거된 뒤 호출이 된다.
+    }, onDisposed: {
+        print("Disposed")
+    })
+
+// Disposable 의 dispose() 메서드를 통해 3초가 지나면 해당 Observable을 Dispose 처리한다.
+// 해당 기능은 take, until등의 Operator 등을 통해서도 구현할 수 있다.
+// 0, 1, 2 까지만 출력
+DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+    subscription2.dispose()
+    // 이경우에도 연산자를 활용해서 처리해주는 것이 좋음.
+}
+
+// 직접 dispose를 호출해주는건 권장되지 않음.
+// DisposeBag 으로 관리해주는것이 가장 좋음.
+```
+
+----
 
 
