@@ -50,7 +50,7 @@ _31 TILs and counting..._
 - [TIL 211214](yagom-codestartcamp/211214패러다임,함수형프로그래밍,일급시민.md)
 - [TIL 211215](yagom-codestartcamp/211215TypeProperty.md)
 - [TIL 211216](yagom-codestartcamp/211216Protocol,structvsclass.md)
-- [# 🔥학습 내용](yagom-codestartcamp/211217ValTypevsRefType.md)
+- [TIL 211217](yagom-codestartcamp/211217ValTypevsRefType.md)
 - [TIL 211220](yagom-codestartcamp/211220Type,Instance.md)
 - [TIL 211221](yagom-codestartcamp/211221week3step2,SOLID-I.md)
 - [TIL 211222](yagom-codestartcamp/211222week3step2feedback.md)
