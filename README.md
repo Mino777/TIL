@@ -1,7 +1,13 @@
 # TIL
 > Today I Learned
 
-_31 TILs and counting..._
+A collection of concrete writeups of small things I learn daily while working
+and researching. My goal is to work in public. I was inspired to start this
+repository after reading Simon Wilson's [hacker new post][1], and he was
+apparently inspired by Josh Branchaud's [TIL collection][2].
+
+
+_32 TILs and counting..._
 
 ---
 
@@ -16,6 +22,7 @@ _31 TILs and counting..._
 - [ETC](#ETC)
 - [IOS](#IOS)
 - [Language](#Language)
+- [yagom-careerstartcamp](#yagom-careerstartcamp)
 - [yagom-codestartcamp](#yagom-codestartcamp)
 
 ### [CS](#CS)
@@ -33,6 +40,9 @@ _31 TILs and counting..._
 
 ### [Language](#Language)
 - [*Swift.*](Language/Swift.md)
+
+### [yagom-careerstartcamp](#yagom-careerstartcamp)
+- [TIL 220207](yagom-careerstartcamp/220207캠프시작,사전과제설명및리뷰.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
 - [TIL 211206](yagom-codestartcamp/211206캠프시작_git_week1livesession.md)
