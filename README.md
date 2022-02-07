@@ -34,7 +34,7 @@ _31 TILs and counting..._
 - [*기술면접질문.*](ETC/기술면접질문.md)
 
 ### [IOS](#IOS)
-- [*IOS.*](IOS/IOS.md)
+- [*iOS.*](IOS/IOS.md)
 - [*RxSwift.*](IOS/RxSwift.md)
 
 ### [Language](#Language)
