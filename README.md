@@ -1,8 +1,19 @@
 # TIL
 > Today I Learned
 
+---
 
-A collection of concrete writeups of small things I learn daily.
+ 오늘 공부한 것을 기록합니다.
+ - 내가 설명하지 못하는 것은 내가 아는 것이 아니다.
+
+ ### ⌨️ 양식
+ ```
+ # 학습내용
+ # 고민한 점 / 해결방법
+ # 느낀점
+ ```
+ 
+ ---
 
 
 _32 TILs and counting..._
