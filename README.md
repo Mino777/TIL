@@ -10,14 +10,14 @@
  ---
 
 
-_33 TILs and counting..._
+_34 TILs and counting..._
 
 ---
 
 ### 2 most recent TILs
 
+- [TIL 220210cs,step1피드백,step2](yagom-careerstartcamp/220210cs,step1피드백,step2.md) - Fri Feb 11 00:47:26 2022 +0900
 - [TIL 211230](yagom-codestartcamp/211230enumerated,LocalizedError.md) - Fri Dec 31 21:13:51 2021 +0900
-- [TIL 211229](yagom-codestartcamp/211229week4step1feedback,final,closureType.md) - Thu Dec 30 13:29:12 2021 +0900
 
 ### Categories
 
@@ -47,6 +47,7 @@ _33 TILs and counting..._
 ### [yagom-careerstartcamp](#yagom-careerstartcamp)
 - [TIL 220207](yagom-careerstartcamp/220207캠프시작,사전과제설명및리뷰.md)
 - [TIL 220208git활동학습,1weekstep1](yagom-careerstartcamp/220208git활동학습,1weekstep1.md)
+- [TIL 220210cs,step1피드백,step2](yagom-careerstartcamp/220210cs,step1피드백,step2.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
 - [TIL 211206](yagom-codestartcamp/211206캠프시작_git_week1livesession.md)
