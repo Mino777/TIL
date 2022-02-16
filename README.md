@@ -10,14 +10,14 @@
  ---
 
 
-_38 TILs and counting..._
+_39 TILs and counting..._
 
 ---
 
 ### 2 most recent TILs
 
+- [TIL 220216StructvsClass](yagom-careerstartcamp/220216StructvsClass.md) - Wed Feb 16 23:46:01 2022 +0900
 - [TIL 220215self,Self](yagom-careerstartcamp/220215self,Self.md) - Tue Feb 15 23:07:51 2022 +0900
-- [TIL 220214OOP](yagom-careerstartcamp/220214OOP.md) - Tue Feb 15 00:24:20 2022 +0900
 
 ### Categories
 
@@ -52,6 +52,7 @@ _38 TILs and counting..._
 - [TIL 220211optional,step2](yagom-careerstartcamp/220211optional,step2.md)
 - [TIL 220214OOP](yagom-careerstartcamp/220214OOP.md)
 - [TIL 220215self,Self](yagom-careerstartcamp/220215self,Self.md)
+- [TIL 220216StructvsClass](yagom-careerstartcamp/220216StructvsClass.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
 - [TIL 211206](yagom-codestartcamp/211206캠프시작_git_week1livesession.md)
