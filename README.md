@@ -10,14 +10,14 @@
  ---
 
 
-_43 TILs and counting..._
+_44 TILs and counting..._
 
 ---
 
 ### 2 most recent TILs
 
+- [TIL 220222keypath,kvo,notification](yagom-careerstartcamp/220222keypath,kvo,notification.md) - Thu Feb 24 00:04:43 2022 +0900
 - [TIL 220221아키텍처,디자인패턴,mvc](yagom-careerstartcamp/220221아키텍처,디자인패턴,mvc.md) - Tue Feb 22 22:07:52 2022 +0900
-- [# TWL2202182week](yagom-careerstartcamp/220218TWL.md) - Sun Feb 20 23:31:53 2022 +0900
 
 ### Categories
 
@@ -57,6 +57,7 @@ _43 TILs and counting..._
 - [TIL 220218STEP2피드백,gitflow](yagom-careerstartcamp/220218STEP2피드백,gitflow.md)
 - [# TWL2202182week](yagom-careerstartcamp/220218TWL.md)
 - [TIL 220221아키텍처,디자인패턴,mvc](yagom-careerstartcamp/220221아키텍처,디자인패턴,mvc.md)
+- [TIL 220222keypath,kvo,notification](yagom-careerstartcamp/220222keypath,kvo,notification.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
 - [TIL 211206](yagom-codestartcamp/211206캠프시작_git_week1livesession.md)
