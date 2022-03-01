@@ -10,7 +10,7 @@
  ---
 
 
-_47 TILs and counting..._
+_48 TILs and counting..._
 
 ---
 
@@ -60,6 +60,7 @@ _47 TILs and counting..._
 - [TIL 220222keypath,kvo,notification](yagom-careerstartcamp/220222keypath,kvo,notification.md)
 - [TIL 220224dependencyInjection,DIP](yagom-careerstartcamp/220224dependencyInjection,DIP.md)
 - [TIL 220225delegatepattern](yagom-careerstartcamp/220225delegatepattern.md)
+- [TIL 220228builderpattern](yagom-careerstartcamp/220228builderpattern.md)
 - [TWL 220225](yagom-careerstartcamp/TWL220225.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
