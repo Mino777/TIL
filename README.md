@@ -29,7 +29,7 @@ _54 TILs and counting..._
 - [yagom-codestartcamp](#yagom-codestartcamp)
 
 ### [CS](#CS)
-- [*Data Structure & Algorithm*](CS/CS.md)
+- [##### tags: `Algorithm`](CS/CS.md)
 
 ### [ETC](#ETC)
 - [*Error.*](ETC/Error.md)
