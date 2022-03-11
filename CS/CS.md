@@ -1,4 +1,3 @@
-###### tags: `Algorithm`
 # *Data Structure & Algorithm*
 
 ### 바로가기
