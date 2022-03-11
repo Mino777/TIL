@@ -1,3 +1,4 @@
+###### tags: `Algorithm`
 # *Data Structure & Algorithm*
 
 ### 바로가기
@@ -476,11 +477,95 @@ int main(void) {
 >3. 재귀 알고리즘을 사용하는 경우 스택이 유용하다.
 
 ---
-## <a name="큐"></a>큐 *<small><update 20.12.23><small>*
+## <a name="큐"></a>큐 *<small><update 22.03.11><small>*
 
 1. 큐는 뒤쪽으로 들어가서 앞쪽으로 나오는 FIFO 형태의 자료구조
 2. 이러한 특성 때문에 스케쥴링, 탐색 알고리즘 등에서 다방면으로 활용.
 
+
+### Swift
+```swift
+struct Queue<Element> {
+    private var queue = [Element]()
+
+    var isEmpty: Bool {
+        return queue.isEmpty
+    }
+
+    var count: Int {
+        return queue.count
+    }
+
+    var front: Element? {
+        return queue.first
+    }
+
+    mutating func enqueue(_ element: Element) {
+        queue.append(element)
+    }
+
+    mutating func dequeue() -> Element? {
+        isEmpty ? nil : queue.removeFirst()
+    }
+}
+    
+var queue = Queue<Int>()
+queue.enqueue(10)
+queue.enqueue(20)
+queue.dequeue()
+print(queue)
+    
+```
+
+- 이러한 경우 dequeue에서 element들이 하나씩 당겨지는 과정때문에 O(n)이 됨.
+- 따라서 아래와 같이 개선이 가능
+    
+```swift
+struct Queue<Element> {
+    private var queue = [Element?]()
+    private var head = 0
+
+    var isEmpty: Bool {
+        return count == 0
+    }
+
+    var count: Int {
+        return queue.count - head
+    }
+
+    var front: Element? {
+        isEmpty ? nil : queue[head]
+    }
+
+    mutating func enqueue(_ element: Element) {
+        queue.append(element)
+    }
+
+    mutating func dequeue() -> Element? {
+        guard head < queue.count, let element = queue[head] else {
+            return nil
+        }
+
+        queue[head] = nil
+        head += 1
+
+        let percentage = Double(head) / Double(queue.count)
+        if queue.count > 50 && percentage > 0.25 {
+            queue.removeFirst(head)
+            head = 0
+        }
+
+        return element
+    }
+}
+```
+- queue[head]를 nil로 변경하고, head를 증가시켜 포인트를 이동
+- dequeue된 element를 적정한 때에 삭제시켜주는 작업을 추가해서 낭비된 공간을 제거
+- 따라서 이전과 같이 dequeue할 때 앞으로 당겨주는 작업이 없어지면서 O(1)이 됨
+    
+---    
+    
+### C
 #### 배열을 이용한 구현
 - 선언
 ```c
@@ -1314,3 +1399,4 @@ int main(void) {
 1. 너비 우선 탐색은 𝑂(𝑁)의 시간이 소요되는 전수 탐색 알고리즘
 
 ---
+
