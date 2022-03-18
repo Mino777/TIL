@@ -10,14 +10,14 @@
  ---
 
 
-_58 TILs and counting..._
+_59 TILs and counting..._
 
 ---
 
 ### 2 most recent TILs
 
+- [TIL 220317SOLID](yagom-careerstartcamp/220317SOLID.md) - Thu Mar 17 23:23:40 2022 +0900
 - [TIL 220315DoubelStackQueue](yagom-careerstartcamp/220315DoubelStackQueue.md) - Wed Mar 16 14:53:24 2022 +0900
-- [TIL 220314UnitTest_TDD](yagom-careerstartcamp/220314UnitTest_TDD.md) - Tue Mar 15 19:39:34 2022 +0900
 
 ### Categories
 
@@ -71,6 +71,7 @@ _58 TILs and counting..._
 - [TIL 220311UnitTest](yagom-careerstartcamp/220311UnitTest.md)
 - [TIL 220314UnitTest_TDD](yagom-careerstartcamp/220314UnitTest_TDD.md)
 - [TIL 220315DoubelStackQueue](yagom-careerstartcamp/220315DoubelStackQueue.md)
+- [TIL 220317SOLID](yagom-careerstartcamp/220317SOLID.md)
 - [TWL 220225](yagom-careerstartcamp/TWL220225.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
