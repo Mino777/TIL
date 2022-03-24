@@ -1,0 +1,124 @@
+# TIL 220322함수형프로그래밍
+
+## 🔥학습 내용
+
+### Swift에서의 함수형 프로그래밍
+- 멀티 패러다임 언어인 Swift를 활용하면서 순수하게 하나만의 프로그래밍 방법론만으로 프로그래밍을 하는 것 보단 각각의 장점만 취해서 효율성을 높이는 것이 중요할 것 같음.
+- 프로그램의 전체적인 틀은 OOP를 기반으로 진행하고, 각 객체 안에서는 FP를 기반으로 하려고 노력해보기
+- 따라서 일급 시민으로서의 Side Effect가 없는 순수 함수를 적극 활용할 수 있다면 OOP로 유연함을 챙기고, FP로 안전성을 챙길 수 있지 않을까?
+
+### 순수함수
+- 함수의 동작이 외부에 있는 변수에 영향을 받거나 주지 않는다.
+- 특정 입력값에 대해서 항상 동일한 결과를 낸다.
+- 함수 자체가 독립적이고 Side Effect가 없기 때문에 Thread에 안전성을 보장받을 수 있음
+- Thread에 안전성을 보장받아 병렬 처리를 동기화 없이 진행할 수 있음
+
+### 고차함수 활용
+- 함수를 파라미터로 전달하거나, 함수를 리턴하는 함수
+
+```swift
+func stepForward(input: Int) -> Int {
+    return input + 1
+}
+
+func stepBackward(input: Int) -> Int {
+    return input - 1
+}
+
+func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
+    return backwards ? stepBackward : stepForward
+}
+
+func returnThree() -> Int {
+    3
+}
+
+func printCurrentValue() {
+    var currentValue = returnThree()
+    let moveNearerToZero = chooseStepFunction(backwards: returnThree() > 0) // stepBackward
+    
+    while currentValue != 0 {
+        print(currentValue) // 3 2 1
+        currentValue = moveNearerToZero(currentValue)
+    }
+}
+```
+
+```swift
+let nums = [1,2,3,4,5,6]
+let isEvenNumber: (Int) -> Bool = { $0 % 2 == 0 }
+let add: (Int , Int) -> Int = { a, b in
+    return a+b
+}
+func solution(_ nums: [Int]) -> Int {
+    return nums.filter(isEvenNumber).reduce(0, add)
+}
+
+let addSolutionResult = solution(nums)
+```
+
+### 함수의 합성
+- 함수의 반환값이 다른 함수의 입력값으로 사용
+- 함수의 반환값과 이것을 입력으로 받아들이는 값은 타입이 같아야함
+
+```swift
+let numbers = [1,2,3,4,5,6]
+
+func filterEven(_ numbers: [Int]) -> [Int] {
+    let result = numbers.filter { number in
+        number % 2 == 0
+    }
+    return result
+}
+
+func sum(_ numbers: [Int]) -> Int {
+    let result = numbers.reduce(0, +)
+    return result
+}
+
+func add<A, B>(_ filter: @escaping (A) -> A,
+               _ sum: @escaping (A) -> B) -> (A) -> B {
+    return {
+        paramArray in
+        return sum(filter(paramArray))
+    }
+}
+
+func result(_ nums:[Int]) -> Int {
+    let compositFunc = add(filterEven, sum)
+    return compositFunc(nums)
+}
+```
+
+### 함수 커링
+- 함수의 Output이 다른 함수의 Input으로 연결되면서 함수의 합성
+- 쉽게 이해하자면, 함수를 만드는 함수
+
+```swift
+func stringDevider(_ seprator: String) -> (String) -> [String] {
+    return { (string: String) -> [String] in
+        return string.components(separatedBy: seprator)
+    }
+}
+
+let stringDevideBySlash = stringDevider("/")
+let stringDevideByAsterisk = stringDevider("*")
+
+stringDevideBySlash("a/b/c/d")
+stringDevideByAsterisk("a*b*c*d")
+```
+
+---
+
+- 숙련도를 높이려면 꽤 시간이 걸릴 것 같다.
+- FP 적인 사고를 하면서 설계를 하는게 제일 어려울듯..
+- 이것도 SOLID 마냥 천천히 익숙해지기
+
+---
+
+> - 참고
+>   - https://borabong.tistory.com/5
+>   - https://qteveryday.tistory.com/310
+>   - https://mangkyu.tistory.com/111
+>   - http://minsone.github.io/mac/ios/swift-function-summary
+>   - https://www.slideshare.net/ssuserc49eb8/swift-74181759
