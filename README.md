@@ -59,6 +59,7 @@ _66 TILs and counting..._
 - [TIL 220221아키텍처,디자인패턴,mvc](yagom-careerstartcamp/220221아키텍처,디자인패턴,mvc.md)
 - [TIL 220222keypath,kvo,notification](yagom-careerstartcamp/220222keypath,kvo,notification.md)
 - [TIL 220224dependencyInjection,DIP](yagom-careerstartcamp/220224dependencyInjection,DIP.md)
+- [TWL 220225](yagom-careerstartcamp/220225TWL.md)
 - [TIL 220225delegatepattern](yagom-careerstartcamp/220225delegatepattern.md)
 - [TIL 220228builderpattern](yagom-careerstartcamp/220228builderpattern.md)
 - [TIL 220301viewcontrollerlifecycle](yagom-careerstartcamp/220301viewcontrollerlifecycle.md)
@@ -78,7 +79,6 @@ _66 TILs and counting..._
 - [TIL 220328메모리구조](yagom-careerstartcamp/220328메모리구조.md)
 - [TIL 220329ARC](yagom-careerstartcamp/220329ARC.md)
 - [TIL 220331AppLifeCycle](yagom-careerstartcamp/220331AppLifeCycle.md)
-- [TWL 220225](yagom-careerstartcamp/TWL220225.md)
 - [TWL220318계산기Week1](yagom-careerstartcamp/TWL220318계산기Week1.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
