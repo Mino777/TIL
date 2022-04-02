@@ -10,7 +10,7 @@
  ---
 
 
-_65 TILs and counting..._
+_66 TILs and counting..._
 
 ---
 
@@ -77,6 +77,7 @@ _65 TILs and counting..._
 - [TIL 220324RunLoop_UpdateCycle_ViewDrawingCycle_LayoutCycle_UIViewMethod](yagom-careerstartcamp/220324RunLoop_UpdateCycle_ViewDrawingCycle_LayoutCycle_UIViewMethod.md)
 - [TIL 220328메모리구조](yagom-careerstartcamp/220328메모리구조.md)
 - [TIL 220329ARC](yagom-careerstartcamp/220329ARC.md)
+- [TIL 220331AppLifeCycle](yagom-careerstartcamp/220331AppLifeCycle.md)
 - [TWL 220225](yagom-careerstartcamp/TWL220225.md)
 - [TWL220318계산기Week1](yagom-careerstartcamp/TWL220318계산기Week1.md)
 
