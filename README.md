@@ -10,14 +10,14 @@
  ---
 
 
-_67 TILs and counting..._
+_68 TILs and counting..._
 
 ---
 
 ### 2 most recent TILs
 
+- [](yagom-careerstartcamp/220419Concurrency_Parallelism_sync_async.md) - Sat Apr 23 22:06:14 2022 +0900
 - [TIL 220418Accessibility](yagom-careerstartcamp/220418Accessibility.md) - Mon Apr 18 23:35:05 2022 +0900
-- [TIL 220329ARC](yagom-careerstartcamp/220329ARC.md) - Wed Mar 30 12:38:32 2022 +0900
 
 ### Categories
 
@@ -81,6 +81,7 @@ _67 TILs and counting..._
 - [TIL 220329ARC](yagom-careerstartcamp/220329ARC.md)
 - [TIL 220331AppLifeCycle](yagom-careerstartcamp/220331AppLifeCycle.md)
 - [TIL 220418Accessibility](yagom-careerstartcamp/220418Accessibility.md)
+- [](yagom-careerstartcamp/220419Concurrency_Parallelism_sync_async.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
 - [TIL 211206](yagom-codestartcamp/211206캠프시작_git_week1livesession.md)
