@@ -10,14 +10,14 @@
  ---
 
 
-_70 TILs and counting..._
+_71 TILs and counting..._
 
 ---
 
 ### 2 most recent TILs
 
+- [TIL 220425의존성관리도구](yagom-careerstartcamp/220425의존성관리도구.md) - Tue Apr 26 22:22:42 2022 +0900
 - [TIL 220422GCD1-2](yagom-careerstartcamp/220422GCD1-2.md) - Sat Apr 23 22:06:56 2022 +0900
-- [TIL 220421GCD1-1](yagom-careerstartcamp/220421GCD1-1.md) - Sat Apr 23 22:06:36 2022 +0900
 
 ### Categories
 
@@ -84,6 +84,7 @@ _70 TILs and counting..._
 - [](yagom-careerstartcamp/220419Concurrency_Parallelism_sync_async.md)
 - [TIL 220421GCD1-1](yagom-careerstartcamp/220421GCD1-1.md)
 - [TIL 220422GCD1-2](yagom-careerstartcamp/220422GCD1-2.md)
+- [TIL 220425의존성관리도구](yagom-careerstartcamp/220425의존성관리도구.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
 - [TIL 211206](yagom-codestartcamp/211206캠프시작_git_week1livesession.md)
