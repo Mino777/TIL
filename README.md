@@ -10,14 +10,14 @@
  ---
 
 
-_76 TILs and counting..._
+_77 TILs and counting..._
 
 ---
 
 ### 2 most recent TILs
 
+- [](yagom-careerstartcamp/220509ImplementingModernCollectionViews1.md) - Thu May 12 00:05:54 2022 +0900
 - [TIL 220506UIResponder,ResponderChain](yagom-careerstartcamp/220506UIResponder,ResponderChain.md) - Wed May 11 20:58:14 2022 +0900
-- [TIL 220426GCD1-3](yagom-careerstartcamp/220426GCD1-3.md) - Tue Apr 26 22:23:03 2022 +0900
 
 ### Categories
 
@@ -90,6 +90,7 @@ _76 TILs and counting..._
 - [TIL 220429POP](yagom-careerstartcamp/220429POP.md)
 - [TIL 220501HTTP](yagom-careerstartcamp/220501HTTP.md)
 - [TIL 220506UIResponder,ResponderChain](yagom-careerstartcamp/220506UIResponder,ResponderChain.md)
+- [](yagom-careerstartcamp/220509ImplementingModernCollectionViews1.md)
 
 ### [yagom-codestartcamp](#yagom-codestartcamp)
 - [TIL 211206](yagom-codestartcamp/211206캠프시작_git_week1livesession.md)
